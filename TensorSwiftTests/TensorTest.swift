@@ -24,6 +24,42 @@ class TensorTest: XCTestCase {
         }
     }
     
+    func testAdd() {
+        do {
+            let a = Tensor(shape: [2, 3], elements: [1, 2, 3, 4, 5, 6])
+            let b = Tensor(shape: [2, 3], elements: [7, 8, 9, 10, 11, 12])
+            let r = a + b
+            XCTAssertEqual(r, Tensor(shape: [2, 3], elements: [8, 10, 12, 14, 16, 18]))
+        }
+    }
+    
+    func testSub() {
+        do {
+            let a = Tensor(shape: [2, 3], elements: [1, 2, 3, 4, 5, 6])
+            let b = Tensor(shape: [2, 3], elements: [12, 11, 10, 9, 8, 7])
+            let r = a - b
+            XCTAssertEqual(r, Tensor(shape: [2, 3], elements: [-11, -9, -7, -5, -3, -1]))
+        }
+    }
+    
+    func testMul() {
+        do {
+            let a = Tensor(shape: [2, 3], elements: [1, 2, 3, 4, 5, 6])
+            let b = Tensor(shape: [2, 3], elements: [7, 8, 9, 10, 11, 12])
+            let r = a * b
+            XCTAssertEqual(r, Tensor(shape: [2, 3], elements: [7, 16, 27, 40, 55, 72]))
+        }
+    }
+    
+    func testDiv() {
+        do {
+            let a = Tensor(shape: [2, 3], elements: [1, 2, 3, 4, 5, 6])
+            let b = Tensor(shape: [2, 3], elements: [2, 4, 8, 16, 32, 64])
+            let r = a / b
+            XCTAssertEqual(r, Tensor(shape: [2, 3], elements: [0.5, 0.5, 0.375, 0.25, 0.15625, 0.09375]))
+        }
+    }
+    
     func testMatmul() {
         do {
             let a = Tensor(shape: [2, 3], elements: [1, 2, 3, 4, 5, 6])
