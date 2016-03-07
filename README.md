@@ -1,1 +1,1 @@
-# tensor-swift
+# TensorSwift
