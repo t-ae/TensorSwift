@@ -5,6 +5,10 @@ public func **(lhs: Tensor, rhs: Tensor) -> Tensor {
     return Tensor(shape: lhs.shape, elements: zip(lhs.elements, rhs.elements).map(powf))
 }
 
+public func **(lhs: Tensor, rhs: Float) -> Tensor {
+    return Tensor(shape: lhs.shape, elements: lhs.elements.map { powf($0, rhs) })
+}
+
 extension Tensor {
     public var sin: Tensor {
         return Tensor(shape: shape, elements: elements.map(sinf))

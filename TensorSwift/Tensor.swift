@@ -73,6 +73,18 @@ public func /(lhs: Tensor, rhs: Tensor) -> Tensor {
     return Tensor(shape: lhs.shape, elements: zip(lhs.elements, rhs.elements).map(/))
 }
 
+public func *(lhs: Tensor, rhs: Float) -> Tensor {
+    return Tensor(shape: lhs.shape, elements: lhs.elements.map { $0 * rhs })
+}
+
+public func *(lhs: Float, rhs: Tensor) -> Tensor {
+    return Tensor(shape: rhs.shape, elements: rhs.elements.map { $0 * lhs })
+}
+
+public func /(lhs: Tensor, rhs: Float) -> Tensor {
+    return Tensor(shape: lhs.shape, elements: lhs.elements.map { $0 / rhs })
+}
+
 extension Tensor { // Matrix
     public func matmul(tensor: Tensor) -> Tensor {
         assert(shape.dimensions.count == 2, "This tensor is not a matrix: shape = \(shape)")
