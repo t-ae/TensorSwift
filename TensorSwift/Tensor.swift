@@ -2,7 +2,7 @@ public struct Tensor {
     public typealias Element = Float
     
     public let shape: Shape
-    private var elements: [Element]
+    public private(set) var elements: [Element]
     
     public init(shape: Shape, elements: [Element]) {
         let c = shape.count
@@ -55,22 +55,22 @@ public func ==(lhs: Tensor, rhs: Tensor) -> Bool {
 
 public func +(lhs: Tensor, rhs: Tensor) -> Tensor {
     assert(lhs.shape == rhs.shape, "Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)")
-    return Tensor(shape: lhs.shape, elements: zip(lhs, rhs).map(+))
+    return Tensor(shape: lhs.shape, elements: zip(lhs.elements, rhs.elements).map(+))
 }
 
 public func -(lhs: Tensor, rhs: Tensor) -> Tensor {
     assert(lhs.shape == rhs.shape, "Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)")
-    return Tensor(shape: lhs.shape, elements: zip(lhs, rhs).map(-))
+    return Tensor(shape: lhs.shape, elements: zip(lhs.elements, rhs.elements).map(-))
 }
 
 public func *(lhs: Tensor, rhs: Tensor) -> Tensor {
     assert(lhs.shape == rhs.shape, "Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)")
-    return Tensor(shape: lhs.shape, elements: zip(lhs, rhs).map(*))
+    return Tensor(shape: lhs.shape, elements: zip(lhs.elements, rhs.elements).map(*))
 }
 
 public func /(lhs: Tensor, rhs: Tensor) -> Tensor {
     assert(lhs.shape == rhs.shape, "Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)")
-    return Tensor(shape: lhs.shape, elements: zip(lhs, rhs).map(/))
+    return Tensor(shape: lhs.shape, elements: zip(lhs.elements, rhs.elements).map(/))
 }
 
 extension Tensor { // Matrix
@@ -97,11 +97,5 @@ extension Tensor { // Matrix
         }
         
         return Tensor(shape: [numRows, numCols], elements: elements)
-    }
-}
-
-extension Tensor { // internal
-    internal var _elements: [Element] {
-        return elements
     }
 }

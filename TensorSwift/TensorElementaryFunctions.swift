@@ -2,59 +2,59 @@ import Darwin
 
 public func **(lhs: Tensor, rhs: Tensor) -> Tensor {
     assert(lhs.shape == rhs.shape, "Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)")
-    return Tensor(shape: lhs.shape, elements: zip(lhs, rhs).map(powf))
+    return Tensor(shape: lhs.shape, elements: zip(lhs.elements, rhs.elements).map(powf))
 }
 
 extension Tensor {
     public var sin: Tensor {
-        return Tensor(shape: shape, elements: _elements.map(sinf))
+        return Tensor(shape: shape, elements: elements.map(sinf))
     }
 
     public var cos: Tensor {
-        return Tensor(shape: shape, elements: _elements.map(cosf))
+        return Tensor(shape: shape, elements: elements.map(cosf))
     }
 
     public var tan: Tensor {
-        return Tensor(shape: shape, elements: _elements.map(tanf))
+        return Tensor(shape: shape, elements: elements.map(tanf))
     }
 
     public var asin: Tensor {
-        return Tensor(shape: shape, elements: _elements.map(asinf))
+        return Tensor(shape: shape, elements: elements.map(asinf))
     }
     
     public var acos: Tensor {
-        return Tensor(shape: shape, elements: _elements.map(acosf))
+        return Tensor(shape: shape, elements: elements.map(acosf))
     }
     
     public var atan: Tensor {
-        return Tensor(shape: shape, elements: _elements.map(atanf))
+        return Tensor(shape: shape, elements: elements.map(atanf))
     }
     
     public var sinh: Tensor {
-        return Tensor(shape: shape, elements: _elements.map(sinhf))
+        return Tensor(shape: shape, elements: elements.map(sinhf))
     }
     
     public var cosh: Tensor {
-        return Tensor(shape: shape, elements: _elements.map(coshf))
+        return Tensor(shape: shape, elements: elements.map(coshf))
     }
     
     public var tanh: Tensor {
-        return Tensor(shape: shape, elements: _elements.map(tanhf))
+        return Tensor(shape: shape, elements: elements.map(tanhf))
     }
     
     public var exp: Tensor {
-        return Tensor(shape: shape, elements: _elements.map(expf))
+        return Tensor(shape: shape, elements: elements.map(expf))
     }
     
     public var log: Tensor {
-        return Tensor(shape: shape, elements: _elements.map(logf))
+        return Tensor(shape: shape, elements: elements.map(logf))
     }
     
     public var sqrt: Tensor {
-        return Tensor(shape: shape, elements: _elements.map(sqrtf))
+        return Tensor(shape: shape, elements: elements.map(sqrtf))
     }
     
     public var cbrt: Tensor {
-        return Tensor(shape: shape, elements: _elements.map(cbrtf))
+        return Tensor(shape: shape, elements: elements.map(cbrtf))
     }
 }
