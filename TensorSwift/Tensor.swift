@@ -99,3 +99,9 @@ extension Tensor { // Matrix
         return Tensor(shape: [numRows, numCols], elements: elements)
     }
 }
+
+extension Tensor { // internal
+    internal var _elements: [Element] {
+        return elements
+    }
+}
