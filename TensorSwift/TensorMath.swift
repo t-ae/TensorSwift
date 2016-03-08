@@ -62,3 +62,9 @@ extension Tensor {
         return Tensor(shape: shape, elements: elements.map(cbrtf))
     }
 }
+
+extension Tensor {
+    public var sigmoid: Tensor {
+        return Tensor(shape: shape, elements: elements.map { 1.0 / expf(-$0) })
+    }
+}

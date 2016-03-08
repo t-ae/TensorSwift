@@ -15,7 +15,8 @@
 		D69C34041C8D7487007985D4 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34031C8D7487007985D4 /* Dimension.swift */; };
 		D69C34061C8D8F87007985D4 /* TensorSwiftSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34051C8D8F87007985D4 /* TensorSwiftSample.swift */; };
 		D69C34081C8E7D03007985D4 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34071C8E7D03007985D4 /* Operators.swift */; };
-		D69C340A1C8E7D44007985D4 /* TensorElementaryFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34091C8E7D44007985D4 /* TensorElementaryFunctions.swift */; };
+		D69C340A1C8E7D44007985D4 /* TensorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34091C8E7D44007985D4 /* TensorMath.swift */; };
+		D69C340C1C8E85D0007985D4 /* TensorNN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C340B1C8E85D0007985D4 /* TensorNN.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +41,8 @@
 		D69C34031C8D7487007985D4 /* Dimension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
 		D69C34051C8D8F87007985D4 /* TensorSwiftSample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorSwiftSample.swift; sourceTree = "<group>"; };
 		D69C34071C8E7D03007985D4 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
-		D69C34091C8E7D44007985D4 /* TensorElementaryFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorElementaryFunctions.swift; sourceTree = "<group>"; };
+		D69C34091C8E7D44007985D4 /* TensorMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorMath.swift; sourceTree = "<group>"; };
+		D69C340B1C8E85D0007985D4 /* TensorNN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorNN.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +88,8 @@
 				D69C33E81C8D731C007985D4 /* TensorSwift.h */,
 				D69C33EA1C8D731C007985D4 /* Info.plist */,
 				D69C33FF1C8D735C007985D4 /* Tensor.swift */,
-				D69C34091C8E7D44007985D4 /* TensorElementaryFunctions.swift */,
+				D69C34091C8E7D44007985D4 /* TensorMath.swift */,
+				D69C340B1C8E85D0007985D4 /* TensorNN.swift */,
 				D69C34011C8D7435007985D4 /* Shape.swift */,
 				D69C34031C8D7487007985D4 /* Dimension.swift */,
 				D69C34071C8E7D03007985D4 /* Operators.swift */,
@@ -214,9 +217,10 @@
 			files = (
 				D69C34001C8D735C007985D4 /* Tensor.swift in Sources */,
 				D69C34081C8E7D03007985D4 /* Operators.swift in Sources */,
+				D69C340C1C8E85D0007985D4 /* TensorNN.swift in Sources */,
 				D69C34021C8D7435007985D4 /* Shape.swift in Sources */,
 				D69C34041C8D7487007985D4 /* Dimension.swift in Sources */,
-				D69C340A1C8E7D44007985D4 /* TensorElementaryFunctions.swift in Sources */,
+				D69C340A1C8E7D44007985D4 /* TensorMath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
