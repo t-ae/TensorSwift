@@ -35,12 +35,6 @@ extension Tensor {
         let padLeft = padAlongWidth / 2
         let padRight = padAlongWidth - padLeft
         
-        print("padTop=\(padTop)")
-        print("padBottom=\(padBottom)")
-        print("padLeft=\(padLeft)")
-        print("padRight=\(padRight)")
-        
-        
         var elements: [Element] = []
         elements.reserveCapacity(numBatches * numCols * numRows * numChannels)
         
@@ -67,9 +61,7 @@ extension Tensor {
                         elements.append(e)
                     }
                 }
-                x = 0-padLeft
             }
-            y = 0-padTop
         }
         return Tensor(shape: [Dimension(numBatches) ,Dimension(numCols), Dimension(numRows), Dimension(numChannels)], elements: elements)
     }
