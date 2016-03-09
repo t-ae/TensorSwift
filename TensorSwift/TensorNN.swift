@@ -29,7 +29,7 @@ extension Tensor {
         let numChannels = Int(ceil(Float(shape.dimensions[3].value) / Float(strides[3])))
         
         let padAlongHeight = (numCols - 1) * strides[1] + ksize[1] - shape.dimensions[1].value
-        let padAlongWidth = (numRows - 1) * strides[0] + ksize[2] - shape.dimensions[2].value
+        let padAlongWidth = (numRows - 1) * strides[2] + ksize[2] - shape.dimensions[2].value
         let padTop = padAlongHeight / 2
         let padBottom = padAlongHeight - padTop
         let padLeft = padAlongWidth / 2
