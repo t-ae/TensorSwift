@@ -31,7 +31,7 @@ extension Tensor {
         let numBatches = Int(ceil(Float(shape.dimensions[0].value) / Float(strides[0])))
         let numCols = Int(ceil(Float(shape.dimensions[1].value) / Float(strides[1])))
         let numRows = Int(ceil(Float(shape.dimensions[2].value) / Float(strides[2])))
-        let numChannels = filter.shape.dimensions[2].value
+        let numChannels = filter.shape.dimensions[3].value
         
         let padAlongHeight = (numCols - 1) * strides[1] + filter.shape.dimensions[0].value - shape.dimensions[1].value
         let padAlongWidth = (numRows - 1) * strides[2] + filter.shape.dimensions[1].value - shape.dimensions[2].value
@@ -43,34 +43,33 @@ extension Tensor {
         var elements: [Element] = []
         elements.reserveCapacity(numBatches * numCols * numRows * numChannels)
         
-        var batch = 0
-        var y = 0
-        var x = 0
-        
-        for batch=0; batch<shape.dimensions[0].value; batch+=strides[0] {
-            var es: [Element] = Array.init(count: shape.dimensions[3].value, repeatedValue: 0)
-            for y=0-padTop; y+ksize[1]-1<shape.dimensions[1].value+padBottom; y+=strides[1] {
-                for x=0-padLeft; x+ksize[2]-1<shape.dimensions[2].value+padRight; x+=strides[2] {
-                    for j in 0..<ksize[1] {
-                        if y+j < 0 || y+j >= shape.dimensions[1].value {
-                            continue
-                        }
-                        for i in 0..<ksize[2] {
-                            if x+i < 0 || x+i >= shape.dimensions[2].value {
+        for batch in 0.stride(to: shape.dimensions[0].value, by: strides[0]) {
+            for y in (0-padTop).stride(to: shape.dimensions[1].value+padBottom-filter.shape.dimensions[0].value+1, by: strides[1]) {
+                for x in (0-padLeft).stride(to: shape.dimensions[2].value+padRight-filter.shape.dimensions[1].value+1, by: strides[2]) {
+                    for channel in 0..<filter.shape.dimensions[3].value {
+                        print("channel: \(channel)")
+                        var e: Element = 0
+                        for j in 0..<filter.shape.dimensions[0].value {
+                            if y+j < 0 || y+j >= shape.dimensions[1].value {
                                 continue
                             }
-                            es = es.enumerate().map { $0.element < self[batch, y+j, x+i, $0.index] ? self[batch, y+j, x+i, $0.index] : $0.element }
+                            
+                            for i in 0..<filter.shape.dimensions[1].value {
+                                if x+i < 0 || x+i >= shape.dimensions[2].value {
+                                    continue
+                                }
+                                
+                                for h in 0..<filter.shape.dimensions[2].value {
+                                    e += self[batch, strides[1] * y + j, strides[2] * x + i, h] * filter[j, i, h, channel]
+                                }
+                            }
                         }
-                    }
-                    for e in es {
                         elements.append(e)
                     }
                 }
             }
         }
         
-        
-        
-        fatalError("Unimplemented yet.")
+        return Tensor(shape: [Dimension(numBatches) ,Dimension(numCols), Dimension(numRows), Dimension(numChannels)], elements: elements)
     }
 }
