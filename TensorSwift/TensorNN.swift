@@ -59,7 +59,7 @@ extension Tensor {
                                 }
                                 
                                 for h in 0..<filter.shape.dimensions[2].value {
-                                    e += self[batch, strides[1] * y + j, strides[2] * x + i, h] * filter[j, i, h, channel]
+                                    e += self[batch, y + j, x + i, h] * filter[j, i, h, channel]
                                 }
                             }
                         }
