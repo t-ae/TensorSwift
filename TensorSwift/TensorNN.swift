@@ -47,7 +47,6 @@ extension Tensor {
             for y in (0-padTop).stride(to: shape.dimensions[1].value+padBottom-filter.shape.dimensions[0].value+1, by: strides[1]) {
                 for x in (0-padLeft).stride(to: shape.dimensions[2].value+padRight-filter.shape.dimensions[1].value+1, by: strides[2]) {
                     for channel in 0..<filter.shape.dimensions[3].value {
-                        print("channel: \(channel)")
                         var e: Element = 0
                         for j in 0..<filter.shape.dimensions[0].value {
                             if y+j < 0 || y+j >= shape.dimensions[1].value {
