@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D63F30041C996F4100B88E12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63F30031C996F4100B88E12 /* AppDelegate.swift */; };
+		D63F30061C996F4100B88E12 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63F30051C996F4100B88E12 /* ViewController.swift */; };
+		D63F30091C996F4200B88E12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63F30071C996F4200B88E12 /* Main.storyboard */; };
+		D63F300B1C996F4200B88E12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D63F300A1C996F4200B88E12 /* Assets.xcassets */; };
+		D63F300E1C996F4200B88E12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63F300C1C996F4200B88E12 /* LaunchScreen.storyboard */; };
+		D63F30191C996F4200B88E12 /* MNISTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63F30181C996F4200B88E12 /* MNISTTests.swift */; };
 		D69C33E91C8D731C007985D4 /* TensorSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = D69C33E81C8D731C007985D4 /* TensorSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D69C33F01C8D731C007985D4 /* TensorSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69C33E51C8D731C007985D4 /* TensorSwift.framework */; };
 		D69C33F51C8D731C007985D4 /* TensorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C33F41C8D731C007985D4 /* TensorTest.swift */; };
@@ -21,6 +27,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D63F30151C996F4200B88E12 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D69C33DC1C8D731C007985D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D63F30001C996F4100B88E12;
+			remoteInfo = MNIST;
+		};
 		D69C33F11C8D731C007985D4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D69C33DC1C8D731C007985D4 /* Project object */;
@@ -31,6 +44,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D63F30011C996F4100B88E12 /* MNIST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNIST.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D63F30031C996F4100B88E12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D63F30051C996F4100B88E12 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D63F30081C996F4200B88E12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D63F300A1C996F4200B88E12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D63F300D1C996F4200B88E12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D63F300F1C996F4200B88E12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D63F30141C996F4200B88E12 /* MNISTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MNISTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D63F30181C996F4200B88E12 /* MNISTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNISTTests.swift; sourceTree = "<group>"; };
+		D63F301A1C996F4200B88E12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D69C33E51C8D731C007985D4 /* TensorSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TensorSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D69C33E81C8D731C007985D4 /* TensorSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TensorSwift.h; sourceTree = "<group>"; };
 		D69C33EA1C8D731C007985D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,6 +71,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D63F2FFE1C996F4100B88E12 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D63F30111C996F4200B88E12 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D69C33E11C8D731C007985D4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -66,11 +103,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D63F30021C996F4100B88E12 /* MNIST */ = {
+			isa = PBXGroup;
+			children = (
+				D63F30031C996F4100B88E12 /* AppDelegate.swift */,
+				D63F30051C996F4100B88E12 /* ViewController.swift */,
+				D63F30071C996F4200B88E12 /* Main.storyboard */,
+				D63F300A1C996F4200B88E12 /* Assets.xcassets */,
+				D63F300C1C996F4200B88E12 /* LaunchScreen.storyboard */,
+				D63F300F1C996F4200B88E12 /* Info.plist */,
+			);
+			path = MNIST;
+			sourceTree = "<group>";
+		};
+		D63F30171C996F4200B88E12 /* MNISTTests */ = {
+			isa = PBXGroup;
+			children = (
+				D63F30181C996F4200B88E12 /* MNISTTests.swift */,
+				D63F301A1C996F4200B88E12 /* Info.plist */,
+			);
+			path = MNISTTests;
+			sourceTree = "<group>";
+		};
 		D69C33DB1C8D731C007985D4 = {
 			isa = PBXGroup;
 			children = (
 				D69C33E71C8D731C007985D4 /* TensorSwift */,
 				D69C33F31C8D731C007985D4 /* TensorSwiftTests */,
+				D63F30021C996F4100B88E12 /* MNIST */,
+				D63F30171C996F4200B88E12 /* MNISTTests */,
 				D69C33E61C8D731C007985D4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -80,6 +141,8 @@
 			children = (
 				D69C33E51C8D731C007985D4 /* TensorSwift.framework */,
 				D69C33EF1C8D731C007985D4 /* TensorSwiftTests.xctest */,
+				D63F30011C996F4100B88E12 /* MNIST.app */,
+				D63F30141C996F4200B88E12 /* MNISTTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,6 +187,41 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		D63F30001C996F4100B88E12 /* MNIST */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D63F301F1C996F4200B88E12 /* Build configuration list for PBXNativeTarget "MNIST" */;
+			buildPhases = (
+				D63F2FFD1C996F4100B88E12 /* Sources */,
+				D63F2FFE1C996F4100B88E12 /* Frameworks */,
+				D63F2FFF1C996F4100B88E12 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MNIST;
+			productName = MNIST;
+			productReference = D63F30011C996F4100B88E12 /* MNIST.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D63F30131C996F4200B88E12 /* MNISTTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D63F30201C996F4200B88E12 /* Build configuration list for PBXNativeTarget "MNISTTests" */;
+			buildPhases = (
+				D63F30101C996F4200B88E12 /* Sources */,
+				D63F30111C996F4200B88E12 /* Frameworks */,
+				D63F30121C996F4200B88E12 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D63F30161C996F4200B88E12 /* PBXTargetDependency */,
+			);
+			name = MNISTTests;
+			productName = MNISTTests;
+			productReference = D63F30141C996F4200B88E12 /* MNISTTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D69C33E41C8D731C007985D4 /* TensorSwift */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D69C33F91C8D731C007985D4 /* Build configuration list for PBXNativeTarget "TensorSwift" */;
@@ -170,6 +268,13 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Qoncept, Inc.";
 				TargetAttributes = {
+					D63F30001C996F4100B88E12 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					D63F30131C996F4200B88E12 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = D63F30001C996F4100B88E12;
+					};
 					D69C33E41C8D731C007985D4 = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
@@ -184,6 +289,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = D69C33DB1C8D731C007985D4;
 			productRefGroup = D69C33E61C8D731C007985D4 /* Products */;
@@ -192,11 +298,30 @@
 			targets = (
 				D69C33E41C8D731C007985D4 /* TensorSwift */,
 				D69C33EE1C8D731C007985D4 /* TensorSwiftTests */,
+				D63F30001C996F4100B88E12 /* MNIST */,
+				D63F30131C996F4200B88E12 /* MNISTTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D63F2FFF1C996F4100B88E12 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D63F300E1C996F4200B88E12 /* LaunchScreen.storyboard in Resources */,
+				D63F300B1C996F4200B88E12 /* Assets.xcassets in Resources */,
+				D63F30091C996F4200B88E12 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D63F30121C996F4200B88E12 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D69C33E31C8D731C007985D4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -214,6 +339,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D63F2FFD1C996F4100B88E12 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D63F30061C996F4100B88E12 /* ViewController.swift in Sources */,
+				D63F30041C996F4100B88E12 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D63F30101C996F4200B88E12 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D63F30191C996F4200B88E12 /* MNISTTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D69C33E01C8D731C007985D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -240,6 +382,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D63F30161C996F4200B88E12 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D63F30001C996F4100B88E12 /* MNIST */;
+			targetProxy = D63F30151C996F4200B88E12 /* PBXContainerItemProxy */;
+		};
 		D69C33F21C8D731C007985D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D69C33E41C8D731C007985D4 /* TensorSwift */;
@@ -247,7 +394,72 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		D63F30071C996F4200B88E12 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D63F30081C996F4200B88E12 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D63F300C1C996F4200B88E12 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D63F300D1C996F4200B88E12 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		D63F301B1C996F4200B88E12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MNIST/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.MNIST;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D63F301C1C996F4200B88E12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MNIST/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.MNIST;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D63F301D1C996F4200B88E12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MNISTTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.MNISTTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MNIST.app/MNIST";
+			};
+			name = Debug;
+		};
+		D63F301E1C996F4200B88E12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MNISTTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.MNISTTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MNIST.app/MNIST";
+			};
+			name = Release;
+		};
 		D69C33F71C8D731C007985D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -395,6 +607,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D63F301F1C996F4200B88E12 /* Build configuration list for PBXNativeTarget "MNIST" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D63F301B1C996F4200B88E12 /* Debug */,
+				D63F301C1C996F4200B88E12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D63F30201C996F4200B88E12 /* Build configuration list for PBXNativeTarget "MNISTTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D63F301D1C996F4200B88E12 /* Debug */,
+				D63F301E1C996F4200B88E12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D69C33DF1C8D731C007985D4 /* Build configuration list for PBXProject "TensorSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
