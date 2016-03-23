@@ -24,6 +24,7 @@
 		D69C340A1C8E7D44007985D4 /* TensorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34091C8E7D44007985D4 /* TensorMath.swift */; };
 		D69C340C1C8E85D0007985D4 /* TensorNN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C340B1C8E85D0007985D4 /* TensorNN.swift */; };
 		D69C34111C8ED4FD007985D4 /* TensorNNTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34101C8ED4FC007985D4 /* TensorNNTest.swift */; };
+		D6D5D4BA1CA24E7C0041BE85 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D5D4B91CA24E7C0041BE85 /* Downloader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		D69C34091C8E7D44007985D4 /* TensorMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorMath.swift; sourceTree = "<group>"; };
 		D69C340B1C8E85D0007985D4 /* TensorNN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorNN.swift; sourceTree = "<group>"; };
 		D69C34101C8ED4FC007985D4 /* TensorNNTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorNNTest.swift; sourceTree = "<group>"; };
+		D6D5D4B91CA24E7C0041BE85 /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			children = (
 				D63F30181C996F4200B88E12 /* MNISTTests.swift */,
 				D63F301A1C996F4200B88E12 /* Info.plist */,
+				D6D5D4B91CA24E7C0041BE85 /* Downloader.swift */,
 			);
 			path = MNISTTests;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6D5D4BA1CA24E7C0041BE85 /* Downloader.swift in Sources */,
 				D63F30191C996F4200B88E12 /* MNISTTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -614,6 +618,7 @@
 				D63F301C1C996F4200B88E12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D63F30201C996F4200B88E12 /* Build configuration list for PBXNativeTarget "MNISTTests" */ = {
 			isa = XCConfigurationList;
@@ -622,6 +627,7 @@
 				D63F301E1C996F4200B88E12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D69C33DF1C8D731C007985D4 /* Build configuration list for PBXProject "TensorSwift" */ = {
 			isa = XCConfigurationList;
