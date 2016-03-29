@@ -95,16 +95,22 @@ extension Tensor { // Matrix
         
         let numRows = shape.dimensions[0]
         let numCols = tensor.shape.dimensions[1]
-        
-        var elements: [Element] = []
-        elements.reserveCapacity(numCols.value * numRows.value)
+
+        let leftHead = UnsafeMutablePointer<Element>(self.elements)
+        let rightHead = UnsafeMutablePointer<Element>(tensor.elements)
+
+        let count = numCols.value * numRows.value
+        let elements = [Element](count: count, repeatedValue: 0.0)
         for r in 0..<numRows.value {
-            for c in 0..<numCols.value {
-                var e: Element = 0.0
-                for i in 0..<n.value {
-                    e += self[r, i] * tensor[i, c]
+            for i in 0..<n.value {
+                var pointer = UnsafeMutablePointer<Element>(elements) + r * numCols.value
+                let left = leftHead[r * n.value + i]
+                var rightPointer = rightHead + i * numCols.value
+                for _ in 0..<numCols.value {
+                    pointer.memory += left * rightPointer.memory
+                    pointer += 1
+                    rightPointer += 1
                 }
-                elements.append(e)
             }
         }
         
