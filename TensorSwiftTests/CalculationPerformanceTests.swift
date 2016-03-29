@@ -1,11 +1,3 @@
-//
-//  File.swift
-//  TensorSwift
-//
-//  Created by Araki Takehiro on 2016/03/29.
-//  Copyright © 2016年 Qoncept, Inc. All rights reserved.
-//
-
 import XCTest
 @testable import TensorSwift
 

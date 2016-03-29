@@ -106,9 +106,9 @@
 			children = (
 				D69C33F41C8D731C007985D4 /* TensorTest.swift */,
 				D69C34101C8ED4FC007985D4 /* TensorNNTest.swift */,
+				A7E021DA1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift */,
 				D69C33F61C8D731C007985D4 /* Info.plist */,
 				D69C34051C8D8F87007985D4 /* TensorSwiftSample.swift */,
-				A7E021DA1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift */,
 			);
 			path = TensorSwiftTests;
 			sourceTree = "<group>";
