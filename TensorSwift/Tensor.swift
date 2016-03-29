@@ -102,7 +102,7 @@ extension Tensor { // Matrix
             for c in 0..<numCols.value {
                 var e: Element = 0.0
                 for i in 0..<n.value {
-                    e += self[r, i] * tensor[i, c]
+                    e += self.elements[r * n.value + i] * tensor.elements[i * numCols.value + c]
                 }
                 elements.append(e)
             }
