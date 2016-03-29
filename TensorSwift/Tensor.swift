@@ -127,7 +127,7 @@ extension Tensor { // Matrix
         var elements: [Element] = [Element](count: numCols.value * numRows.value, repeatedValue: 0)
         for r in 0..<numRows.value {
             for i in 0..<n.value {
-                let tmp = self.elements[r * self.shape.dimensions[1].value + i]
+                let tmp = self.elements[r * n.value + i]
                 for c in 0..<numCols.value {
                     elements[r * numCols.value + c] += tmp * tensor.elements[i * numCols.value + c]
                 }
