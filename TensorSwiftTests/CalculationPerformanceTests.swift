@@ -47,14 +47,6 @@ class CalculationPerformanceTest : XCTestCase {
         }
     }
     
-    func testMultiplication_fast(){
-        let W = getTensor1000x1000()
-        let x = getTensor1x1000()
-        measureBlock{
-            let _ = x.matmul_fast(W)
-        }
-    }
-    
     func testMultiplicationRaw() {
         let W = getTensor1000x1000()
         let x = getTensor1x1000()

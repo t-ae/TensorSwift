@@ -117,29 +117,3 @@ extension Tensor { // Matrix
         return Tensor(shape: [numRows, numCols], elements: elements)
     }
 }
-
-extension Tensor { // Matrix
-    public func matmul_fast(tensor: Tensor) -> Tensor {
-        // matmulの高速化
-        assert(shape.dimensions.count == 2, "This tensor is not a matrix: shape = \(shape)")
-        assert(tensor.shape.dimensions.count == 2, "The given tensor is not a matrix: shape = \(tensor.shape)")
-        
-        let n = shape.dimensions[1]
-        assert(tensor.shape.dimensions[0] == n, "Incompatible shapes of matrices: self.shape = \(shape), tensor.shape = \(tensor.shape)")
-        
-        let numRows = shape.dimensions[0]
-        let numCols = tensor.shape.dimensions[1]
-        
-        var elements: [Element] = [Element](count: numCols.value * numRows.value, repeatedValue: 0)
-        for r in 0..<numRows.value {
-            for i in 0..<n.value {
-                let tmp = self.elements[r * n.value + i]
-                for c in 0..<numCols.value {
-                    elements[r * numCols.value + c] += tmp * tensor.elements[i * numCols.value + c]
-                }
-            }
-        }
-        
-        return Tensor(shape: [numRows, numCols], elements: elements)
-    }
-}
