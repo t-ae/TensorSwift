@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		275B13FA1CAC007D00F9E0E8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 275B13F91CAC007D00F9E0E8 /* libz.tbd */; };
+		275B13FB1CAC008700F9E0E8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 275B13F91CAC007D00F9E0E8 /* libz.tbd */; };
 		D63F30041C996F4100B88E12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63F30031C996F4100B88E12 /* AppDelegate.swift */; };
 		D63F30061C996F4100B88E12 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63F30051C996F4100B88E12 /* ViewController.swift */; };
 		D63F30091C996F4200B88E12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63F30071C996F4200B88E12 /* Main.storyboard */; };
@@ -45,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		275B13F91CAC007D00F9E0E8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		D63F30011C996F4100B88E12 /* MNIST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNIST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D63F30031C996F4100B88E12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D63F30051C996F4100B88E12 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				275B13FA1CAC007D00F9E0E8 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				275B13FB1CAC008700F9E0E8 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +136,7 @@
 		D69C33DB1C8D731C007985D4 = {
 			isa = PBXGroup;
 			children = (
+				275B13F91CAC007D00F9E0E8 /* libz.tbd */,
 				D69C33E71C8D731C007985D4 /* TensorSwift */,
 				D69C33F31C8D731C007985D4 /* TensorSwiftTests */,
 				D63F30021C996F4100B88E12 /* MNIST */,
@@ -426,6 +432,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.MNIST;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = ./zlib;
 			};
 			name = Debug;
 		};
@@ -437,6 +444,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.MNIST;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = ./zlib;
 			};
 			name = Release;
 		};
@@ -448,6 +456,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.MNISTTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = ./zlib;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MNIST.app/MNIST";
 			};
 			name = Debug;
@@ -460,6 +469,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.MNISTTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = ./zlib;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MNIST.app/MNIST";
 			};
 			name = Release;
