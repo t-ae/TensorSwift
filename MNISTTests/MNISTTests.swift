@@ -13,9 +13,11 @@ class MNISTTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testDownloadTestData() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let testData = downloadTestData()
+        XCTAssertEqual(testData.images, NSData(contentsOfFile: "/Users/nisho/Documents/Qoncept/02_Project/Qoncept/tensorFlowTest/mnist/MNIST/MNIST/train-images-idx3-ubyte.data")!)
     }
     
     func testPerformanceExample() {
