@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		273614FA1CB3E72200CF4935 /* SHA-1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273614F91CB3E72200CF4935 /* SHA-1.swift */; };
 		275B13FA1CAC007D00F9E0E8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 275B13F91CAC007D00F9E0E8 /* libz.tbd */; };
 		275B13FB1CAC008700F9E0E8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 275B13F91CAC007D00F9E0E8 /* libz.tbd */; };
 		D63F30041C996F4100B88E12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63F30031C996F4100B88E12 /* AppDelegate.swift */; };
@@ -47,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		273614F91CB3E72200CF4935 /* SHA-1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SHA-1.swift"; sourceTree = "<group>"; };
+		273614FC1CB3E81B00CF4935 /* MNISTTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MNISTTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		275B13F91CAC007D00F9E0E8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		D63F30011C996F4100B88E12 /* MNIST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNIST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D63F30031C996F4100B88E12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 				D63F30181C996F4200B88E12 /* MNISTTests.swift */,
 				D63F301A1C996F4200B88E12 /* Info.plist */,
 				D6D5D4B91CA24E7C0041BE85 /* Downloader.swift */,
+				273614F91CB3E72200CF4935 /* SHA-1.swift */,
+				273614FC1CB3E81B00CF4935 /* MNISTTests-Bridging-Header.h */,
 			);
 			path = MNISTTests;
 			sourceTree = "<group>";
@@ -362,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6D5D4BA1CA24E7C0041BE85 /* Downloader.swift in Sources */,
+				273614FA1CB3E72200CF4935 /* SHA-1.swift in Sources */,
 				D63F30191C996F4200B88E12 /* MNISTTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,6 +463,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.MNISTTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = ./zlib;
+				SWIFT_OBJC_BRIDGING_HEADER = "MNISTTests/MNISTTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MNIST.app/MNIST";
 			};
 			name = Debug;
@@ -470,6 +477,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.MNISTTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = ./zlib;
+				SWIFT_OBJC_BRIDGING_HEADER = "MNISTTests/MNISTTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MNIST.app/MNIST";
 			};
 			name = Release;
