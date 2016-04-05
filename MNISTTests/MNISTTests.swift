@@ -17,7 +17,10 @@ class MNISTTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         let testData = downloadTestData()
-        XCTAssertEqual(testData.images, NSData(contentsOfFile: "/Users/nisho/Documents/Qoncept/02_Project/Qoncept/tensorFlowTest/mnist/MNIST/MNIST/train-images-idx3-ubyte.data")!)
+
+        // original file size is 7840016, SHA-1 is "65e11ec1fd220343092a5070b58418b5c2644e26"
+        XCTAssertEqual(testData.images.length, 7840016)
+        XCTAssertEqual(testData.images.sha1(), "65e11ec1fd220343092a5070b58418b5c2644e26")
     }
     
     func testPerformanceExample() {
