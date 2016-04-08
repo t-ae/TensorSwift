@@ -23,7 +23,8 @@ private func ungzip(source: NSData) -> NSData? {
     let data = NSMutableData()
     
     while stream.avail_out == 0 {
-        let buffer: UnsafeMutablePointer<Bytef> = UnsafeMutablePointer.alloc(0x10000)
+        let bufferSize = 0x10000
+        let buffer: UnsafeMutablePointer<Bytef> = UnsafeMutablePointer.alloc(bufferSize)
         stream.next_out = buffer
         stream.avail_out = uint(sizeofValue(buffer))
         inflate(&stream, Z_FINISH)
@@ -31,6 +32,7 @@ private func ungzip(source: NSData) -> NSData? {
         if length > 0 {
             data.appendBytes(buffer, length: length)
         }
+        buffer.dealloc(bufferSize)
     }
     
     inflateEnd(&stream)
