@@ -101,19 +101,19 @@ extension Tensor {
                             if(y>=self.shape.dimensions[1].value){
                                 break
                             }
+                            var selfIndex = b
+                            selfIndex = selfIndex * shape.dimensions[1].value + y
+                            selfIndex = selfIndex * shape.dimensions[2].value + max(0, strides[2]*j - padLeft)
+                            selfIndex = selfIndex * shape.dimensions[3].value
+                            var selfPointer = UnsafeMutablePointer<Element>(self.elements) + selfIndex
                             for dj in 0..<filter.shape.dimensions[1].value { // filter width
                                 let x = strides[2]*j+dj - padLeft
-                                if(x < 0 || y < 0){
+                                if(x < 0){
                                     continue
                                 }
                                 if(x>=self.shape.dimensions[2].value){
                                     continue
                                 }
-                                var selfIndex = b
-                                selfIndex = selfIndex * shape.dimensions[1].value + y
-                                selfIndex = selfIndex * shape.dimensions[2].value + x
-                                selfIndex = selfIndex * shape.dimensions[3].value
-                                var selfPointer = UnsafeMutablePointer<Element>(self.elements) + selfIndex
                                 for q in 0..<filter.shape.dimensions[2].value { // in channelss
                                     var filterIndex = di
                                     filterIndex = filterIndex * filter.shape.dimensions[1].value + dj
