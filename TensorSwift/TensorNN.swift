@@ -88,45 +88,56 @@ extension Tensor {
 //            sum_{di, dj, q} input[b, strides[1] * i + di, strides[2] * j + dj, q] *
 //                filter[di, dj, q, k]
         
-        var pointer = UnsafeMutablePointer<Element>(elements)
+        
         for b in 0..<numBatches {
+            var pointerIndexI = b * numRows
             for i in 0..<numRows {
-                for j in 0..<numCols {
-                    for k in 0..<numOutChannels {
-                        for di in 0..<filter.shape.dimensions[0].value { // filter height
-                            let y = strides[1]*i+di - padTop
-                            if(y<0){
+                for di in 0..<filter.shape.dimensions[0].value { // filter height
+                    let y = strides[1]*i+di - padTop
+                    if(y<0){
+                        continue
+                    }
+                    if(y>=self.shape.dimensions[1].value){
+                        break
+                    }
+                    var pointerIndexJ = pointerIndexI * numCols
+                    for j in 0..<numCols {
+                        // selfIndexはyが変わると不連続なのでこれ以前で計算しても変わらないはず
+                        var selfIndex = b
+                        selfIndex = selfIndex * shape.dimensions[1].value + y
+                        selfIndex = selfIndex * shape.dimensions[2].value + max(0, strides[2]*j - padLeft)
+                        selfIndex = selfIndex * shape.dimensions[3].value
+                        var selfPointer = UnsafeMutablePointer<Element>(self.elements) + selfIndex
+                        
+                        for dj in 0..<filter.shape.dimensions[1].value { // filter width
+                            let x = strides[2]*j+dj - padLeft
+                            if(x < 0){
                                 continue
                             }
-                            if(y>=self.shape.dimensions[1].value){
-                                break
+                            if(x>=self.shape.dimensions[2].value){
+                                continue
                             }
-                            var selfIndex = b
-                            selfIndex = selfIndex * shape.dimensions[1].value + y
-                            selfIndex = selfIndex * shape.dimensions[2].value + max(0, strides[2]*j - padLeft)
-                            selfIndex = selfIndex * shape.dimensions[3].value
-                            var selfPointer = UnsafeMutablePointer<Element>(self.elements) + selfIndex
-                            for dj in 0..<filter.shape.dimensions[1].value { // filter width
-                                let x = strides[2]*j+dj - padLeft
-                                if(x < 0){
-                                    continue
+                            // filterのポインタ
+                            var filterIndex = di * filter.shape.dimensions[1].value + dj
+                            filterIndex = filterIndex * filter.shape.dimensions[2].value * filter.shape.dimensions[3].value
+                            var filterPointer = UnsafeMutablePointer<Element>(filter.elements) + filterIndex
+                            for _ in 0..<filter.shape.dimensions[2].value { // in channelss (loop of q)
+                                // elementsのポインタ
+                                var pointer = UnsafeMutablePointer<Element>(elements) + pointerIndexJ * numOutChannels
+                                for _ in 0..<numOutChannels { // loop of k
+                                    pointer.memory += selfPointer.memory * filterPointer.memory
+                                    // kの増加でインクリメント
+                                    pointer += 1
+                                    filterPointer += 1
                                 }
-                                if(x>=self.shape.dimensions[2].value){
-                                    continue
-                                }
-                                for q in 0..<filter.shape.dimensions[2].value { // in channelss
-                                    var filterIndex = di
-                                    filterIndex = filterIndex * filter.shape.dimensions[1].value + dj
-                                    filterIndex = filterIndex * filter.shape.dimensions[2].value + q
-                                    filterIndex = filterIndex * filter.shape.dimensions[3].value + k
-                                    pointer.memory += selfPointer.memory * filter.elements[filterIndex]
-                                    selfPointer += 1
-                                }
+                                // qの増加でインクリメント
+                                selfPointer += 1
                             }
                         }
-                        pointer += 1
+                        pointerIndexJ += 1
                     }
                 }
+                pointerIndexI += 1
             }
         }
         
