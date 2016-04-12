@@ -111,10 +111,7 @@ extension Tensor {
                         
                         for dj in 0..<filter.shape.dimensions[1].value { // filter width
                             let x = strides[2]*j+dj - padLeft
-                            if(x < 0){
-                                continue
-                            }
-                            if(x>=self.shape.dimensions[2].value){
+                            if(x < 0 || x>=self.shape.dimensions[2].value){
                                 continue
                             }
                             // filterのポインタ
