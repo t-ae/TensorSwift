@@ -90,7 +90,10 @@ extension Tensor {
         
         
         for b in 0..<numBatches {
+            // インデックス計算を途中までaccumulate
+            let selfIndexB = b * shape.dimensions[1].value
             var pointerIndexI = b * numRows
+            
             for i in 0..<numRows {
                 for di in 0..<filter.shape.dimensions[0].value { // filter height
                     let y = strides[1]*i+di - padTop
@@ -98,16 +101,17 @@ extension Tensor {
                         continue
                     }
                     if(y>=self.shape.dimensions[1].value){
+                        // Yが大きい場合それ以降も常に大きいのでbreak
                         break
                     }
+                    // インデックス計算を途中までaccumulate
+                    let selfIndexY = (selfIndexB + y) * shape.dimensions[2].value
                     let filterIndexDI = di * filter.shape.dimensions[1].value
                     var pointerIndexJ = pointerIndexI * numCols
+                    
                     for j in 0..<numCols {
-                        // selfIndexはyが変わると不連続なのでこれ以前で計算しても変わらないはず
-                        var selfIndex = b
-                        selfIndex = selfIndex * shape.dimensions[1].value + y
-                        selfIndex = selfIndex * shape.dimensions[2].value + max(0, strides[2]*j - padLeft)
-                        selfIndex = selfIndex * shape.dimensions[3].value
+                        // xが確定する前にポインタを作れる(=xもシーケンシャルアクセス)
+                        let selfIndex = (selfIndexY + max(0, strides[2]*j - padLeft)) * shape.dimensions[3].value
                         var selfPointer = UnsafeMutablePointer<Element>(self.elements) + selfIndex
                         
                         for dj in 0..<filter.shape.dimensions[1].value { // filter width
