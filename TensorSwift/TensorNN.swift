@@ -100,6 +100,7 @@ extension Tensor {
                     if(y>=self.shape.dimensions[1].value){
                         break
                     }
+                    let filterIndexDI = di * filter.shape.dimensions[1].value
                     var pointerIndexJ = pointerIndexI * numCols
                     for j in 0..<numCols {
                         // selfIndexはyが変わると不連続なのでこれ以前で計算しても変わらないはず
@@ -115,8 +116,7 @@ extension Tensor {
                                 continue
                             }
                             // filterのポインタ
-                            var filterIndex = di * filter.shape.dimensions[1].value + dj
-                            filterIndex = filterIndex * filter.shape.dimensions[2].value * filter.shape.dimensions[3].value
+                            let filterIndex = (filterIndexDI + dj) * filter.shape.dimensions[2].value * filter.shape.dimensions[3].value
                             var filterPointer = UnsafeMutablePointer<Element>(filter.elements) + filterIndex
                             for _ in 0..<filter.shape.dimensions[2].value { // in channelss (loop of q)
                                 // elementsのポインタ
