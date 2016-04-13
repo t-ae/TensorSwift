@@ -95,57 +95,64 @@ extension Tensor {
         let padTop = padAlongHeight / 2
         let padLeft = padAlongWidth / 2
         
-        let elements = [Element](count: numBatches * numCols * numRows * numOutChannels, repeatedValue: 0)
+        let imageWidth = shape.dimensions[2].value
+        let imageHeight = shape.dimensions[1].value
+        let numInChannels = shape.dimensions[3].value
+        
+        let filterWidth = filter.shape.dimensions[1].value
+        let filterHeight = filter.shape.dimensions[0].value
+        
+        
+        let z = Tensor(shape: [Dimension(numBatches), Dimension(numRows), Dimension(numCols), Dimension(numOutChannels)])
         
 //      https://www.tensorflow.org/versions/r0.7/api_docs/python/nn.html#conv2d
 //        output[b, i, j, k] =
 //            sum_{di, dj, q} input[b, strides[1] * i + di, strides[2] * j + dj, q] *
 //                filter[di, dj, q, k]
         
-        
         for b in 0..<numBatches {
-            // インデックス計算を途中までaccumulate
-            let selfIndexB = b * shape.dimensions[1].value
+            // Accumulate index calculation
+            let selfIndexB = b * imageHeight
             var pointerIndexI = b * numRows
             
             for i in 0..<numRows {
-                for di in 0..<filter.shape.dimensions[0].value { // filter height
+                for di in 0..<filterHeight {
                     let y = strides[1]*i+di - padTop
                     if(y<0){
                         continue
                     }
-                    if(y>=self.shape.dimensions[1].value){
-                        // Yが大きい場合それ以降も常に大きいのでbreak
+                    if(y>=imageHeight){
+                        // If y is larger, it will never be smaller in this di loop.
                         break
                     }
-                    // インデックス計算を途中までaccumulate
-                    let selfIndexY = (selfIndexB + y) * shape.dimensions[2].value
-                    let filterIndexDI = di * filter.shape.dimensions[1].value
+                    // Accumulate index calculation
+                    let selfIndexY = (selfIndexB + y) * imageWidth
+                    let filterIndexDI = di * filterWidth
                     var pointerIndexJ = pointerIndexI * numCols
                     
                     for j in 0..<numCols {
-                        // xが確定する前にポインタを作れる(=xもシーケンシャルアクセス)
-                        let selfIndex = (selfIndexY + max(0, strides[2]*j - padLeft)) * shape.dimensions[3].value
+                        // Can get pointer before calculate x.
+                        let selfIndex = (selfIndexY + max(0, strides[2]*j - padLeft)) * numInChannels
                         var selfPointer = UnsafeMutablePointer<Element>(self.elements) + selfIndex
                         
-                        for dj in 0..<filter.shape.dimensions[1].value { // filter width
+                        for dj in 0..<filterWidth {
                             let x = strides[2]*j+dj - padLeft
-                            if(x < 0 || x>=self.shape.dimensions[2].value){
+                            if(x < 0 || x>=imageWidth){
                                 continue
                             }
-                            // filterのポインタ
-                            let filterIndex = (filterIndexDI + dj) * filter.shape.dimensions[2].value * filter.shape.dimensions[3].value
+                            // Pointer of filter
+                            let filterIndex = (filterIndexDI + dj) * numInChannels * numOutChannels
                             var filterPointer = UnsafeMutablePointer<Element>(filter.elements) + filterIndex
-                            for _ in 0..<filter.shape.dimensions[2].value { // in channels (loop of q)
-                                // elementsのポインタ
-                                var pointer = UnsafeMutablePointer<Element>(elements) + pointerIndexJ * numOutChannels
-                                for _ in 0..<numOutChannels { // loop of k
+                            for _ in 0..<numInChannels { // Loop of q
+                                // Pointer of elements
+                                var pointer = UnsafeMutablePointer<Element>(z.elements) + pointerIndexJ * numOutChannels
+                                for _ in 0..<numOutChannels { // Loop of k
                                     pointer.memory += selfPointer.memory * filterPointer.memory
-                                    // kの増加でインクリメント
+                                    // Increment by k's grow
                                     pointer += 1
                                     filterPointer += 1
                                 }
-                                // qの増加でインクリメント
+                                // Increment by q's grow
                                 selfPointer += 1
                             }
                         }
@@ -156,7 +163,7 @@ extension Tensor {
             }
         }
         
-        return Tensor(shape: [Dimension(numBatches) ,Dimension(numRows), Dimension(numCols), Dimension(numOutChannels)], elements: elements)
+        return z
     }
     
     public func conv2d_fast(filter filter: Tensor, strides: [Int]) -> Tensor { // padding = Same
@@ -176,35 +183,33 @@ extension Tensor {
         let padTop = padAlongHeight / 2
         let padLeft = padAlongWidth / 2
         
-        // numRows*numCols x フィルタのheight*width*in　の行列として使用
+        // X shape = [ numRows*numCols , _rowSize ]
         let _rowSize = filter.shape.dimensions[0].value * filter.shape.dimensions[1].value * filter.shape.dimensions[2].value
         let X = [Float](count: numRows * numCols * _rowSize, repeatedValue: 0)
         var X_pointer = UnsafeMutablePointer<Float>(X)
         for y in 0..<numRows {
             for x in 0..<numCols{
-                for c in 0..<filter.shape.dimensions[0].value{ // パッチ画像の何行目か
+                for c in 0..<filter.shape.dimensions[0].value{ // Row number of patch
                     
-                    let inputY = y*strides[1] + c - padTop // パディングなし入力画像中のy座標
+                    let inputY = y*strides[1] + c - padTop // y cood in original image
                     if(inputY < 0 || inputY >= shape.dimensions[1].value){
-                        // y方向にはみ出ていたらコピーする必要なし
                         X_pointer += filter.shape.dimensions[1].value * shape.dimensions[3].value
                         continue
                     }
                     
-                    var inputX = x*strides[2] - padLeft // パディングなし入力画像中のx座標
+                    var inputX = x*strides[2] - padLeft // x cood in image
                     
-                    // パディング付き入力画像上の一行をXの行の対応部分にコピー
-                    var startIndex = 0 // コピー先の開始位置相対指定
-                    var pixelCount = filter.shape.dimensions[1].value // コピーするピクセル数
+                    var startIndex = 0 // Relative index of starting data
+                    var pixelCount = filter.shape.dimensions[1].value // Number of pixels to copy
                     
                     if(inputX < 0){
-                        // 左にはみ出てるxの分スタートとカウントをずらす。
+                        // Shift startIndex if inputX is not in image
                         startIndex += -inputX * shape.dimensions[3].value
                         pixelCount -= -inputX
                         inputX = 0
                     }
                     if(inputX + pixelCount > shape.dimensions[2].value){
-                        // 右にはみ出ている分のカウントを減らす
+                        // Decrement pixelCount if end of data is not in image
                         pixelCount -= (inputX + pixelCount - shape.dimensions[2].value)
                     }
                     
@@ -218,10 +223,6 @@ extension Tensor {
             }
         }
         
-        if(false){
-            print(X)
-        }
-        
         let a = UnsafePointer<Float>(X)
         let b = UnsafePointer<Float>(filter.elements)
         
@@ -233,6 +234,8 @@ extension Tensor {
         let N = numOutChannels
         let K = _rowSize
         
+        
+        // Calculate [M, N] matrix, it automatically turns into [numBatches, numRows, numCols, numOutChannels] Tensor
         cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans,
                     Int32(M), Int32(N), Int32(K), 1.0,
                     a, Int32(K),
