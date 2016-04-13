@@ -193,9 +193,9 @@ extension Tensor {
         let filterWidth = filter.shape.dimensions[1].value
         let filterHeight = filter.shape.dimensions[0].value
         
-        // X shape = [ numRows*numCols , _rowSize ]
-        let _rowSize = filterHeight * filterWidth * numInChannels
-        let X = [Float](count: numRows * numCols * _rowSize, repeatedValue: 0)
+        // X shape = [ numRows*numCols , rowSize ]
+        let rowSize = filterHeight * filterWidth * numInChannels
+        let X = [Float](count: numRows * numCols * rowSize, repeatedValue: 0)
         var X_pointer = UnsafeMutablePointer<Float>(X)
         for y in 0..<numRows {
             for x in 0..<numCols{
@@ -243,7 +243,7 @@ extension Tensor {
         
         let M = numRows * numCols
         let N = numOutChannels
-        let K = _rowSize
+        let K = rowSize
         
         
         // Calculate [M, N] matrix, it automatically turns into [numBatches, numRows, numCols, numOutChannels] Tensor
