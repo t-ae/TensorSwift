@@ -41,6 +41,33 @@ class TensorNNTest: XCTestCase {
         XCTAssertEqual(result, Tensor(shape: [1,2,2,1], elements: [18,33,95,113]))
     }
     
+    func testConv2dFast(){
+        if(false){
+            let a = Tensor(shape: [1,2,4,1], elements: [1,2,3,4,5,6,7,8])
+            let filter = Tensor(shape: [1,1,1,3], elements: [1,2,3])
+        
+            let result = a.conv2d_fast(filter: filter, strides: [1,1,1,1])
+            let _result = a.conv2d(filter: filter, strides: [1,1,1,1])
+            XCTAssertEqual(result, _result)
+        }
+        if(false){
+            let a = Tensor(shape: [1,2,2,3], element: 1)
+            let filter = Tensor(shape: [3,3,3,2], element: 1)
+            
+            let result = a.conv2d_fast(filter: filter, strides: [1,1,1,1])
+            let _result = a.conv2d(filter: filter, strides: [1,1,1,1])
+            XCTAssertEqual(result, _result)
+        }
+        if(true){
+            let a = Tensor(shape: [1,24,24,2], element: 1)
+            let filter = Tensor(shape: [5,5,2,8], element: 1)
+            
+            let result = a.conv2d_fast(filter: filter, strides: [1,1,1,1])
+            let _result = a.conv2d(filter: filter, strides: [1,1,1,1])
+            XCTAssertEqual(result, _result, "test")
+        }
+    }
+    
     func testMaxPoolPerformance(){
         let image = Tensor(shape: [1,28,28,3], element: 0.1)
         measureBlock{
@@ -53,6 +80,14 @@ class TensorNNTest: XCTestCase {
         let filter = Tensor(shape: [5,5,1,16], element: 0.1)
         measureBlock{
             image.conv2d(filter: filter, strides: [1,1,1,1])
+        }
+    }
+    
+    func testConv2dFastPerformance(){
+        let image = Tensor(shape: [1,28,28,1], element: 0.1)
+        let filter = Tensor(shape: [5,5,1,16], element: 0.1)
+        measureBlock{
+            image.conv2d_fast(filter: filter, strides: [1,1,1,1])
         }
     }
 }

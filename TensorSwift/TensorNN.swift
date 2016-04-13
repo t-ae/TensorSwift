@@ -1,4 +1,5 @@
 import Darwin
+import Accelerate
 
 extension Tensor {
     public var softmax: Tensor {
@@ -156,5 +157,88 @@ extension Tensor {
         }
         
         return Tensor(shape: [Dimension(numBatches) ,Dimension(numRows), Dimension(numCols), Dimension(numOutChannels)], elements: elements)
+    }
+    
+    public func conv2d_fast(filter filter: Tensor, strides: [Int]) -> Tensor { // padding = Same
+        assert(shape.dimensions.count == 4, "`shape.dimensions.count` must be 4: \(shape.dimensions.count)")
+        assert(filter.shape.dimensions.count == 4, "`filter.shape.dimensions.count` must be 4: \(filter.shape.dimensions.count)")
+        assert(strides.count >= 4, "`strides.count` must be greater than or equal to 4: \(strides.count)")
+        assert(strides[0] == 1 ,"`strides[0]` must be 1")
+        assert(strides[3] == 1 ,"`strides[3]` must be 1")
+        
+        let numBatches = Int(ceil(Float(shape.dimensions[0].value) / Float(strides[0])))
+        let numRows = Int(ceil(Float(shape.dimensions[1].value) / Float(strides[1])))
+        let numCols = Int(ceil(Float(shape.dimensions[2].value) / Float(strides[2])))
+        let numOutChannels = filter.shape.dimensions[3].value
+        
+        let padAlongHeight = (numRows - 1) * strides[1] + filter.shape.dimensions[0].value - shape.dimensions[1].value
+        let padAlongWidth = (numCols - 1) * strides[2] + filter.shape.dimensions[1].value - shape.dimensions[2].value
+        let padTop = padAlongHeight / 2
+        let padLeft = padAlongWidth / 2
+        
+        // numRows*numCols x フィルタのheight*width*in　の行列として使用
+        let _rowSize = filter.shape.dimensions[0].value * filter.shape.dimensions[1].value * filter.shape.dimensions[2].value
+        let X = [Float](count: numRows * numCols * _rowSize, repeatedValue: 0)
+        var X_pointer = UnsafeMutablePointer<Float>(X)
+        for y in 0..<numRows {
+            for x in 0..<numCols{
+                for c in 0..<filter.shape.dimensions[0].value{ // パッチ画像の何行目か
+                    
+                    let inputY = y*strides[1] + c - padTop // パディングなし入力画像中のy座標
+                    if(inputY < 0 || inputY >= shape.dimensions[1].value){
+                        // y方向にはみ出ていたらコピーする必要なし
+                        X_pointer += filter.shape.dimensions[1].value * shape.dimensions[3].value
+                        continue
+                    }
+                    
+                    var inputX = x*strides[2] - padLeft // パディングなし入力画像中のx座標
+                    
+                    // パディング付き入力画像上の一行をXの行の対応部分にコピー
+                    var startIndex = 0 // コピー先の開始位置相対指定
+                    var pixelCount = filter.shape.dimensions[1].value // コピーするピクセル数
+                    
+                    if(inputX < 0){
+                        // 左にはみ出てるxの分スタートとカウントをずらす。
+                        startIndex += -inputX * shape.dimensions[3].value
+                        pixelCount -= -inputX
+                        inputX = 0
+                    }
+                    if(inputX + pixelCount > shape.dimensions[2].value){
+                        // 右にはみ出ている分のカウントを減らす
+                        pixelCount -= (inputX + pixelCount - shape.dimensions[2].value)
+                    }
+                    
+                    let imageStartIndex = ((inputY * shape.dimensions[2].value) + inputX) * shape.dimensions[3].value
+                    
+                    let source = UnsafePointer<Float>(self.elements) + imageStartIndex
+                    X_pointer += startIndex
+                    memcpy(X_pointer, source, pixelCount * shape.dimensions[3].value * sizeof(Float))
+                    X_pointer += filter.shape.dimensions[1].value * shape.dimensions[3].value - startIndex
+                }
+            }
+        }
+        
+        if(false){
+            print(X)
+        }
+        
+        let a = UnsafePointer<Float>(X)
+        let b = UnsafePointer<Float>(filter.elements)
+        
+        let z = Tensor(shape: [Dimension(numBatches), Dimension(numRows), Dimension(numCols), Dimension(numOutChannels)])
+        
+        let c = UnsafeMutablePointer<Float>(z.elements)
+        
+        let M = numRows * numCols
+        let N = numOutChannels
+        let K = _rowSize
+        
+        cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans,
+                    Int32(M), Int32(N), Int32(K), 1.0,
+                    a, Int32(K),
+                    b, Int32(N), 1.0,
+                    c, Int32(N))
+        
+        return z
     }
 }

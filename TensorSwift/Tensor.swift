@@ -133,14 +133,14 @@ extension Tensor { // Matrix
         
         let z = Tensor(shape: [M, N])
         
-        let c = UnsafeMutablePointer<Element>(z.elements)
+        let c = UnsafeMutablePointer<Float>(z.elements)
         
         cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans,
                     Int32(M.value), Int32(N.value), Int32(K.value), 1.0,
                     self.elements, Int32(K.value),
                     tensor.elements, Int32(N.value), 1.0,
                     c, Int32(N.value))
-
+        
         return z
     }
 }
