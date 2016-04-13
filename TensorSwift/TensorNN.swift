@@ -122,7 +122,7 @@ extension Tensor {
                             // filterのポインタ
                             let filterIndex = (filterIndexDI + dj) * filter.shape.dimensions[2].value * filter.shape.dimensions[3].value
                             var filterPointer = UnsafeMutablePointer<Element>(filter.elements) + filterIndex
-                            for _ in 0..<filter.shape.dimensions[2].value { // in channelss (loop of q)
+                            for _ in 0..<filter.shape.dimensions[2].value { // in channels (loop of q)
                                 // elementsのポインタ
                                 var pointer = UnsafeMutablePointer<Element>(elements) + pointerIndexJ * numOutChannels
                                 for _ in 0..<numOutChannels { // loop of k

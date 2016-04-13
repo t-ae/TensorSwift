@@ -64,8 +64,24 @@ class TensorTest: XCTestCase {
         do {
             let a = Tensor(shape: [2, 3], elements: [1, 2, 3, 4, 5, 6])
             let b = Tensor(shape: [3, 4], elements: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18])
-            let r = a.matmul(b)
+            let r = a.matmul_fast(b)
             XCTAssertEqual(r, Tensor(shape: [2, 4], elements: [74, 80, 86, 92, 173, 188, 203, 218]))
+        }
+    }
+    
+    func testMatmulPerformance(){
+        let a = Tensor(shape: [1000, 1000], element: 0.1)
+        let b = Tensor(shape: [1000, 1000], element: 0.1)
+        measureBlock{
+            a.matmul(b)
+        }
+    }
+    
+    func testMatmulFastPerformance(){
+        let a = Tensor(shape: [1000, 1000], element: 0.1)
+        let b = Tensor(shape: [1000, 1000], element: 0.1)
+        measureBlock{
+            a.matmul_fast(b)
         }
     }
 }

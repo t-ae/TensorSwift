@@ -52,11 +52,11 @@ class TensorNNTest: XCTestCase {
     
     func testConv2dPerformance(){
         measureBlock{
-            let elements = [Float](count: 28*28*1, repeatedValue: 0)
-            let image = Tensor(shape: [1,28,28,1], elements: elements)
+            let elements = [Float](count: 128*128*8, repeatedValue: 0)
+            let image = Tensor(shape: [1,128,128,8], elements: elements)
         
-            let e2 = [Float](count:5*5*1*16, repeatedValue: 0)
-            let filter = Tensor(shape: [5,5,1,16], elements: e2)
+            let e2 = [Float](count:5*5*8*16, repeatedValue: 0)
+            let filter = Tensor(shape: [5,5,8,16], elements: e2)
             image.conv2d(filter: filter, strides: [1,1,1,1])
         }
     }
