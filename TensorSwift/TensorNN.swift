@@ -34,8 +34,11 @@ extension Tensor {
         let padTop = padAlongHeight / 2
         let padLeft = padAlongWidth / 2
         
-        // maximizeするのでmin valueで初期化
-        let elements = [Element](count: numBatches * numCols * numRows * numChannels, repeatedValue: FLT_MIN)
+        let imageWidth = self.shape.dimensions[2].value
+        let imageHeight = self.shape.dimensions[1].value
+        
+        // Initialize with -infinity for maximization.
+        let elements = [Element](count: numBatches * numCols * numRows * numChannels, repeatedValue: -Float.infinity)
         
         for b in 0..<numBatches {
             var elementIndexI = b * numRows
@@ -51,9 +54,9 @@ extension Tensor {
                     var elementIndexJ = elementIndexI * numCols
                     for j in 0..<numCols {
                         var selfIndex = b
-                        selfIndex = selfIndex * self.shape.dimensions[1].value + y
-                        selfIndex = selfIndex * self.shape.dimensions[2].value + max(0, j-padLeft)
-                        selfIndex = selfIndex * self.shape.dimensions[3].value
+                        selfIndex = selfIndex * imageHeight + y
+                        selfIndex = selfIndex * imageWidth + max(0, j-padLeft)
+                        selfIndex = selfIndex * numChannels
                         var selfPointer = UnsafeMutablePointer<Element>(self.elements) + selfIndex
                         for dj in 0..<ksize[2] {
                             let x = j+dj - padLeft
