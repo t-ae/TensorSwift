@@ -42,7 +42,7 @@ class TensorNNTest: XCTestCase {
     }
     
     func testConv2dFast(){
-        if(false){
+        if(true){
             let a = Tensor(shape: [1,2,4,1], elements: [1,2,3,4,5,6,7,8])
             let filter = Tensor(shape: [1,1,1,3], elements: [1,2,3])
         
@@ -50,7 +50,7 @@ class TensorNNTest: XCTestCase {
             let _result = a.conv2d(filter: filter, strides: [1,1,1,1])
             XCTAssertEqual(result, _result)
         }
-        if(false){
+        if(true){
             let a = Tensor(shape: [1,2,2,3], element: 1)
             let filter = Tensor(shape: [3,3,3,2], element: 1)
             

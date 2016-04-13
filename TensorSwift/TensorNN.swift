@@ -183,42 +183,50 @@ extension Tensor {
         let padTop = padAlongHeight / 2
         let padLeft = padAlongWidth / 2
         
+        let imageWidth = shape.dimensions[2].value
+        let imageHeight = shape.dimensions[1].value
+        let numInChannels = shape.dimensions[3].value
+        
+        let filterWidth = filter.shape.dimensions[1].value
+        let filterHeight = filter.shape.dimensions[0].value
+        
         // X shape = [ numRows*numCols , _rowSize ]
-        let _rowSize = filter.shape.dimensions[0].value * filter.shape.dimensions[1].value * filter.shape.dimensions[2].value
+        let _rowSize = filterHeight * filterWidth * numInChannels
         let X = [Float](count: numRows * numCols * _rowSize, repeatedValue: 0)
         var X_pointer = UnsafeMutablePointer<Float>(X)
         for y in 0..<numRows {
             for x in 0..<numCols{
-                for c in 0..<filter.shape.dimensions[0].value{ // Row number of patch
+                // Add (x,y)'s patch as a vector
+                for c in 0..<filterHeight{ // Row number of patch
                     
                     let inputY = y*strides[1] + c - padTop // y cood in original image
-                    if(inputY < 0 || inputY >= shape.dimensions[1].value){
-                        X_pointer += filter.shape.dimensions[1].value * shape.dimensions[3].value
+                    if(inputY < 0 || inputY >= imageHeight){
+                        X_pointer += filterWidth * numInChannels
                         continue
                     }
                     
                     var inputX = x*strides[2] - padLeft // x cood in image
                     
                     var startIndex = 0 // Relative index of starting data
-                    var pixelCount = filter.shape.dimensions[1].value // Number of pixels to copy
+                    var pixelCount = filterWidth // Number of pixels to copy
                     
                     if(inputX < 0){
                         // Shift startIndex if inputX is not in image
-                        startIndex += -inputX * shape.dimensions[3].value
+                        startIndex += -inputX * numInChannels
                         pixelCount -= -inputX
                         inputX = 0
                     }
-                    if(inputX + pixelCount > shape.dimensions[2].value){
+                    if(inputX + pixelCount > imageWidth){
                         // Decrement pixelCount if end of data is not in image
-                        pixelCount -= (inputX + pixelCount - shape.dimensions[2].value)
+                        pixelCount -= (inputX + pixelCount - imageWidth)
                     }
                     
-                    let imageStartIndex = ((inputY * shape.dimensions[2].value) + inputX) * shape.dimensions[3].value
+                    let imageStartIndex = ((inputY * imageWidth) + inputX) * numInChannels
                     
                     let source = UnsafePointer<Float>(self.elements) + imageStartIndex
                     X_pointer += startIndex
-                    memcpy(X_pointer, source, pixelCount * shape.dimensions[3].value * sizeof(Float))
-                    X_pointer += filter.shape.dimensions[1].value * shape.dimensions[3].value - startIndex
+                    memcpy(X_pointer, source, pixelCount * numInChannels * sizeof(Float))
+                    X_pointer += filterWidth * numInChannels - startIndex
                 }
             }
         }
