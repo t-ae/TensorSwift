@@ -33,8 +33,8 @@ extension Tensor {
         let padTop = padAlongHeight / 2
         let padLeft = padAlongWidth / 2
         
-        // maximizeするのでmin valueで初期化
-        let elements = [Element](count: numBatches * numCols * numRows * numChannels, repeatedValue: FLT_MIN)
+        // Initialize with -infinity for maximization.
+        let elements = [Element](count: numBatches * numCols * numRows * numChannels, repeatedValue: -Float.infinity)
         
         for b in 0..<numBatches {
             var elementIndexI = b * numRows
