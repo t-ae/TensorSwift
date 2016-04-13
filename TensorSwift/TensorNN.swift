@@ -24,43 +24,56 @@ extension Tensor {
         
         
         let numBatches = Int(ceil(Float(shape.dimensions[0].value) / Float(strides[0])))
-        let numCols = Int(ceil(Float(shape.dimensions[1].value) / Float(strides[1])))
-        let numRows = Int(ceil(Float(shape.dimensions[2].value) / Float(strides[2])))
+        let numRows = Int(ceil(Float(shape.dimensions[1].value) / Float(strides[1])))
+        let numCols = Int(ceil(Float(shape.dimensions[2].value) / Float(strides[2])))
         let numChannels = Int(ceil(Float(shape.dimensions[3].value) / Float(strides[3])))
         
-        let padAlongHeight = (numCols - 1) * strides[1] + ksize[1] - shape.dimensions[1].value
-        let padAlongWidth = (numRows - 1) * strides[2] + ksize[2] - shape.dimensions[2].value
+        let padAlongHeight = (numRows - 1) * strides[1] + ksize[1] - shape.dimensions[1].value
+        let padAlongWidth = (numCols - 1) * strides[2] + ksize[2] - shape.dimensions[2].value
         let padTop = padAlongHeight / 2
-        let padBottom = padAlongHeight - padTop
         let padLeft = padAlongWidth / 2
-        let padRight = padAlongWidth - padLeft
         
-        var elements: [Element] = []
-        elements.reserveCapacity(numBatches * numCols * numRows * numChannels)
+        // maximizeするのでmin valueで初期化
+        let elements = [Element](count: numBatches * numCols * numRows * numChannels, repeatedValue: FLT_MIN)
         
-        for batch in 0.stride(to: shape.dimensions[0].value, by: strides[0]) {
-            var es: [Element] = Array.init(count: shape.dimensions[3].value, repeatedValue: 0)
-            for y in (0-padTop).stride(to: shape.dimensions[1].value+padBottom-ksize[1]+1, by: strides[1]) {
-                for x in (0-padLeft).stride(to: shape.dimensions[2].value+padRight-ksize[2]+1, by: strides[2]) {
-                    for j in 0..<ksize[1] {
-                        if y+j < 0 || y+j >= shape.dimensions[1].value {
-                            continue
-                        }
-                        for i in 0..<ksize[2] {
-                            if x+i < 0 || x+i >= shape.dimensions[2].value {
+        for b in 0..<numBatches {
+            var elementIndexI = b * numRows
+            for i in 0..<numRows {
+                for di in 0..<ksize[1] {
+                    let y = i+di - padTop
+                    if(y<0){
+                        continue
+                    }
+                    if(y>=self.shape.dimensions[1].value){
+                        break
+                    }
+                    var elementIndexJ = elementIndexI * numCols
+                    for j in 0..<numCols {
+                        var selfIndex = b
+                        selfIndex = selfIndex * self.shape.dimensions[1].value + y
+                        selfIndex = selfIndex * self.shape.dimensions[2].value + max(0, j-padLeft)
+                        selfIndex = selfIndex * self.shape.dimensions[3].value
+                        var selfPointer = UnsafeMutablePointer<Element>(self.elements) + selfIndex
+                        for dj in 0..<ksize[2] {
+                            let x = j+dj - padLeft
+                            if(x<0 || x>=self.shape.dimensions[2].value){
                                 continue
                             }
-                            es = es.enumerate().map { $0.element < self[batch, y+j, x+i, $0.index] ? self[batch, y+j, x+i, $0.index] : $0.element }
+                            var elementPointer = UnsafeMutablePointer<Element>(elements) + elementIndexJ * numChannels
+                            for _ in 0..<numChannels {
+                                elementPointer.memory = max(elementPointer.memory, selfPointer.memory)
+                                elementPointer += 1
+                                selfPointer += 1
+                            }
                         }
-                    }
-                    for e in es {
-                        elements.append(e)
+                        elementIndexJ += 1
                     }
                 }
+                elementIndexI += 1
             }
         }
-
-        return Tensor(shape: [Dimension(numBatches) ,Dimension(numCols), Dimension(numRows), Dimension(numChannels)], elements: elements)
+        
+        return Tensor(shape: [Dimension(numBatches) ,Dimension(numRows), Dimension(numCols), Dimension(numChannels)], elements: elements)
     }
     
     
