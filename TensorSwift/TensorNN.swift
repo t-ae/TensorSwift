@@ -176,6 +176,9 @@ extension Tensor {
         assert(strides[0] == 1 ,"`strides[0]` must be 1")
         assert(strides[3] == 1 ,"`strides[3]` must be 1")
         
+        // delete when batch num is
+        assert(self.shape.dimensions[0] == 1, "Number of image batches must be 1")
+        
         let numBatches = Int(ceil(Float(shape.dimensions[0].value) / Float(strides[0])))
         let numRows = Int(ceil(Float(shape.dimensions[1].value) / Float(strides[1])))
         let numCols = Int(ceil(Float(shape.dimensions[2].value) / Float(strides[2])))
