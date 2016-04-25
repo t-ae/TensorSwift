@@ -96,37 +96,6 @@ extension Tensor { // Matrix
         let n = shape.dimensions[1]
         assert(tensor.shape.dimensions[0] == n, "Incompatible shapes of matrices: self.shape = \(shape), tensor.shape = \(tensor.shape)")
         
-        let numRows = shape.dimensions[0]
-        let numCols = tensor.shape.dimensions[1]
-
-        let leftHead = UnsafeMutablePointer<Element>(self.elements)
-        let rightHead = UnsafeMutablePointer<Element>(tensor.elements)
-
-        let count = numCols.value * numRows.value
-        let elements = [Element](count: count, repeatedValue: 0.0)
-        for r in 0..<numRows.value {
-            for i in 0..<n.value {
-                var pointer = UnsafeMutablePointer<Element>(elements) + r * numCols.value
-                let left = leftHead[r * n.value + i]
-                var rightPointer = rightHead + i * numCols.value
-                for _ in 0..<numCols.value {
-                    pointer.memory += left * rightPointer.memory
-                    pointer += 1
-                    rightPointer += 1
-                }
-            }
-        }
-        
-        return Tensor(shape: [numRows, numCols], elements: elements)
-    }
-    
-    public func matmul_fast(tensor: Tensor) -> Tensor {
-        assert(shape.dimensions.count == 2, "This tensor is not a matrix: shape = \(shape)")
-        assert(tensor.shape.dimensions.count == 2, "The given tensor is not a matrix: shape = \(tensor.shape)")
-        
-        let n = shape.dimensions[1]
-        assert(tensor.shape.dimensions[0] == n, "Incompatible shapes of matrices: self.shape = \(shape), tensor.shape = \(tensor.shape)")
-        
         let M = shape.dimensions[0]
         let N = tensor.shape.dimensions[1]
         let K = shape.dimensions[1]
