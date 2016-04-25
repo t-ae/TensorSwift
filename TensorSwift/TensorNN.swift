@@ -145,7 +145,7 @@ extension Tensor {
             n,                                            // ldb
             1.0,                                          // beta
             UnsafeMutablePointer<Float>(result.elements), // C
-            n
+            n                                             // ldc
         )
         
         return result
