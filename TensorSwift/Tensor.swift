@@ -1,3 +1,6 @@
+
+import Accelerate
+
 public struct Tensor {
     public typealias Element = Float
     
@@ -115,5 +118,29 @@ extension Tensor { // Matrix
         }
         
         return Tensor(shape: [numRows, numCols], elements: elements)
+    }
+    
+    public func matmul_fast(tensor: Tensor) -> Tensor {
+        assert(shape.dimensions.count == 2, "This tensor is not a matrix: shape = \(shape)")
+        assert(tensor.shape.dimensions.count == 2, "The given tensor is not a matrix: shape = \(tensor.shape)")
+        
+        let n = shape.dimensions[1]
+        assert(tensor.shape.dimensions[0] == n, "Incompatible shapes of matrices: self.shape = \(shape), tensor.shape = \(tensor.shape)")
+        
+        let M = shape.dimensions[0]
+        let N = tensor.shape.dimensions[1]
+        let K = shape.dimensions[1]
+        
+        let z = Tensor(shape: [M, N])
+        
+        let c = UnsafeMutablePointer<Float>(z.elements)
+        
+        cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans,
+                    Int32(M.value), Int32(N.value), Int32(K.value), 1.0,
+                    self.elements, Int32(K.value),
+                    tensor.elements, Int32(N.value), 1.0,
+                    c, Int32(N.value))
+        
+        return z
     }
 }
