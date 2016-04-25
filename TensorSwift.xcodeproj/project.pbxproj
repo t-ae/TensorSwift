@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A7E021DB1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E021DA1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift */; };
+		D66E2A931CCDD3C700859630 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66E2A921CCDD3C700859630 /* Utils.swift */; };
 		D69C33E91C8D731C007985D4 /* TensorSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = D69C33E81C8D731C007985D4 /* TensorSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D69C33F01C8D731C007985D4 /* TensorSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69C33E51C8D731C007985D4 /* TensorSwift.framework */; };
 		D69C33F51C8D731C007985D4 /* TensorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C33F41C8D731C007985D4 /* TensorTest.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		A7E021DA1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculationPerformanceTests.swift; sourceTree = "<group>"; };
+		D66E2A921CCDD3C700859630 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		D69C33E51C8D731C007985D4 /* TensorSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TensorSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D69C33E81C8D731C007985D4 /* TensorSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TensorSwift.h; sourceTree = "<group>"; };
 		D69C33EA1C8D731C007985D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				D69C34011C8D7435007985D4 /* Shape.swift */,
 				D69C34031C8D7487007985D4 /* Dimension.swift */,
 				D69C34071C8E7D03007985D4 /* Operators.swift */,
+				D66E2A921CCDD3C700859630 /* Utils.swift */,
 			);
 			path = TensorSwift;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				D69C34001C8D735C007985D4 /* Tensor.swift in Sources */,
 				D69C34081C8E7D03007985D4 /* Operators.swift in Sources */,
 				D69C340C1C8E85D0007985D4 /* TensorNN.swift in Sources */,
+				D66E2A931CCDD3C700859630 /* Utils.swift in Sources */,
 				D69C34021C8D7435007985D4 /* Shape.swift in Sources */,
 				D69C34041C8D7487007985D4 /* Dimension.swift in Sources */,
 				D69C340A1C8E7D44007985D4 /* TensorMath.swift in Sources */,

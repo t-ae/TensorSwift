@@ -15,69 +15,60 @@ extension Tensor {
 
 extension Tensor {
     public func maxPool(ksize ksize: [Int], strides: [Int]) -> Tensor { // padding = Same
-        assert(shape.dimensions.count == 4, "`shape.dimensions.count` must be 4: \(shape.dimensions.count)")
-        assert(ksize.count >= 4, "`ksize.count` must be greater than or equal to 4: \(ksize.count)")
-        assert(strides.count >= 4, "`strides.count` must be greater than or equal to 4: \(strides.count)")
-        assert(strides[0] == 1 ,"`strides[0]` must be 1")
-        assert(strides[3] == 1 ,"`strides[3]` must be 1")
-        assert(ksize[0] == 1 ,"`ksize[0]` must be 1")
-        assert(ksize[3] == 1 ,"`ksize[3]` must be 1")
+        assert(shape.dimensions.count == 3, "`shape.dimensions.count` must be 3: \(shape.dimensions.count)")
+        assert(ksize.count == 3, "`ksize.count` must be 3: \(ksize.count)")
+        assert(ksize[2] == 1 ,"`ksize[3]` != 1 is not supported: \(ksize[2])")
+        assert(strides.count == 3, "`strides.count` must be 3: \(strides.count)")
+        assert(strides[2] == 1 ,"`strides[2]` != 1 is not supported: \(strides[2])")
         
+        let numRows = shape.dimensions[0].value
+        let numCols = shape.dimensions[1].value
+        let numChannels = shape.dimensions[2].value
         
-        let numBatches = Int(ceil(Float(shape.dimensions[0].value) / Float(strides[0])))
-        let numRows = Int(ceil(Float(shape.dimensions[1].value) / Float(strides[1])))
-        let numCols = Int(ceil(Float(shape.dimensions[2].value) / Float(strides[2])))
-        let numChannels = Int(ceil(Float(shape.dimensions[3].value) / Float(strides[3])))
+        let filterHeight = ksize[0]
+        let filterWidth = ksize[1]
         
-        let padAlongHeight = (numRows - 1) * strides[1] + ksize[1] - shape.dimensions[1].value
-        let padAlongWidth = (numCols - 1) * strides[2] + ksize[2] - shape.dimensions[2].value
-        let padTop = padAlongHeight / 2
-        let padLeft = padAlongWidth / 2
+        let minDy = -(filterHeight - 1) / 2
+        let maxDy = minDy + filterHeight - 1
+        let minDx = -(filterWidth - 1) / 2
+        let maxDx = minDx + filterWidth - 1
         
-        let imageWidth = self.shape.dimensions[2].value
-        let imageHeight = self.shape.dimensions[1].value
+        let rowStride = strides[0]
+        let colStride = strides[1]
+
+        let outRows = shape.dimensions[0].value.ceilDiv(rowStride)
+        let outCols = shape.dimensions[1].value.ceilDiv(colStride)
         
         // Initialize with -infinity for maximization.
-        let elements = [Element](count: numBatches * numCols * numRows * numChannels, repeatedValue: -Float.infinity)
+        let elements = [Element](count: outCols * outRows * numChannels, repeatedValue: -Float.infinity)
         
-        for b in 0..<numBatches {
-            var elementIndexI = b * numRows
-            for i in 0..<numRows {
-                for di in 0..<ksize[1] {
-                    let y = i+di - padTop
-                    if(y<0){
-                        continue
-                    }
-                    if(y>=self.shape.dimensions[1].value){
-                        break
-                    }
-                    var elementIndexJ = elementIndexI * numCols
-                    for j in 0..<numCols {
-                        var selfIndex = b
-                        selfIndex = selfIndex * imageHeight + y
-                        selfIndex = selfIndex * imageWidth + max(0, j-padLeft)
-                        selfIndex = selfIndex * numChannels
-                        var selfPointer = UnsafeMutablePointer<Element>(self.elements) + selfIndex
-                        for dj in 0..<ksize[2] {
-                            let x = j+dj - padLeft
-                            if(x<0 || x>=self.shape.dimensions[2].value){
-                                continue
-                            }
-                            var elementPointer = UnsafeMutablePointer<Element>(elements) + elementIndexJ * numChannels
-                            for _ in 0..<numChannels {
-                                elementPointer.memory = max(elementPointer.memory, selfPointer.memory)
-                                elementPointer += 1
-                                selfPointer += 1
-                            }
+        for y in 0..<outRows {
+            let inY = y * rowStride
+            let minY2 = max(inY + minDy, 0)
+            let maxY2 = min(inY + maxDy, numRows - 1)
+
+            for y2 in minY2...maxY2 {
+                var outPixelIndex = y * outCols
+                for x in 0..<outCols {
+                    let inX = x * colStride
+                    let minX2 = max(inX + minDx, 0)
+                    let maxX2 = min(inX + maxDx, numCols - 1)
+                    
+                    var inPointer = UnsafeMutablePointer<Element>(self.elements) + (y2 * numCols + minX2) * numChannels
+                    for _ in minX2...maxX2 {
+                        var outPointer = UnsafeMutablePointer<Element>(elements) + outPixelIndex * numChannels
+                        for _ in 0..<numChannels {
+                            outPointer.memory = max(outPointer.memory, inPointer.memory)
+                            outPointer += 1
+                            inPointer += 1
                         }
-                        elementIndexJ += 1
                     }
+                    outPixelIndex += 1
                 }
-                elementIndexI += 1
             }
         }
         
-        return Tensor(shape: [Dimension(numBatches) ,Dimension(numRows), Dimension(numCols), Dimension(numChannels)], elements: elements)
+        return Tensor(shape: [1, Dimension(outRows), Dimension(outCols), Dimension(numChannels)], elements: elements)
     }
     
     
