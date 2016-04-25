@@ -8,8 +8,8 @@ public struct Tensor {
     public private(set) var elements: [Element]
     
     public init(shape: Shape, elements: [Element]) {
-        let c = shape.count
-        assert(elements.count >= c, "`elements.count` must be greater than or equal to `shape.count`: elements.count = \(elements.count), shape.count = \(shape.count)")
+        let c = shape.volume
+        assert(elements.count >= c, "`elements.count` must be greater than or equal to `shape.volume`: elements.count = \(elements.count), shape.volume = \(shape.volume)")
         self.shape = shape
         self.elements = (elements.count == c) ? elements : Array(elements[0..<c])
     }
@@ -17,7 +17,7 @@ public struct Tensor {
 
 extension Tensor { // Additional Initializers
     public init(shape: Shape, element: Element = 0.0) {
-        self.init(shape: shape, elements: [Element](count: shape.count, repeatedValue: element))
+        self.init(shape: shape, elements: [Element](count: shape.volume, repeatedValue: element))
     }
 }
 
@@ -39,8 +39,8 @@ extension Tensor { // like CollentionType
         }
     }
     
-    public var count: Int {
-        return shape.count
+    public var volume: Int {
+        return shape.volume
     }
 }
 
