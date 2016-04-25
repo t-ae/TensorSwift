@@ -14,10 +14,10 @@ extension Tensor {
 }
 
 extension Tensor {
-    public func maxPool(ksize ksize: [Int], strides: [Int]) -> Tensor { // padding = Same
+    public func maxPool(kernelSize kernelSize: [Int], strides: [Int]) -> Tensor { // padding = Same
         assert(shape.dimensions.count == 3, "`shape.dimensions.count` must be 3: \(shape.dimensions.count)")
-        assert(ksize.count == 3, "`ksize.count` must be 3: \(ksize.count)")
-        assert(ksize[2] == 1 ,"`ksize[3]` != 1 is not supported: \(ksize[2])")
+        assert(kernelSize.count == 3, "`ksize.count` must be 3: \(kernelSize.count)")
+        assert(kernelSize[2] == 1 ,"`ksize[3]` != 1 is not supported: \(kernelSize[2])")
         assert(strides.count == 3, "`strides.count` must be 3: \(strides.count)")
         assert(strides[2] == 1 ,"`strides[2]` != 1 is not supported: \(strides[2])")
         
@@ -25,8 +25,8 @@ extension Tensor {
         let inCols = shape.dimensions[1].value
         let numChannels = shape.dimensions[2].value
         
-        let filterHeight = ksize[0]
-        let filterWidth = ksize[1]
+        let filterHeight = kernelSize[0]
+        let filterWidth = kernelSize[1]
         
         let inMinDy = -(filterHeight - 1) / 2
         let inMaxDy = inMinDy + filterHeight - 1
