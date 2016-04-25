@@ -3,16 +3,25 @@ import XCTest
 
 class TensorNNTest: XCTestCase {
     func testMaxPool() {
-        let a = Tensor(shape: [2,3,1], elements: [0,1,2,3,4,5])
-        var r = a.maxPool(ksize: [1,3,1], strides: [1,1,1])
-        XCTAssertEqual(r, Tensor(shape: [2,3,1], elements: [1,2,2,4,5,5]))
-        
-        let b = Tensor(shape: [2,2,2], elements: [0,1,2,3,4,5,6,7])
-        r = b.maxPool(ksize:[1,2,1], strides: [1,1,1])
-        XCTAssertEqual(r, Tensor(shape: [2,2,2], elements: [2, 3, 2, 3, 6, 7, 6, 7]))
-        
-        r = b.maxPool(ksize:[1,2,1], strides: [1,2,1])
-        XCTAssertEqual(r, Tensor(shape: [2,1,2], elements: [2, 3, 6, 7]))
+        do {
+            let a = Tensor(shape: [2,3,1], elements: [0,1,2,3,4,5])
+            let r = a.maxPool(ksize: [1,3,1], strides: [1,1,1])
+            XCTAssertEqual(r, Tensor(shape: [2,3,1], elements: [1,2,2,4,5,5]))
+        }
+
+        do {
+            let a = Tensor(shape: [2,2,2], elements: [0,1,2,3,4,5,6,7])
+            
+            do {
+                let r = a.maxPool(ksize:[1,2,1], strides: [1,1,1])
+                XCTAssertEqual(r, Tensor(shape: [2,2,2], elements: [2, 3, 2, 3, 6, 7, 6, 7]))
+            }
+            
+            do {
+                let r = a.maxPool(ksize:[1,2,1], strides: [1,2,1])
+                XCTAssertEqual(r, Tensor(shape: [2,1,2], elements: [2, 3, 6, 7]))
+            }
+        }
     }
     
     func testConv2d() {
