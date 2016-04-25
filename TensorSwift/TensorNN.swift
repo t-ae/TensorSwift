@@ -73,28 +73,26 @@ extension Tensor {
     
     
     public func conv2d(filter filter: Tensor, strides: [Int]) -> Tensor { // padding = Same
-        assert(shape.dimensions.count == 4, "`shape.dimensions.count` must be 4: \(shape.dimensions.count)")
+        let inChannels = filter.shape.dimensions[2].value
+        
+        assert(shape.dimensions.count == 3, "`shape.dimensions.count` must be 3: \(shape.dimensions.count)")
         assert(filter.shape.dimensions.count == 4, "`filter.shape.dimensions.count` must be 4: \(filter.shape.dimensions.count)")
-        assert(strides.count >= 4, "`strides.count` must be greater than or equal to 4: \(strides.count)")
-        assert(strides[0] == 1 ,"`strides[0]` must be 1")
-        assert(strides[3] == 1 ,"`strides[3]` must be 1")
+        assert(strides.count == 3, "`strides.count` must be 3: \(strides.count)")
+        assert(strides[2] == 1, "`strides[2]` must be 1")
+        assert(shape.dimensions[2].value == inChannels, "The number of channels of this tensor and the filter are not compatible: \(shape.dimensions[2]) != \(inChannels)")
         
-        // delete when batch num is
-        assert(self.shape.dimensions[0] == 1, "Number of image batches must be 1")
-        
-        let numBatches = Int(ceil(Float(shape.dimensions[0].value) / Float(strides[0])))
-        let numRows = Int(ceil(Float(shape.dimensions[1].value) / Float(strides[1])))
-        let numCols = Int(ceil(Float(shape.dimensions[2].value) / Float(strides[2])))
+        let numRows = Int(ceil(Float(shape.dimensions[0].value) / Float(strides[0])))
+        let numCols = Int(ceil(Float(shape.dimensions[1].value) / Float(strides[1])))
         let numOutChannels = filter.shape.dimensions[3].value
         
-        let padAlongHeight = (numRows - 1) * strides[1] + filter.shape.dimensions[0].value - shape.dimensions[1].value
-        let padAlongWidth = (numCols - 1) * strides[2] + filter.shape.dimensions[1].value - shape.dimensions[2].value
+        let padAlongHeight = (numRows - 1) * strides[0] + filter.shape.dimensions[0].value - shape.dimensions[0].value
+        let padAlongWidth = (numCols - 1) * strides[1] + filter.shape.dimensions[1].value - shape.dimensions[1].value
         let padTop = padAlongHeight / 2
         let padLeft = padAlongWidth / 2
         
-        let imageWidth = shape.dimensions[2].value
-        let imageHeight = shape.dimensions[1].value
-        let numInChannels = shape.dimensions[3].value
+        let imageWidth = shape.dimensions[1].value
+        let imageHeight = shape.dimensions[0].value
+        let numInChannels = shape.dimensions[2].value
         
         let filterWidth = filter.shape.dimensions[1].value
         let filterHeight = filter.shape.dimensions[0].value
@@ -108,13 +106,13 @@ extension Tensor {
                 // Add (x,y)'s patch as a vector
                 for c in 0..<filterHeight{ // Row number of patch
                     
-                    let inputY = y*strides[1] + c - padTop // y cood in original image
+                    let inputY = y*strides[0] + c - padTop // y cood in original image
                     if(inputY < 0 || inputY >= imageHeight){
                         X_pointer += filterWidth * numInChannels
                         continue
                     }
                     
-                    var inputX = x*strides[2] - padLeft // x cood in image
+                    var inputX = x*strides[1] - padLeft // x cood in image
                     
                     var startIndex = 0 // Relative index of starting data
                     var pixelCount = filterWidth // Number of pixels to copy
@@ -143,7 +141,7 @@ extension Tensor {
         let a = UnsafePointer<Float>(X)
         let b = UnsafePointer<Float>(filter.elements)
         
-        let z = Tensor(shape: [Dimension(numBatches), Dimension(numRows), Dimension(numCols), Dimension(numOutChannels)])
+        let z = Tensor(shape: [Dimension(numRows), Dimension(numCols), Dimension(numOutChannels)])
         
         let c = UnsafeMutablePointer<Float>(z.elements)
         
