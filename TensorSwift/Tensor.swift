@@ -8,8 +8,8 @@ public struct Tensor {
     public private(set) var elements: [Element]
     
     public init(shape: Shape, elements: [Element]) {
-        let c = shape.count
-        assert(elements.count >= c, "`elements.count` must be greater than or equal to `shape.count`: elements.count = \(elements.count), shape.count = \(shape.count)")
+        let c = shape.volume
+        assert(elements.count >= c, "`elements.count` must be greater than or equal to `shape.volume`: elements.count = \(elements.count), shape.volume = \(shape.volume)")
         self.shape = shape
         self.elements = (elements.count == c) ? elements : Array(elements[0..<c])
     }
@@ -17,7 +17,7 @@ public struct Tensor {
 
 extension Tensor { // Additional Initializers
     public init(shape: Shape, element: Element = 0.0) {
-        self.init(shape: shape, elements: [Element](count: shape.count, repeatedValue: element))
+        self.init(shape: shape, elements: [Element](count: shape.volume, repeatedValue: element))
     }
 }
 
@@ -39,8 +39,8 @@ extension Tensor { // like CollentionType
         }
     }
     
-    public var count: Int {
-        return shape.count
+    public var volume: Int {
+        return shape.volume
     }
 }
 
@@ -92,55 +92,29 @@ extension Tensor { // Matrix
     public func matmul(tensor: Tensor) -> Tensor {
         assert(shape.dimensions.count == 2, "This tensor is not a matrix: shape = \(shape)")
         assert(tensor.shape.dimensions.count == 2, "The given tensor is not a matrix: shape = \(tensor.shape)")
+        assert(tensor.shape.dimensions[0] == shape.dimensions[1], "Incompatible shapes of matrices: self.shape = \(shape), tensor.shape = \(tensor.shape)")
         
-        let n = shape.dimensions[1]
-        assert(tensor.shape.dimensions[0] == n, "Incompatible shapes of matrices: self.shape = \(shape), tensor.shape = \(tensor.shape)")
+        let result = Tensor(shape: [shape.dimensions[0], tensor.shape.dimensions[1]])
         
-        let numRows = shape.dimensions[0]
-        let numCols = tensor.shape.dimensions[1]
-
-        let leftHead = UnsafeMutablePointer<Element>(self.elements)
-        let rightHead = UnsafeMutablePointer<Element>(tensor.elements)
-
-        let count = numCols.value * numRows.value
-        let elements = [Element](count: count, repeatedValue: 0.0)
-        for r in 0..<numRows.value {
-            for i in 0..<n.value {
-                var pointer = UnsafeMutablePointer<Element>(elements) + r * numCols.value
-                let left = leftHead[r * n.value + i]
-                var rightPointer = rightHead + i * numCols.value
-                for _ in 0..<numCols.value {
-                    pointer.memory += left * rightPointer.memory
-                    pointer += 1
-                    rightPointer += 1
-                }
-            }
-        }
+        let n = Int32(tensor.shape.dimensions[1].value)
+        let k = Int32(shape.dimensions[1].value)
+        cblas_sgemm(
+            CblasRowMajor,                                // Order
+            CblasNoTrans,                                 // TransA
+            CblasNoTrans,                                 // TransB
+            Int32(shape.dimensions[0].value),             // M
+            n,                                            // N
+            k,                                            // K
+            1.0,                                          // alpha
+            elements,                                     // A
+            k,                                            // lda
+            tensor.elements,                              // B
+            n,                                            // ldb
+            1.0,                                          // beta
+            UnsafeMutablePointer<Float>(result.elements), // C
+            n                                             // ldc
+        )
         
-        return Tensor(shape: [numRows, numCols], elements: elements)
-    }
-    
-    public func matmul_fast(tensor: Tensor) -> Tensor {
-        assert(shape.dimensions.count == 2, "This tensor is not a matrix: shape = \(shape)")
-        assert(tensor.shape.dimensions.count == 2, "The given tensor is not a matrix: shape = \(tensor.shape)")
-        
-        let n = shape.dimensions[1]
-        assert(tensor.shape.dimensions[0] == n, "Incompatible shapes of matrices: self.shape = \(shape), tensor.shape = \(tensor.shape)")
-        
-        let M = shape.dimensions[0]
-        let N = tensor.shape.dimensions[1]
-        let K = shape.dimensions[1]
-        
-        let z = Tensor(shape: [M, N])
-        
-        let c = UnsafeMutablePointer<Float>(z.elements)
-        
-        cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans,
-                    Int32(M.value), Int32(N.value), Int32(K.value), 1.0,
-                    self.elements, Int32(K.value),
-                    tensor.elements, Int32(N.value), 1.0,
-                    c, Int32(N.value))
-        
-        return z
+        return result
     }
 }
