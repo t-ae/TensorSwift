@@ -21,17 +21,17 @@ extension Tensor {
         assert(strides.count == 3, "`strides.count` must be 3: \(strides.count)")
         assert(strides[2] == 1 ,"`strides[2]` != 1 is not supported: \(strides[2])")
         
-        let numRows = shape.dimensions[0].value
-        let numCols = shape.dimensions[1].value
+        let inRows = shape.dimensions[0].value
+        let inCols = shape.dimensions[1].value
         let numChannels = shape.dimensions[2].value
         
         let filterHeight = ksize[0]
         let filterWidth = ksize[1]
         
-        let minDy = -(filterHeight - 1) / 2
-        let maxDy = minDy + filterHeight - 1
-        let minDx = -(filterWidth - 1) / 2
-        let maxDx = minDx + filterWidth - 1
+        let inMinDy = -(filterHeight - 1) / 2
+        let inMaxDy = inMinDy + filterHeight - 1
+        let inMinDx = -(filterWidth - 1) / 2
+        let inMaxDx = inMinDx + filterWidth - 1
         
         let rowStride = strides[0]
         let colStride = strides[1]
@@ -43,19 +43,19 @@ extension Tensor {
         let elements = [Element](count: outCols * outRows * numChannels, repeatedValue: -Float.infinity)
         
         for y in 0..<outRows {
-            let inY = y * rowStride
-            let minY2 = max(inY + minDy, 0)
-            let maxY2 = min(inY + maxDy, numRows - 1)
+            let inY0 = y * rowStride
+            let inMinY = max(inY0 + inMinDy, 0)
+            let inMaxY = min(inY0 + inMaxDy, inRows - 1)
 
-            for y2 in minY2...maxY2 {
+            for inY in inMinY...inMaxY {
                 var outPixelIndex = y * outCols
                 for x in 0..<outCols {
-                    let inX = x * colStride
-                    let minX2 = max(inX + minDx, 0)
-                    let maxX2 = min(inX + maxDx, numCols - 1)
+                    let inX0 = x * colStride
+                    let inMinX = max(inX0 + inMinDx, 0)
+                    let inMaxX = min(inX0 + inMaxDx, inCols - 1)
                     
-                    var inPointer = UnsafeMutablePointer<Element>(self.elements) + (y2 * numCols + minX2) * numChannels
-                    for _ in minX2...maxX2 {
+                    var inPointer = UnsafeMutablePointer<Element>(self.elements) + (inY * inCols + inMinX) * numChannels
+                    for _ in inMinX...inMaxX {
                         var outPointer = UnsafeMutablePointer<Element>(elements) + outPixelIndex * numChannels
                         for _ in 0..<numChannels {
                             outPointer.memory = max(outPointer.memory, inPointer.memory)
@@ -105,17 +105,17 @@ extension Tensor {
         let rowSize = filterHeight * filterWidth * inChannels
         let a = [Float](count: outRows * outCols * rowSize, repeatedValue: 0)
         for y in 0..<outRows {
-            let inY = y * rowStride
-            let inMinY = max(inY + inMinDy, 0)
-            let inMaxY = min(inY + inMaxDy, inRows - 1)
+            let inY0 = y * rowStride
+            let inMinY = max(inY0 + inMinDy, 0)
+            let inMaxY = min(inY0 + inMaxDy, inRows - 1)
             
             for x in 0..<outCols{
-                let inX = x * colStride
-                let inMinX = max(inX + inMinDx, 0)
-                let inMaxX = min(inX + inMaxDx, inCols - 1)
+                let inX0 = x * colStride
+                let inMinX = max(inX0 + inMinDx, 0)
+                let inMaxX = min(inX0 + inMaxDx, inCols - 1)
                 
                 // Add (x,y)'s patch as a vector
-                var dest = UnsafeMutablePointer<Float>(a) + ((y * outCols + x) * filterHeight - min(inY + inMinDy, 0)) * filterWidth * inChannels
+                var dest = UnsafeMutablePointer<Float>(a) + ((y * outCols + x) * filterHeight - min(inY0 + inMinDy, 0)) * filterWidth * inChannels
                 var src = elementsPointer + (inMinY * inCols + inMinX) * inChannels
                 for _ in inMinY...inMaxY {
                     memcpy(dest - min(inMinX + inMinDx, 0) * inChannels, src, (inMinX...inMaxX).count * inChannels * sizeof(Float))
