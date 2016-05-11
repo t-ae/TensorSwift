@@ -116,11 +116,15 @@ public func *(lhs: Tensor, rhs: Float) -> Tensor {
 }
 
 public func *(lhs: Float, rhs: Tensor) -> Tensor {
-    return Tensor(shape: rhs.shape, elements: rhs.elements.map { $0 * lhs })
+    return Tensor(shape: rhs.shape, elements: rhs.elements.map { lhs * $0 })
 }
 
 public func /(lhs: Tensor, rhs: Float) -> Tensor {
     return Tensor(shape: lhs.shape, elements: lhs.elements.map { $0 / rhs })
+}
+
+public func /(lhs: Float, rhs: Tensor) -> Tensor {
+    return Tensor(shape: rhs.shape, elements: rhs.elements.map { lhs / $0 })
 }
 
 extension Tensor { // Matrix
