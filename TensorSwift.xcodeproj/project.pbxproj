@@ -14,6 +14,8 @@
 		D63F300B1C996F4200B88E12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D63F300A1C996F4200B88E12 /* Assets.xcassets */; };
 		D63F300E1C996F4200B88E12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63F300C1C996F4200B88E12 /* LaunchScreen.storyboard */; };
 		D63F30191C996F4200B88E12 /* MNISTTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63F30181C996F4200B88E12 /* MNISTTest.swift */; };
+		A7E021DB1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E021DA1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift */; };
+		D66E2A931CCDD3C700859630 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66E2A921CCDD3C700859630 /* Utils.swift */; };
 		D69C33E91C8D731C007985D4 /* TensorSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = D69C33E81C8D731C007985D4 /* TensorSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D69C33F01C8D731C007985D4 /* TensorSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69C33E51C8D731C007985D4 /* TensorSwift.framework */; };
 		D69C33F51C8D731C007985D4 /* TensorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C33F41C8D731C007985D4 /* TensorTest.swift */; };
@@ -60,6 +62,8 @@
 		D63F30141C996F4200B88E12 /* MNISTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MNISTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D63F30181C996F4200B88E12 /* MNISTTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNISTTest.swift; sourceTree = "<group>"; };
 		D63F301A1C996F4200B88E12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7E021DA1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculationPerformanceTests.swift; sourceTree = "<group>"; };
+		D66E2A921CCDD3C700859630 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		D69C33E51C8D731C007985D4 /* TensorSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TensorSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D69C33E81C8D731C007985D4 /* TensorSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TensorSwift.h; sourceTree = "<group>"; };
 		D69C33EA1C8D731C007985D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				D69C34011C8D7435007985D4 /* Shape.swift */,
 				D69C34031C8D7487007985D4 /* Dimension.swift */,
 				D69C34071C8E7D03007985D4 /* Operators.swift */,
+				D66E2A921CCDD3C700859630 /* Utils.swift */,
 			);
 			path = TensorSwift;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 			children = (
 				D69C33F41C8D731C007985D4 /* TensorTest.swift */,
 				D69C34101C8ED4FC007985D4 /* TensorNNTest.swift */,
+				A7E021DA1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift */,
 				D69C33F61C8D731C007985D4 /* Info.plist */,
 				D69C34051C8D8F87007985D4 /* TensorSwiftSample.swift */,
 			);
@@ -381,6 +387,7 @@
 				D69C34001C8D735C007985D4 /* Tensor.swift in Sources */,
 				D69C34081C8E7D03007985D4 /* Operators.swift in Sources */,
 				D69C340C1C8E85D0007985D4 /* TensorNN.swift in Sources */,
+				D66E2A931CCDD3C700859630 /* Utils.swift in Sources */,
 				D69C34021C8D7435007985D4 /* Shape.swift in Sources */,
 				D69C34041C8D7487007985D4 /* Dimension.swift in Sources */,
 				D69C340A1C8E7D44007985D4 /* TensorMath.swift in Sources */,
@@ -392,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D69C34111C8ED4FD007985D4 /* TensorNNTest.swift in Sources */,
+				A7E021DB1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift in Sources */,
 				D69C34061C8D8F87007985D4 /* TensorSwiftSample.swift in Sources */,
 				D69C33F51C8D731C007985D4 /* TensorTest.swift in Sources */,
 			);
@@ -581,11 +589,13 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = TensorSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Debug;
 		};
@@ -599,10 +609,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = TensorSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
