@@ -56,24 +56,59 @@ public func ==(lhs: Tensor, rhs: Tensor) -> Bool {
     return lhs.elements == rhs.elements
 }
 
+private func commutativeBinaryOperation(lhs: Tensor, _ rhs: Tensor, operation: (Float, Float) -> Float) -> Tensor {
+    let lSize = lhs.shape.dimensions.count
+    let rSize = rhs.shape.dimensions.count
+    
+    if lSize == rSize {
+        assert(lhs.shape == rhs.shape, "Incompatible shapes of tensors: this.shape = ${shape}, tensor.shape = ${tensor.shape}")
+        return Tensor(shape: lhs.shape, elements: zipMap(lhs.elements, rhs.elements, operation: operation))
+    }
+    
+    let a: Tensor
+    let b: Tensor
+    if lSize < rSize {
+        a = rhs
+        b = lhs
+    } else {
+        a = lhs
+        b = rhs
+    }
+    assert(hasSuffix(array: a.shape.dimensions, suffix: b.shape.dimensions), "Incompatible shapes of tensors: this.shape = ${shape}, tensor.shape = ${tensor.shape}")
+    
+    return Tensor(shape: a.shape, elements: zipMapRepeat(a.elements, b.elements, operation: operation))
+}
+
+private func noncommutativeBinaryOperation(lhs: Tensor, _ rhs: Tensor, operation: (Float, Float) -> Float) -> Tensor {
+    let lSize = lhs.shape.dimensions.count
+    let rSize = rhs.shape.dimensions.count
+    
+    if lSize == rSize {
+        assert(lhs.shape == rhs.shape, "Incompatible shapes of tensors: this.shape = ${shape}, tensor.shape = ${tensor.shape}")
+        return Tensor(shape: lhs.shape, elements: zipMap(lhs.elements, rhs.elements, operation: operation))
+    } else if lSize < rSize {
+        assert(hasSuffix(array: rhs.shape.dimensions, suffix: lhs.shape.dimensions), "Incompatible shapes of tensors: this.shape = ${shape}, tensor.shape = ${tensor.shape}")
+        return Tensor(shape: rhs.shape, elements: zipMapRepeat(rhs.elements, lhs.elements, operation: { operation($1, $0) }))
+    } else {
+        assert(hasSuffix(array: lhs.shape.dimensions, suffix: rhs.shape.dimensions), "Incompatible shapes of tensors: this.shape = ${shape}, tensor.shape = ${tensor.shape}")
+        return Tensor(shape: lhs.shape, elements: zipMapRepeat(lhs.elements, rhs.elements, operation: operation))
+    }
+}
+
 public func +(lhs: Tensor, rhs: Tensor) -> Tensor {
-    assert(lhs.shape == rhs.shape, "Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)")
-    return Tensor(shape: lhs.shape, elements: zip(lhs.elements, rhs.elements).map(+))
+    return commutativeBinaryOperation(lhs, rhs, operation: +)
 }
 
 public func -(lhs: Tensor, rhs: Tensor) -> Tensor {
-    assert(lhs.shape == rhs.shape, "Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)")
-    return Tensor(shape: lhs.shape, elements: zip(lhs.elements, rhs.elements).map(-))
+    return noncommutativeBinaryOperation(lhs, rhs, operation: -)
 }
 
 public func *(lhs: Tensor, rhs: Tensor) -> Tensor {
-    assert(lhs.shape == rhs.shape, "Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)")
-    return Tensor(shape: lhs.shape, elements: zip(lhs.elements, rhs.elements).map(*))
+    return commutativeBinaryOperation(lhs, rhs, operation: *)
 }
 
 public func /(lhs: Tensor, rhs: Tensor) -> Tensor {
-    assert(lhs.shape == rhs.shape, "Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)")
-    return Tensor(shape: lhs.shape, elements: zip(lhs.elements, rhs.elements).map(/))
+    return noncommutativeBinaryOperation(lhs, rhs, operation: /)
 }
 
 public func *(lhs: Tensor, rhs: Float) -> Tensor {
