@@ -68,7 +68,7 @@ extension Tensor {
             }
         }
         
-        return Tensor(shape: [1, Dimension(outRows), Dimension(outCols), Dimension(numChannels)], elements: elements)
+        return Tensor(shape: [Dimension(outRows), Dimension(outCols), Dimension(numChannels)], elements: elements)
     }
     
     
