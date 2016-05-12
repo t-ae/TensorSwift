@@ -52,8 +52,7 @@ extension Tensor: SequenceType {
 
 extension Tensor: Equatable {}
 public func ==(lhs: Tensor, rhs: Tensor) -> Bool {
-    assert(lhs.shape == rhs.shape, "Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)")
-    return lhs.elements == rhs.elements
+    return lhs.shape == rhs.shape && lhs.elements == rhs.elements
 }
 
 private func commutativeBinaryOperation(lhs: Tensor, _ rhs: Tensor, operation: (Float, Float) -> Float) -> Tensor {
