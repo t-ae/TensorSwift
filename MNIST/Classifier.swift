@@ -18,7 +18,7 @@ public struct Classifier {
         let h_conv2 = (h_pool1.conv2d(filter: W_conv2, strides: [1, 1, 1]) + b_conv2).relu
         let h_pool2 = h_conv2.maxPool(kernelSize: [2, 2, 1], strides: [2, 2, 1])
         
-        let h_pool2_flat = Tensor(shape: [1, Dimension(7*7*64)], elements: h_pool2.elements)
+        let h_pool2_flat = Tensor(shape: [1, 7 * 7 * 64], elements: h_pool2.elements)
         let h_fc1 = (h_pool2_flat.matmul(W_fc1) + b_fc1).relu
         
         let y_conv = (h_fc1.matmul(W_fc2) + b_fc2).softmax
@@ -33,7 +33,7 @@ extension Classifier {
         b_conv1 = Tensor(shape: [32], elements: loadFloatArray(directory: path, file: "b_conv1"))
         W_conv2 = Tensor(shape: [5, 5, 32, 64], elements: loadFloatArray(directory: path, file: "W_conv2"))
         b_conv2 = Tensor(shape: [64], elements: loadFloatArray(directory: path, file: "b_conv2"))
-        W_fc1 = Tensor(shape: [Dimension(7 * 7 * 64), 1024], elements: loadFloatArray(directory: path, file: "W_fc1"))
+        W_fc1 = Tensor(shape: [7 * 7 * 64, 1024], elements: loadFloatArray(directory: path, file: "W_fc1"))
         b_fc1 = Tensor(shape: [1024], elements: loadFloatArray(directory: path, file: "b_fc1"))
         W_fc2 = Tensor(shape: [1024, 10], elements: loadFloatArray(directory: path, file: "W_fc2"))
         b_fc2 = Tensor(shape: [10], elements: loadFloatArray(directory: path, file: "b_fc2"))
