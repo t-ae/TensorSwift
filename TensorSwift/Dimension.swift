@@ -23,3 +23,19 @@ extension Dimension: CustomStringConvertible {
         return value.description
     }
 }
+
+public func +(lhs: Dimension, rhs: Dimension) -> Dimension {
+    return Dimension(lhs.value + rhs.value)
+}
+
+public func -(lhs: Dimension, rhs: Dimension) -> Dimension {
+    return Dimension(lhs.value - rhs.value)
+}
+
+public func *(lhs: Dimension, rhs: Dimension) -> Dimension {
+    return Dimension(lhs.value * rhs.value)
+}
+
+public func /(lhs: Dimension, rhs: Dimension) -> Dimension {
+    return Dimension(lhs.value / rhs.value)
+}
