@@ -21,6 +21,12 @@ extension Tensor { // Additional Initializers
     }
 }
 
+extension Tensor {
+    public func reshape(shape: Shape) -> Tensor {
+        return Tensor(shape: shape, elements: elements)
+    }
+}
+
 extension Tensor { // like CollentionType
     internal func index(indices: [Int]) -> Int {
         assert(indices.count == shape.dimensions.count, "`indices.count` must be \(shape.dimensions.count): \(indices.count)")
