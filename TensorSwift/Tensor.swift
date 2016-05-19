@@ -8,10 +8,10 @@ public struct Tensor {
     public private(set) var elements: [Element]
     
     public init(shape: Shape, elements: [Element]) {
-        let c = shape.volume
-        assert(elements.count >= c, "`elements.count` must be greater than or equal to `shape.volume`: elements.count = \(elements.count), shape.volume = \(shape.volume)")
+        let volume = shape.volume
+        guard elements.count >= volume else { fatalError("`elements.count` must be greater than or equal to `shape.volume`: elements.count = \(elements.count), shape.volume = \(shape.volume)") }
         self.shape = shape
-        self.elements = (elements.count == c) ? elements : Array(elements[0..<c])
+        self.elements = (elements.count == volume) ? elements : Array(elements[0..<volume])
     }
 }
 
@@ -61,12 +61,12 @@ public func ==(lhs: Tensor, rhs: Tensor) -> Bool {
     return lhs.shape == rhs.shape && lhs.elements == rhs.elements
 }
 
-private func commutativeBinaryOperation(lhs: Tensor, _ rhs: Tensor, operation: (Float, Float) -> Float) -> Tensor {
+internal func commutativeBinaryOperation(lhs: Tensor, _ rhs: Tensor, operation: (Float, Float) -> Float) -> Tensor {
     let lSize = lhs.shape.dimensions.count
     let rSize = rhs.shape.dimensions.count
     
     if lSize == rSize {
-        assert(lhs.shape == rhs.shape, "Incompatible shapes of tensors: this.shape = ${shape}, tensor.shape = ${tensor.shape}")
+        guard lhs.shape == rhs.shape else { fatalError("Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)") }
         return Tensor(shape: lhs.shape, elements: zipMap(lhs.elements, rhs.elements, operation: operation))
     }
     
@@ -79,23 +79,23 @@ private func commutativeBinaryOperation(lhs: Tensor, _ rhs: Tensor, operation: (
         a = lhs
         b = rhs
     }
-    assert(hasSuffix(array: a.shape.dimensions, suffix: b.shape.dimensions), "Incompatible shapes of tensors: this.shape = ${shape}, tensor.shape = ${tensor.shape}")
+    assert(hasSuffix(array: a.shape.dimensions, suffix: b.shape.dimensions), "Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)")
     
     return Tensor(shape: a.shape, elements: zipMapRepeat(a.elements, b.elements, operation: operation))
 }
 
-private func noncommutativeBinaryOperation(lhs: Tensor, _ rhs: Tensor, operation: (Float, Float) -> Float) -> Tensor {
+internal func noncommutativeBinaryOperation(lhs: Tensor, _ rhs: Tensor, operation: (Float, Float) -> Float) -> Tensor {
     let lSize = lhs.shape.dimensions.count
     let rSize = rhs.shape.dimensions.count
     
     if lSize == rSize {
-        assert(lhs.shape == rhs.shape, "Incompatible shapes of tensors: this.shape = ${shape}, tensor.shape = ${tensor.shape}")
+        guard lhs.shape == rhs.shape else { fatalError("Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)") }
         return Tensor(shape: lhs.shape, elements: zipMap(lhs.elements, rhs.elements, operation: operation))
     } else if lSize < rSize {
-        assert(hasSuffix(array: rhs.shape.dimensions, suffix: lhs.shape.dimensions), "Incompatible shapes of tensors: this.shape = ${shape}, tensor.shape = ${tensor.shape}")
+        guard hasSuffix(array: rhs.shape.dimensions, suffix: lhs.shape.dimensions) else { fatalError("Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)") }
         return Tensor(shape: rhs.shape, elements: zipMapRepeat(rhs.elements, lhs.elements, operation: { operation($1, $0) }))
     } else {
-        assert(hasSuffix(array: lhs.shape.dimensions, suffix: rhs.shape.dimensions), "Incompatible shapes of tensors: this.shape = ${shape}, tensor.shape = ${tensor.shape}")
+        guard hasSuffix(array: lhs.shape.dimensions, suffix: rhs.shape.dimensions) else { fatalError("Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)") }
         return Tensor(shape: lhs.shape, elements: zipMapRepeat(lhs.elements, rhs.elements, operation: operation))
     }
 }
@@ -134,14 +134,15 @@ public func /(lhs: Float, rhs: Tensor) -> Tensor {
 
 extension Tensor { // Matrix
     public func matmul(tensor: Tensor) -> Tensor {
-        assert(shape.dimensions.count == 2, "This tensor is not a matrix: shape = \(shape)")
-        assert(tensor.shape.dimensions.count == 2, "The given tensor is not a matrix: shape = \(tensor.shape)")
-        assert(tensor.shape.dimensions[0] == shape.dimensions[1], "Incompatible shapes of matrices: self.shape = \(shape), tensor.shape = \(tensor.shape)")
+        guard shape.dimensions.count == 2 else { fatalError("This tensor is not a matrix: shape = \(shape)") }
+        guard tensor.shape.dimensions.count == 2 else { fatalError("The given tensor is not a matrix: shape = \(tensor.shape)") }
+        let kDimension = shape.dimensions[1]
+        guard tensor.shape.dimensions[0] == shape.dimensions[1] else { fatalError("Incompatible shapes of matrices: self.shape = \(shape), tensor.shape = \(tensor.shape)") }
         
         let result = Tensor(shape: [shape.dimensions[0], tensor.shape.dimensions[1]])
         
         let n = Int32(tensor.shape.dimensions[1].value)
-        let k = Int32(shape.dimensions[1].value)
+        let k = Int32(kDimension.value)
         cblas_sgemm(
             CblasRowMajor,                                // Order
             CblasNoTrans,                                 // TransA

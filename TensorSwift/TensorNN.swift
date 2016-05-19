@@ -15,11 +15,11 @@ extension Tensor {
 
 extension Tensor {
     public func maxPool(kernelSize kernelSize: [Int], strides: [Int]) -> Tensor { // padding = Same
-        assert(shape.dimensions.count == 3, "`shape.dimensions.count` must be 3: \(shape.dimensions.count)")
-        assert(kernelSize.count == 3, "`ksize.count` must be 3: \(kernelSize.count)")
-        assert(kernelSize[2] == 1 ,"`ksize[3]` != 1 is not supported: \(kernelSize[2])")
-        assert(strides.count == 3, "`strides.count` must be 3: \(strides.count)")
-        assert(strides[2] == 1 ,"`strides[2]` != 1 is not supported: \(strides[2])")
+        guard shape.dimensions.count == 3 else { fatalError("`shape.dimensions.count` must be 3: \(shape.dimensions.count)") }
+        guard kernelSize.count == 3 else { fatalError("`ksize.count` must be 3: \(kernelSize.count)") }
+        guard kernelSize[2] == 1 else { fatalError("`ksize[3]` != 1 is not supported: \(kernelSize[2])") }
+        guard strides.count == 3 else { fatalError("`strides.count` must be 3: \(strides.count)") }
+        guard strides[2] == 1 else { fatalError("`strides[2]` != 1 is not supported: \(strides[2])") }
         
         let inRows = shape.dimensions[0].value
         let inCols = shape.dimensions[1].value
@@ -75,11 +75,11 @@ extension Tensor {
     public func conv2d(filter filter: Tensor, strides: [Int]) -> Tensor { // padding = Same
         let inChannels = filter.shape.dimensions[2].value
         
-        assert(shape.dimensions.count == 3, "`shape.dimensions.count` must be 3: \(shape.dimensions.count)")
-        assert(filter.shape.dimensions.count == 4, "`filter.shape.dimensions.count` must be 4: \(filter.shape.dimensions.count)")
-        assert(strides.count == 3, "`strides.count` must be 3: \(strides.count)")
-        assert(strides[2] == 1, "`strides[2]` must be 1")
-        assert(shape.dimensions[2].value == inChannels, "The number of channels of this tensor and the filter are not compatible: \(shape.dimensions[2]) != \(inChannels)")
+        guard shape.dimensions.count == 3 else { fatalError("`shape.dimensions.count` must be 3: \(shape.dimensions.count)") }
+        guard filter.shape.dimensions.count == 4 else { fatalError("`filter.shape.dimensions.count` must be 4: \(filter.shape.dimensions.count)") }
+        guard strides.count == 3 else { fatalError("`strides.count` must be 3: \(strides.count)") }
+        guard strides[2] == 1 else { fatalError("`strides[2]` must be 1") }
+        guard shape.dimensions[2].value == inChannels else { fatalError("The number of channels of this tensor and the filter are not compatible: \(shape.dimensions[2]) != \(inChannels)") }
         
         let inRows = shape.dimensions[0].value
         let inCols = shape.dimensions[1].value

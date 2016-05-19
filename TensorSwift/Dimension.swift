@@ -2,7 +2,7 @@ public struct Dimension {
     public let value: Int
     
     public init(_ value: Int) {
-        assert(value >= 0, "`value` must be greater than or equal to 0: \(value)")
+        guard value >= 0 else { fatalError("`value` must be greater than or equal to 0: \(value)") }
         self.value = value
     }
 }
