@@ -1,12 +1,15 @@
 import Darwin
 
 public func **(lhs: Tensor, rhs: Tensor) -> Tensor {
-    assert(lhs.shape == rhs.shape, "Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)")
-    return Tensor(shape: lhs.shape, elements: zip(lhs.elements, rhs.elements).map(powf))
+    return noncommutativeBinaryOperation(lhs, rhs, operation: powf)
 }
 
-public func **(lhs: Tensor, rhs: Float) -> Tensor {
+public func **(lhs: Tensor, rhs: Tensor.Element) -> Tensor {
     return Tensor(shape: lhs.shape, elements: lhs.elements.map { powf($0, rhs) })
+}
+
+public func **(lhs: Tensor.Element, rhs: Tensor) -> Tensor {
+    return Tensor(shape: rhs.shape, elements: rhs.elements.map { powf(lhs, $0) })
 }
 
 extension Tensor {
