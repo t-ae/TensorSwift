@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D69C33E41C8D731C007985D4"
+               BlueprintIdentifier = "D6CE6CBA1CEED740004EAAE9"
                BuildableName = "TensorSwift.framework"
-               BlueprintName = "TensorSwift"
+               BlueprintName = "TensorSwift-watchOS"
                ReferencedContainer = "container:TensorSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D69C33EE1C8D731C007985D4"
-               BuildableName = "TensorSwiftTests.xctest"
-               BlueprintName = "TensorSwiftTests"
-               ReferencedContainer = "container:TensorSwift.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D69C33E41C8D731C007985D4"
-            BuildableName = "TensorSwift.framework"
-            BlueprintName = "TensorSwift"
-            ReferencedContainer = "container:TensorSwift.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -64,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D69C33E41C8D731C007985D4"
+            BlueprintIdentifier = "D6CE6CBA1CEED740004EAAE9"
             BuildableName = "TensorSwift.framework"
-            BlueprintName = "TensorSwift"
+            BlueprintName = "TensorSwift-watchOS"
             ReferencedContainer = "container:TensorSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D69C33E41C8D731C007985D4"
+            BlueprintIdentifier = "D6CE6CBA1CEED740004EAAE9"
             BuildableName = "TensorSwift.framework"
-            BlueprintName = "TensorSwift"
+            BlueprintName = "TensorSwift-watchOS"
             ReferencedContainer = "container:TensorSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

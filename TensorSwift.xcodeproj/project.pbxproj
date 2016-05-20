@@ -53,6 +53,42 @@
 		D69C340A1C8E7D44007985D4 /* TensorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34091C8E7D44007985D4 /* TensorMath.swift */; };
 		D69C340C1C8E85D0007985D4 /* TensorNN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C340B1C8E85D0007985D4 /* TensorNN.swift */; };
 		D69C34111C8ED4FD007985D4 /* TensorNNTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34101C8ED4FC007985D4 /* TensorNNTest.swift */; };
+		D6CE6C8D1CEED6F8004EAAE9 /* TensorSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6CE6C831CEED6F7004EAAE9 /* TensorSwift.framework */; };
+		D6CE6CA91CEED72F004EAAE9 /* TensorSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6CE6C9F1CEED72F004EAAE9 /* TensorSwift.framework */; };
+		D6CE6CC31CEED89B004EAAE9 /* TensorSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = D69C33E81C8D731C007985D4 /* TensorSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D6CE6CC41CEED89B004EAAE9 /* Tensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C33FF1C8D735C007985D4 /* Tensor.swift */; };
+		D6CE6CC51CEED89B004EAAE9 /* TensorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34091C8E7D44007985D4 /* TensorMath.swift */; };
+		D6CE6CC61CEED89B004EAAE9 /* TensorNN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C340B1C8E85D0007985D4 /* TensorNN.swift */; };
+		D6CE6CC71CEED89B004EAAE9 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34011C8D7435007985D4 /* Shape.swift */; };
+		D6CE6CC81CEED89B004EAAE9 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34031C8D7487007985D4 /* Dimension.swift */; };
+		D6CE6CC91CEED89B004EAAE9 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34071C8E7D03007985D4 /* Operators.swift */; };
+		D6CE6CCA1CEED89B004EAAE9 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66E2A921CCDD3C700859630 /* Utils.swift */; };
+		D6CE6CCB1CEED89C004EAAE9 /* TensorSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = D69C33E81C8D731C007985D4 /* TensorSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D6CE6CCC1CEED89C004EAAE9 /* Tensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C33FF1C8D735C007985D4 /* Tensor.swift */; };
+		D6CE6CCD1CEED89C004EAAE9 /* TensorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34091C8E7D44007985D4 /* TensorMath.swift */; };
+		D6CE6CCE1CEED89C004EAAE9 /* TensorNN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C340B1C8E85D0007985D4 /* TensorNN.swift */; };
+		D6CE6CCF1CEED89C004EAAE9 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34011C8D7435007985D4 /* Shape.swift */; };
+		D6CE6CD01CEED89C004EAAE9 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34031C8D7487007985D4 /* Dimension.swift */; };
+		D6CE6CD11CEED89C004EAAE9 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34071C8E7D03007985D4 /* Operators.swift */; };
+		D6CE6CD21CEED89C004EAAE9 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66E2A921CCDD3C700859630 /* Utils.swift */; };
+		D6CE6CD31CEED89D004EAAE9 /* TensorSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = D69C33E81C8D731C007985D4 /* TensorSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D6CE6CD41CEED89D004EAAE9 /* Tensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C33FF1C8D735C007985D4 /* Tensor.swift */; };
+		D6CE6CD51CEED89D004EAAE9 /* TensorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34091C8E7D44007985D4 /* TensorMath.swift */; };
+		D6CE6CD61CEED89D004EAAE9 /* TensorNN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C340B1C8E85D0007985D4 /* TensorNN.swift */; };
+		D6CE6CD71CEED89D004EAAE9 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34011C8D7435007985D4 /* Shape.swift */; };
+		D6CE6CD81CEED89D004EAAE9 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34031C8D7487007985D4 /* Dimension.swift */; };
+		D6CE6CD91CEED89D004EAAE9 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34071C8E7D03007985D4 /* Operators.swift */; };
+		D6CE6CDA1CEED89D004EAAE9 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66E2A921CCDD3C700859630 /* Utils.swift */; };
+		D6CE6CDB1CEED8AD004EAAE9 /* TensorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C33F41C8D731C007985D4 /* TensorTest.swift */; };
+		D6CE6CDC1CEED8AD004EAAE9 /* TensorNNTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34101C8ED4FC007985D4 /* TensorNNTest.swift */; };
+		D6CE6CDD1CEED8AD004EAAE9 /* DimensionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6312E6F1CE5D7BB00985B92 /* DimensionTest.swift */; };
+		D6CE6CDE1CEED8AD004EAAE9 /* CalculationPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E021DA1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift */; };
+		D6CE6CDF1CEED8AD004EAAE9 /* TensorSwiftSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34051C8D8F87007985D4 /* TensorSwiftSample.swift */; };
+		D6CE6CE01CEED8AF004EAAE9 /* TensorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C33F41C8D731C007985D4 /* TensorTest.swift */; };
+		D6CE6CE11CEED8AF004EAAE9 /* TensorNNTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34101C8ED4FC007985D4 /* TensorNNTest.swift */; };
+		D6CE6CE21CEED8AF004EAAE9 /* DimensionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6312E6F1CE5D7BB00985B92 /* DimensionTest.swift */; };
+		D6CE6CE31CEED8AF004EAAE9 /* CalculationPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E021DA1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift */; };
+		D6CE6CE41CEED8AF004EAAE9 /* TensorSwiftSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C34051C8D8F87007985D4 /* TensorSwiftSample.swift */; };
 		D6D5D4BA1CA24E7C0041BE85 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D5D4B91CA24E7C0041BE85 /* Downloader.swift */; };
 		D6F63B0D1CB7593000F3C82E /* DownloaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F63B0C1CB7593000F3C82E /* DownloaderTest.swift */; };
 		D6F63B131CB75E8700F3C82E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D6F63B121CB75E8700F3C82E /* libz.tbd */; };
@@ -79,6 +115,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = D69C33E41C8D731C007985D4;
 			remoteInfo = TensorSwift;
+		};
+		D6CE6C8E1CEED6F8004EAAE9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D69C33DC1C8D731C007985D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D6CE6C821CEED6F7004EAAE9;
+			remoteInfo = "TensorSwift-OSX";
+		};
+		D6CE6CAA1CEED72F004EAAE9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D69C33DC1C8D731C007985D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D6CE6C9E1CEED72F004EAAE9;
+			remoteInfo = "TensorSwift-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -141,6 +191,11 @@
 		D69C34091C8E7D44007985D4 /* TensorMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorMath.swift; sourceTree = "<group>"; };
 		D69C340B1C8E85D0007985D4 /* TensorNN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorNN.swift; sourceTree = "<group>"; };
 		D69C34101C8ED4FC007985D4 /* TensorNNTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorNNTest.swift; sourceTree = "<group>"; };
+		D6CE6C831CEED6F7004EAAE9 /* TensorSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TensorSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6CE6C8C1CEED6F8004EAAE9 /* TensorSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TensorSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6CE6C9F1CEED72F004EAAE9 /* TensorSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TensorSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6CE6CA81CEED72F004EAAE9 /* TensorSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TensorSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6CE6CBB1CEED740004EAAE9 /* TensorSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TensorSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6D5D4B91CA24E7C0041BE85 /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		D6F63B0C1CB7593000F3C82E /* DownloaderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloaderTest.swift; sourceTree = "<group>"; };
 		D6F63B121CB75E8700F3C82E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -175,6 +230,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				D69C33F01C8D731C007985D4 /* TensorSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6CE6C7F1CEED6F7004EAAE9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6CE6C891CEED6F8004EAAE9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6CE6C8D1CEED6F8004EAAE9 /* TensorSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6CE6C9B1CEED72F004EAAE9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6CE6CA51CEED72F004EAAE9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6CE6CA91CEED72F004EAAE9 /* TensorSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6CE6CB71CEED740004EAAE9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +341,11 @@
 				D69C33EF1C8D731C007985D4 /* TensorSwiftTests.xctest */,
 				D63F30011C996F4100B88E12 /* MNIST.app */,
 				D63F30141C996F4200B88E12 /* MNISTTests.xctest */,
+				D6CE6C831CEED6F7004EAAE9 /* TensorSwift.framework */,
+				D6CE6C8C1CEED6F8004EAAE9 /* TensorSwiftTests.xctest */,
+				D6CE6C9F1CEED72F004EAAE9 /* TensorSwift.framework */,
+				D6CE6CA81CEED72F004EAAE9 /* TensorSwiftTests.xctest */,
+				D6CE6CBB1CEED740004EAAE9 /* TensorSwift.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -276,8 +373,8 @@
 				D69C34101C8ED4FC007985D4 /* TensorNNTest.swift */,
 				D6312E6F1CE5D7BB00985B92 /* DimensionTest.swift */,
 				A7E021DA1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift */,
-				D69C33F61C8D731C007985D4 /* Info.plist */,
 				D69C34051C8D8F87007985D4 /* TensorSwiftSample.swift */,
+				D69C33F61C8D731C007985D4 /* Info.plist */,
 			);
 			path = TensorSwiftTests;
 			sourceTree = "<group>";
@@ -290,6 +387,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				D69C33E91C8D731C007985D4 /* TensorSwift.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6CE6C801CEED6F7004EAAE9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6CE6CC31CEED89B004EAAE9 /* TensorSwift.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6CE6C9C1CEED72F004EAAE9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6CE6CCB1CEED89C004EAAE9 /* TensorSwift.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6CE6CB81CEED740004EAAE9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6CE6CD31CEED89D004EAAE9 /* TensorSwift.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,9 +454,9 @@
 			productReference = D63F30141C996F4200B88E12 /* MNISTTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D69C33E41C8D731C007985D4 /* TensorSwift */ = {
+		D69C33E41C8D731C007985D4 /* TensorSwift-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D69C33F91C8D731C007985D4 /* Build configuration list for PBXNativeTarget "TensorSwift" */;
+			buildConfigurationList = D69C33F91C8D731C007985D4 /* Build configuration list for PBXNativeTarget "TensorSwift-iOS" */;
 			buildPhases = (
 				D69C33E01C8D731C007985D4 /* Sources */,
 				D69C33E11C8D731C007985D4 /* Frameworks */,
@@ -346,14 +467,14 @@
 			);
 			dependencies = (
 			);
-			name = TensorSwift;
+			name = "TensorSwift-iOS";
 			productName = TensorSwift;
 			productReference = D69C33E51C8D731C007985D4 /* TensorSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		D69C33EE1C8D731C007985D4 /* TensorSwiftTests */ = {
+		D69C33EE1C8D731C007985D4 /* TensorSwiftTests-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D69C33FC1C8D731C007985D4 /* Build configuration list for PBXNativeTarget "TensorSwiftTests" */;
+			buildConfigurationList = D69C33FC1C8D731C007985D4 /* Build configuration list for PBXNativeTarget "TensorSwiftTests-iOS" */;
 			buildPhases = (
 				D69C33EB1C8D731C007985D4 /* Sources */,
 				D69C33EC1C8D731C007985D4 /* Frameworks */,
@@ -364,10 +485,100 @@
 			dependencies = (
 				D69C33F21C8D731C007985D4 /* PBXTargetDependency */,
 			);
-			name = TensorSwiftTests;
+			name = "TensorSwiftTests-iOS";
 			productName = TensorSwiftTests;
 			productReference = D69C33EF1C8D731C007985D4 /* TensorSwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D6CE6C821CEED6F7004EAAE9 /* TensorSwift-OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6CE6C981CEED6F8004EAAE9 /* Build configuration list for PBXNativeTarget "TensorSwift-OSX" */;
+			buildPhases = (
+				D6CE6C7E1CEED6F7004EAAE9 /* Sources */,
+				D6CE6C7F1CEED6F7004EAAE9 /* Frameworks */,
+				D6CE6C801CEED6F7004EAAE9 /* Headers */,
+				D6CE6C811CEED6F7004EAAE9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TensorSwift-OSX";
+			productName = "TensorSwift-OSX";
+			productReference = D6CE6C831CEED6F7004EAAE9 /* TensorSwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D6CE6C8B1CEED6F8004EAAE9 /* TensorSwiftTests-OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6CE6C991CEED6F8004EAAE9 /* Build configuration list for PBXNativeTarget "TensorSwiftTests-OSX" */;
+			buildPhases = (
+				D6CE6C881CEED6F8004EAAE9 /* Sources */,
+				D6CE6C891CEED6F8004EAAE9 /* Frameworks */,
+				D6CE6C8A1CEED6F8004EAAE9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D6CE6C8F1CEED6F8004EAAE9 /* PBXTargetDependency */,
+			);
+			name = "TensorSwiftTests-OSX";
+			productName = "TensorSwift-OSXTests";
+			productReference = D6CE6C8C1CEED6F8004EAAE9 /* TensorSwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D6CE6C9E1CEED72F004EAAE9 /* TensorSwift-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6CE6CB01CEED72F004EAAE9 /* Build configuration list for PBXNativeTarget "TensorSwift-tvOS" */;
+			buildPhases = (
+				D6CE6C9A1CEED72F004EAAE9 /* Sources */,
+				D6CE6C9B1CEED72F004EAAE9 /* Frameworks */,
+				D6CE6C9C1CEED72F004EAAE9 /* Headers */,
+				D6CE6C9D1CEED72F004EAAE9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TensorSwift-tvOS";
+			productName = "TensorSwift-tvOS";
+			productReference = D6CE6C9F1CEED72F004EAAE9 /* TensorSwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D6CE6CA71CEED72F004EAAE9 /* TensorSwiftTests-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6CE6CB31CEED72F004EAAE9 /* Build configuration list for PBXNativeTarget "TensorSwiftTests-tvOS" */;
+			buildPhases = (
+				D6CE6CA41CEED72F004EAAE9 /* Sources */,
+				D6CE6CA51CEED72F004EAAE9 /* Frameworks */,
+				D6CE6CA61CEED72F004EAAE9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D6CE6CAB1CEED72F004EAAE9 /* PBXTargetDependency */,
+			);
+			name = "TensorSwiftTests-tvOS";
+			productName = "TensorSwift-tvOSTests";
+			productReference = D6CE6CA81CEED72F004EAAE9 /* TensorSwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D6CE6CBA1CEED740004EAAE9 /* TensorSwift-watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6CE6CC01CEED740004EAAE9 /* Build configuration list for PBXNativeTarget "TensorSwift-watchOS" */;
+			buildPhases = (
+				D6CE6CB61CEED740004EAAE9 /* Sources */,
+				D6CE6CB71CEED740004EAAE9 /* Frameworks */,
+				D6CE6CB81CEED740004EAAE9 /* Headers */,
+				D6CE6CB91CEED740004EAAE9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TensorSwift-watchOS";
+			productName = "TensorSwift-watchOS";
+			productReference = D6CE6CBB1CEED740004EAAE9 /* TensorSwift.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -375,7 +586,7 @@
 		D69C33DC1C8D731C007985D4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Qoncept, Inc.";
 				TargetAttributes = {
@@ -392,6 +603,21 @@
 					D69C33EE1C8D731C007985D4 = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
+					D6CE6C821CEED6F7004EAAE9 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					D6CE6C8B1CEED6F8004EAAE9 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					D6CE6C9E1CEED72F004EAAE9 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					D6CE6CA71CEED72F004EAAE9 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					D6CE6CBA1CEED740004EAAE9 = {
+						CreatedOnToolsVersion = 7.3;
+					};
 				};
 			};
 			buildConfigurationList = D69C33DF1C8D731C007985D4 /* Build configuration list for PBXProject "TensorSwift" */;
@@ -407,8 +633,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D69C33E41C8D731C007985D4 /* TensorSwift */,
-				D69C33EE1C8D731C007985D4 /* TensorSwiftTests */,
+				D69C33E41C8D731C007985D4 /* TensorSwift-iOS */,
+				D69C33EE1C8D731C007985D4 /* TensorSwiftTests-iOS */,
+				D6CE6C821CEED6F7004EAAE9 /* TensorSwift-OSX */,
+				D6CE6C8B1CEED6F8004EAAE9 /* TensorSwiftTests-OSX */,
+				D6CE6C9E1CEED72F004EAAE9 /* TensorSwift-tvOS */,
+				D6CE6CA71CEED72F004EAAE9 /* TensorSwiftTests-tvOS */,
+				D6CE6CBA1CEED740004EAAE9 /* TensorSwift-watchOS */,
 				D63F30001C996F4100B88E12 /* MNIST */,
 				D63F30131C996F4200B88E12 /* MNISTTests */,
 			);
@@ -457,6 +688,41 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D69C33ED1C8D731C007985D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6CE6C811CEED6F7004EAAE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6CE6C8A1CEED6F8004EAAE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6CE6C9D1CEED72F004EAAE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6CE6CA61CEED72F004EAAE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6CE6CB91CEED740004EAAE9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -519,12 +785,78 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D6CE6C7E1CEED6F7004EAAE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6CE6CC51CEED89B004EAAE9 /* TensorMath.swift in Sources */,
+				D6CE6CC41CEED89B004EAAE9 /* Tensor.swift in Sources */,
+				D6CE6CC61CEED89B004EAAE9 /* TensorNN.swift in Sources */,
+				D6CE6CCA1CEED89B004EAAE9 /* Utils.swift in Sources */,
+				D6CE6CC81CEED89B004EAAE9 /* Dimension.swift in Sources */,
+				D6CE6CC71CEED89B004EAAE9 /* Shape.swift in Sources */,
+				D6CE6CC91CEED89B004EAAE9 /* Operators.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6CE6C881CEED6F8004EAAE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6CE6CDE1CEED8AD004EAAE9 /* CalculationPerformanceTests.swift in Sources */,
+				D6CE6CDC1CEED8AD004EAAE9 /* TensorNNTest.swift in Sources */,
+				D6CE6CDB1CEED8AD004EAAE9 /* TensorTest.swift in Sources */,
+				D6CE6CDD1CEED8AD004EAAE9 /* DimensionTest.swift in Sources */,
+				D6CE6CDF1CEED8AD004EAAE9 /* TensorSwiftSample.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6CE6C9A1CEED72F004EAAE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6CE6CCD1CEED89C004EAAE9 /* TensorMath.swift in Sources */,
+				D6CE6CCC1CEED89C004EAAE9 /* Tensor.swift in Sources */,
+				D6CE6CCE1CEED89C004EAAE9 /* TensorNN.swift in Sources */,
+				D6CE6CD21CEED89C004EAAE9 /* Utils.swift in Sources */,
+				D6CE6CD01CEED89C004EAAE9 /* Dimension.swift in Sources */,
+				D6CE6CCF1CEED89C004EAAE9 /* Shape.swift in Sources */,
+				D6CE6CD11CEED89C004EAAE9 /* Operators.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6CE6CA41CEED72F004EAAE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6CE6CE31CEED8AF004EAAE9 /* CalculationPerformanceTests.swift in Sources */,
+				D6CE6CE11CEED8AF004EAAE9 /* TensorNNTest.swift in Sources */,
+				D6CE6CE01CEED8AF004EAAE9 /* TensorTest.swift in Sources */,
+				D6CE6CE21CEED8AF004EAAE9 /* DimensionTest.swift in Sources */,
+				D6CE6CE41CEED8AF004EAAE9 /* TensorSwiftSample.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6CE6CB61CEED740004EAAE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6CE6CD51CEED89D004EAAE9 /* TensorMath.swift in Sources */,
+				D6CE6CD41CEED89D004EAAE9 /* Tensor.swift in Sources */,
+				D6CE6CD61CEED89D004EAAE9 /* TensorNN.swift in Sources */,
+				D6CE6CDA1CEED89D004EAAE9 /* Utils.swift in Sources */,
+				D6CE6CD81CEED89D004EAAE9 /* Dimension.swift in Sources */,
+				D6CE6CD71CEED89D004EAAE9 /* Shape.swift in Sources */,
+				D6CE6CD91CEED89D004EAAE9 /* Operators.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		D6312E671CE46BDE00985B92 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D69C33E41C8D731C007985D4 /* TensorSwift */;
+			target = D69C33E41C8D731C007985D4 /* TensorSwift-iOS */;
 			targetProxy = D6312E661CE46BDE00985B92 /* PBXContainerItemProxy */;
 		};
 		D63F30161C996F4200B88E12 /* PBXTargetDependency */ = {
@@ -534,8 +866,18 @@
 		};
 		D69C33F21C8D731C007985D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D69C33E41C8D731C007985D4 /* TensorSwift */;
+			target = D69C33E41C8D731C007985D4 /* TensorSwift-iOS */;
 			targetProxy = D69C33F11C8D731C007985D4 /* PBXContainerItemProxy */;
+		};
+		D6CE6C8F1CEED6F8004EAAE9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D6CE6C821CEED6F7004EAAE9 /* TensorSwift-OSX */;
+			targetProxy = D6CE6C8E1CEED6F8004EAAE9 /* PBXContainerItemProxy */;
+		};
+		D6CE6CAB1CEED72F004EAAE9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D6CE6C9E1CEED72F004EAAE9 /* TensorSwift-tvOS */;
+			targetProxy = D6CE6CAA1CEED72F004EAAE9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -713,7 +1055,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwift;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TensorSwift;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
@@ -731,7 +1073,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwift;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TensorSwift;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
@@ -743,7 +1085,7 @@
 				INFOPLIST_FILE = TensorSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwiftTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TensorSwiftTests;
 			};
 			name = Debug;
 		};
@@ -753,7 +1095,187 @@
 				INFOPLIST_FILE = TensorSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwiftTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TensorSwiftTests;
+			};
+			name = Release;
+		};
+		D6CE6C941CEED6F8004EAAE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = TensorSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwift;
+				PRODUCT_NAME = TensorSwift;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D6CE6C951CEED6F8004EAAE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = TensorSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwift;
+				PRODUCT_NAME = TensorSwift;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		D6CE6C961CEED6F8004EAAE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TensorSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwiftTests;
+				PRODUCT_NAME = TensorSwiftTests;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D6CE6C971CEED6F8004EAAE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TensorSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwiftTests;
+				PRODUCT_NAME = TensorSwiftTests;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D6CE6CB11CEED72F004EAAE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = TensorSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwift;
+				PRODUCT_NAME = TensorSwift;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		D6CE6CB21CEED72F004EAAE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = TensorSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwift;
+				PRODUCT_NAME = TensorSwift;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Release;
+		};
+		D6CE6CB41CEED72F004EAAE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = TensorSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwiftTests;
+				PRODUCT_NAME = TensorSwiftTests;
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		D6CE6CB51CEED72F004EAAE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = TensorSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwiftTests;
+				PRODUCT_NAME = TensorSwiftTests;
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Release;
+		};
+		D6CE6CC11CEED740004EAAE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = TensorSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwift;
+				PRODUCT_NAME = TensorSwift;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		D6CE6CC21CEED740004EAAE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = TensorSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwift;
+				PRODUCT_NAME = TensorSwift;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
 		};
@@ -787,7 +1309,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D69C33F91C8D731C007985D4 /* Build configuration list for PBXNativeTarget "TensorSwift" */ = {
+		D69C33F91C8D731C007985D4 /* Build configuration list for PBXNativeTarget "TensorSwift-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D69C33FA1C8D731C007985D4 /* Debug */,
@@ -796,7 +1318,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D69C33FC1C8D731C007985D4 /* Build configuration list for PBXNativeTarget "TensorSwiftTests" */ = {
+		D69C33FC1C8D731C007985D4 /* Build configuration list for PBXNativeTarget "TensorSwiftTests-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D69C33FD1C8D731C007985D4 /* Debug */,
@@ -804,6 +1326,46 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D6CE6C981CEED6F8004EAAE9 /* Build configuration list for PBXNativeTarget "TensorSwift-OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6CE6C941CEED6F8004EAAE9 /* Debug */,
+				D6CE6C951CEED6F8004EAAE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D6CE6C991CEED6F8004EAAE9 /* Build configuration list for PBXNativeTarget "TensorSwiftTests-OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6CE6C961CEED6F8004EAAE9 /* Debug */,
+				D6CE6C971CEED6F8004EAAE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D6CE6CB01CEED72F004EAAE9 /* Build configuration list for PBXNativeTarget "TensorSwift-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6CE6CB11CEED72F004EAAE9 /* Debug */,
+				D6CE6CB21CEED72F004EAAE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D6CE6CB31CEED72F004EAAE9 /* Build configuration list for PBXNativeTarget "TensorSwiftTests-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6CE6CB41CEED72F004EAAE9 /* Debug */,
+				D6CE6CB51CEED72F004EAAE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D6CE6CC01CEED740004EAAE9 /* Build configuration list for PBXNativeTarget "TensorSwift-watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6CE6CC11CEED740004EAAE9 /* Debug */,
+				D6CE6CC21CEED740004EAAE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

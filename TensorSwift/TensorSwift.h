@@ -1,12 +1,4 @@
-//
-//  TensorSwift.h
-//  TensorSwift
-//
-//  Created by Yuta Koshizawa on 3/7/16.
-//  Copyright © 2016 Qoncept, Inc. All rights reserved.
-//
-
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for TensorSwift.
 FOUNDATION_EXPORT double TensorSwiftVersionNumber;
