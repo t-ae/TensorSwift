@@ -1,5 +1,7 @@
 
+#if os(iOS) || os(OSX)
 import Accelerate
+#endif
 
 public struct Tensor {
     public typealias Element = Float
@@ -136,30 +138,55 @@ extension Tensor { // Matrix
     public func matmul(tensor: Tensor) -> Tensor {
         guard shape.dimensions.count == 2 else { fatalError("This tensor is not a matrix: shape = \(shape)") }
         guard tensor.shape.dimensions.count == 2 else { fatalError("The given tensor is not a matrix: shape = \(tensor.shape)") }
-        let kDimension = shape.dimensions[1]
         guard tensor.shape.dimensions[0] == shape.dimensions[1] else { fatalError("Incompatible shapes of matrices: self.shape = \(shape), tensor.shape = \(tensor.shape)") }
         
-        let result = Tensor(shape: [shape.dimensions[0], tensor.shape.dimensions[1]])
-        
-        let n = Int32(tensor.shape.dimensions[1].value)
-        let k = Int32(kDimension.value)
-        cblas_sgemm(
-            CblasRowMajor,                                // Order
-            CblasNoTrans,                                 // TransA
-            CblasNoTrans,                                 // TransB
-            Int32(shape.dimensions[0].value),             // M
-            n,                                            // N
-            k,                                            // K
-            1.0,                                          // alpha
-            elements,                                     // A
-            k,                                            // lda
-            tensor.elements,                              // B
-            n,                                            // ldb
-            1.0,                                          // beta
-            UnsafeMutablePointer<Float>(result.elements), // C
-            n                                             // ldc
-        )
-        
-        return result
+        #if os(iOS) || os(OSX)
+            let result = Tensor(shape: [shape.dimensions[0], tensor.shape.dimensions[1]])
+            
+            let n = Int32(tensor.shape.dimensions[1].value)
+            let k = Int32(shape.dimensions[1].value)
+            cblas_sgemm(
+                CblasRowMajor,                                // Order
+                CblasNoTrans,                                 // TransA
+                CblasNoTrans,                                 // TransB
+                Int32(shape.dimensions[0].value),             // M
+                n,                                            // N
+                k,                                            // K
+                1.0,                                          // alpha
+                elements,                                     // A
+                k,                                            // lda
+                tensor.elements,                              // B
+                n,                                            // ldb
+                1.0,                                          // beta
+                UnsafeMutablePointer<Float>(result.elements), // C
+                n                                             // ldc
+            )
+            
+            return result
+        #else
+            let n = shape.dimensions[1].value
+            
+            let numRows = shape.dimensions[0]
+            let numCols = tensor.shape.dimensions[1]
+            
+            let leftHead = UnsafeMutablePointer<Float>(self.elements)
+            let rightHead = UnsafeMutablePointer<Float>(tensor.elements)
+            
+            let elements = [Float](count: (numCols * numRows).value, repeatedValue: 0.0)
+            for r in 0..<numRows.value {
+                for i in 0..<n {
+                    var pointer = UnsafeMutablePointer<Float>(elements) + r * numCols.value
+                    let left = leftHead[r * n + i]
+                    var rightPointer = rightHead + i * numCols.value
+                    for _ in 0..<numCols.value {
+                        pointer.memory += left * rightPointer.memory
+                        pointer += 1
+                        rightPointer += 1
+                    }
+                }
+            }
+            
+            return Tensor(shape: [numRows, numCols], elements: elements)
+        #endif
     }
 }
