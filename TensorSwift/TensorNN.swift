@@ -1,5 +1,7 @@
 import Darwin
+#if os(iOS) || os(OSX)
 import Accelerate
+#endif
 
 extension Tensor {
     public var softmax: Tensor {
