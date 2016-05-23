@@ -991,6 +991,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1033,6 +1034,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1334,6 +1336,7 @@
 				D6CE6C951CEED6F8004EAAE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6CE6C991CEED6F8004EAAE9 /* Build configuration list for PBXNativeTarget "TensorSwiftTests-OSX" */ = {
 			isa = XCConfigurationList;
@@ -1342,6 +1345,7 @@
 				D6CE6C971CEED6F8004EAAE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6CE6CB01CEED72F004EAAE9 /* Build configuration list for PBXNativeTarget "TensorSwift-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -1350,6 +1354,7 @@
 				D6CE6CB21CEED72F004EAAE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6CE6CB31CEED72F004EAAE9 /* Build configuration list for PBXNativeTarget "TensorSwiftTests-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -1358,6 +1363,7 @@
 				D6CE6CB51CEED72F004EAAE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6CE6CC01CEED740004EAAE9 /* Build configuration list for PBXNativeTarget "TensorSwift-watchOS" */ = {
 			isa = XCConfigurationList;
@@ -1366,6 +1372,7 @@
 				D6CE6CC21CEED740004EAAE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
