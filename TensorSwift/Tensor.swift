@@ -11,7 +11,7 @@ public struct Tensor {
     
     public init(shape: Shape, elements: [Element]) {
         let volume = shape.volume
-        guard elements.count >= volume else { fatalError("`elements.count` must be greater than or equal to `shape.volume`: elements.count = \(elements.count), shape.volume = \(shape.volume)") }
+        precondition(elements.count >= volume, "`elements.count` must be greater than or equal to `shape.volume`: elements.count = \(elements.count), shape.volume = \(shape.volume)")
         self.shape = shape
         self.elements = (elements.count == volume) ? elements : Array(elements[0..<volume])
     }
@@ -68,7 +68,7 @@ internal func commutativeBinaryOperation(lhs: Tensor, _ rhs: Tensor, operation: 
     let rSize = rhs.shape.dimensions.count
     
     if lSize == rSize {
-        guard lhs.shape == rhs.shape else { fatalError("Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)") }
+        precondition(lhs.shape == rhs.shape, "Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)")
         return Tensor(shape: lhs.shape, elements: zipMap(lhs.elements, rhs.elements, operation: operation))
     }
     
@@ -91,13 +91,13 @@ internal func noncommutativeBinaryOperation(lhs: Tensor, _ rhs: Tensor, operatio
     let rSize = rhs.shape.dimensions.count
     
     if lSize == rSize {
-        guard lhs.shape == rhs.shape else { fatalError("Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)") }
+        precondition(lhs.shape == rhs.shape, "Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)")
         return Tensor(shape: lhs.shape, elements: zipMap(lhs.elements, rhs.elements, operation: operation))
     } else if lSize < rSize {
-        guard hasSuffix(array: rhs.shape.dimensions, suffix: lhs.shape.dimensions) else { fatalError("Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)") }
+        precondition(hasSuffix(array: rhs.shape.dimensions, suffix: lhs.shape.dimensions), "Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)")
         return Tensor(shape: rhs.shape, elements: zipMapRepeat(rhs.elements, lhs.elements, operation: { operation($1, $0) }))
     } else {
-        guard hasSuffix(array: lhs.shape.dimensions, suffix: rhs.shape.dimensions) else { fatalError("Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)") }
+        precondition(hasSuffix(array: lhs.shape.dimensions, suffix: rhs.shape.dimensions), "Incompatible shapes of tensors: lhs.shape = \(lhs.shape), rhs.shape = \(rhs.shape)")
         return Tensor(shape: lhs.shape, elements: zipMapRepeat(lhs.elements, rhs.elements, operation: operation))
     }
 }
@@ -136,9 +136,9 @@ public func /(lhs: Float, rhs: Tensor) -> Tensor {
 
 extension Tensor { // Matrix
     public func matmul(tensor: Tensor) -> Tensor {
-        guard shape.dimensions.count == 2 else { fatalError("This tensor is not a matrix: shape = \(shape)") }
-        guard tensor.shape.dimensions.count == 2 else { fatalError("The given tensor is not a matrix: shape = \(tensor.shape)") }
-        guard tensor.shape.dimensions[0] == shape.dimensions[1] else { fatalError("Incompatible shapes of matrices: self.shape = \(shape), tensor.shape = \(tensor.shape)") }
+        precondition(shape.dimensions.count == 2, "This tensor is not a matrix: shape = \(shape)")
+        precondition(tensor.shape.dimensions.count == 2, "The given tensor is not a matrix: shape = \(tensor.shape)")
+        precondition(tensor.shape.dimensions[0] == shape.dimensions[1], "Incompatible shapes of matrices: self.shape = \(shape), tensor.shape = \(tensor.shape)")
         
         #if os(iOS) || os(OSX)
             let result = Tensor(shape: [shape.dimensions[0], tensor.shape.dimensions[1]])
