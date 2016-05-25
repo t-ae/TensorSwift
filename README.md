@@ -51,10 +51,16 @@ public struct Classifier {
 
 ## Instration
 
+### CocoaPods
+
+```
+pod 'TensorSwift', '~> 0.1'
+```
+
 ### Carthage
 
 ```
-github "qoncept/TensorSwift" "master"
+github "qoncept/TensorSwift" ~> 0.1
 ```
 
 ## License
