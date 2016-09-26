@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		273614FA1CB3E72200CF4935 /* SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273614F91CB3E72200CF4935 /* SHA1.swift */; };
+		A7DF6CC61D9924C30097CEB7 /* PowerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6CC51D9924C30097CEB7 /* PowerTest.swift */; };
 		A7E021DB1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E021DA1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift */; };
 		D6312E411CE33BB700985B92 /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6312E401CE33BB700985B92 /* Classifier.swift */; };
 		D6312E431CE4341500985B92 /* ClassifierTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6312E421CE4341500985B92 /* ClassifierTest.swift */; };
@@ -149,6 +150,7 @@
 /* Begin PBXFileReference section */
 		273614F91CB3E72200CF4935 /* SHA1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA1.swift; sourceTree = "<group>"; };
 		273614FC1CB3E81B00CF4935 /* MNISTTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MNISTTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		A7DF6CC51D9924C30097CEB7 /* PowerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerTest.swift; sourceTree = "<group>"; };
 		A7E021DA1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculationPerformanceTests.swift; sourceTree = "<group>"; };
 		D6312E401CE33BB700985B92 /* Classifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
 		D6312E421CE4341500985B92 /* ClassifierTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassifierTest.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 				D69C34101C8ED4FC007985D4 /* TensorNNTest.swift */,
 				D6312E6F1CE5D7BB00985B92 /* DimensionTest.swift */,
 				A7E021DA1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift */,
+				A7DF6CC51D9924C30097CEB7 /* PowerTest.swift */,
 				D69C34051C8D8F87007985D4 /* TensorSwiftSample.swift */,
 				D69C33F61C8D731C007985D4 /* Info.plist */,
 			);
@@ -599,9 +602,11 @@
 					};
 					D69C33E41C8D731C007985D4 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
 					};
 					D69C33EE1C8D731C007985D4 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
 					};
 					D6CE6C821CEED6F7004EAAE9 = {
 						CreatedOnToolsVersion = 7.3;
@@ -780,6 +785,7 @@
 				D69C34111C8ED4FD007985D4 /* TensorNNTest.swift in Sources */,
 				D6312E701CE5D7BB00985B92 /* DimensionTest.swift in Sources */,
 				A7E021DB1CAA4B2F00BAFC54 /* CalculationPerformanceTests.swift in Sources */,
+				A7DF6CC61D9924C30097CEB7 /* PowerTest.swift in Sources */,
 				D69C34061C8D8F87007985D4 /* TensorSwiftSample.swift in Sources */,
 				D69C33F51C8D731C007985D4 /* TensorTest.swift in Sources */,
 			);
@@ -1048,7 +1054,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1060,6 +1069,7 @@
 				PRODUCT_NAME = TensorSwift;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1068,6 +1078,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1078,6 +1089,7 @@
 				PRODUCT_NAME = TensorSwift;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1088,6 +1100,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwiftTests;
 				PRODUCT_NAME = TensorSwiftTests;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1098,6 +1111,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.TensorSwiftTests;
 				PRODUCT_NAME = TensorSwiftTests;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

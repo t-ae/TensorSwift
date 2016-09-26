@@ -10,7 +10,7 @@ public struct Shape {
     }
 }
 
-extension Shape: ArrayLiteralConvertible {
+extension Shape: ExpressibleByArrayLiteral {
     public init(arrayLiteral elements: Dimension...) {
         self.init(elements)
     }

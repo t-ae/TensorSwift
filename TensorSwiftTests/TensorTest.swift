@@ -148,7 +148,7 @@ class TensorTest: XCTestCase {
     func testMatmulPerformance(){
         let a = Tensor(shape: [1000, 1000], element: 0.1)
         let b = Tensor(shape: [1000, 1000], element: 0.1)
-        measureBlock{
+        measure{
             a.matmul(b)
         }
     }

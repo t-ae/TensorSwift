@@ -6,7 +6,7 @@ import Accelerate
 extension Tensor {
     public var softmax: Tensor {
         let exps = exp
-        let sum = exps.elements.reduce(0.0, combine: +)
+        let sum = exps.elements.reduce(0.0, +)
         return exps / sum
     }
     
@@ -16,7 +16,7 @@ extension Tensor {
 }
 
 extension Tensor {
-    public func maxPool(kernelSize kernelSize: [Int], strides: [Int]) -> Tensor { // padding = Same
+    public func maxPool(kernelSize: [Int], strides: [Int]) -> Tensor { // padding = Same
         precondition(shape.dimensions.count == 3, "`shape.dimensions.count` must be 3: \(shape.dimensions.count)")
         precondition(kernelSize.count == 3, "`ksize.count` must be 3: \(kernelSize.count)")
         precondition(kernelSize[2] == 1, "`ksize[3]` != 1 is not supported: \(kernelSize[2])")
@@ -42,25 +42,25 @@ extension Tensor {
         let outCols = shape.dimensions[1].value.ceilDiv(colStride)
         
         // Initialize with -infinity for maximization.
-        let elements = [Element](count: outCols * outRows * numChannels, repeatedValue: -Float.infinity)
+        let elements = [Element](repeating: -Float.infinity, count: outCols * outRows * numChannels)
         
         for y in 0..<outRows {
             let inY0 = y * rowStride
-            let inMinY = max(inY0 + inMinDy, 0)
-            let inMaxY = min(inY0 + inMaxDy, inRows - 1)
+            let inMinY = Swift.max(inY0 + inMinDy, 0)
+            let inMaxY = Swift.min(inY0 + inMaxDy, inRows - 1)
 
             for inY in inMinY...inMaxY {
                 var outPixelIndex = y * outCols
                 for x in 0..<outCols {
                     let inX0 = x * colStride
-                    let inMinX = max(inX0 + inMinDx, 0)
-                    let inMaxX = min(inX0 + inMaxDx, inCols - 1)
+                    let inMinX = Swift.max(inX0 + inMinDx, 0)
+                    let inMaxX = Swift.min(inX0 + inMaxDx, inCols - 1)
                     
-                    var inPointer = UnsafeMutablePointer<Element>(self.elements) + (inY * inCols + inMinX) * numChannels
+                    var inPointer = UnsafeMutablePointer<Element>(mutating: self.elements) + (inY * inCols + inMinX) * numChannels
                     for _ in inMinX...inMaxX {
-                        var outPointer = UnsafeMutablePointer<Element>(elements) + outPixelIndex * numChannels
+                        var outPointer = UnsafeMutablePointer<Element>(mutating: elements) + outPixelIndex * numChannels
                         for _ in 0..<numChannels {
-                            outPointer.memory = max(outPointer.memory, inPointer.memory)
+                            outPointer.pointee = Swift.max(outPointer.pointee, inPointer.pointee)
                             outPointer += 1
                             inPointer += 1
                         }
@@ -74,7 +74,7 @@ extension Tensor {
     }
     
     
-    public func conv2d(filter filter: Tensor, strides: [Int]) -> Tensor { // padding = Same
+    public func conv2d(filter: Tensor, strides: [Int]) -> Tensor { // padding = Same
         let inChannels = filter.shape.dimensions[2].value
         
         precondition(shape.dimensions.count == 3, "`shape.dimensions.count` must be 3: \(shape.dimensions.count)")
@@ -106,22 +106,22 @@ extension Tensor {
             
             // a.shape == [outRows * outCols, rowSize]
             let rowSize = filterHeight * filterWidth * inChannels
-            let a = [Float](count: outRows * outCols * rowSize, repeatedValue: 0)
+            let a = [Float](repeating: 0, count: outRows * outCols * rowSize)
             for y in 0..<outRows {
                 let inY0 = y * rowStride
-                let inMinY = max(inY0 + inMinDy, 0)
-                let inMaxY = min(inY0 + inMaxDy, inRows - 1)
+                let inMinY = Swift.max(inY0 + inMinDy, 0)
+                let inMaxY = Swift.min(inY0 + inMaxDy, inRows - 1)
                 
                 for x in 0..<outCols{
                     let inX0 = x * colStride
-                    let inMinX = max(inX0 + inMinDx, 0)
-                    let inMaxX = min(inX0 + inMaxDx, inCols - 1)
+                    let inMinX = Swift.max(inX0 + inMinDx, 0)
+                    let inMaxX = Swift.min(inX0 + inMaxDx, inCols - 1)
                     
                     // Add (x,y)'s patch as a vector
-                    var dest = UnsafeMutablePointer<Float>(a) + ((y * outCols + x) * filterHeight - min(inY0 + inMinDy, 0)) * filterWidth * inChannels
+                    var dest = UnsafeMutablePointer<Float>(mutating: a) + ((y * outCols + x) * filterHeight - Swift.min(inY0 + inMinDy, 0)) * filterWidth * inChannels
                     var src = elementsPointer + (inMinY * inCols + inMinX) * inChannels
                     for _ in inMinY...inMaxY {
-                        memcpy(dest - min(inMinX + inMinDx, 0) * inChannels, src, (inMinX...inMaxX).count * inChannels * sizeof(Float))
+                        memcpy(dest - Swift.min(inMinX + inMinDx, 0) * inChannels, src, (inMinX...inMaxX).count * inChannels * MemoryLayout<Float>.size)
                         dest += filterWidth * inChannels
                         src += inCols * inChannels
                     }
@@ -147,7 +147,7 @@ extension Tensor {
                 UnsafePointer<Float>(filter.elements),        // B
                 n,                                            // ldb
                 1.0,                                          // beta
-                UnsafeMutablePointer<Float>(result.elements), // C
+                UnsafeMutablePointer<Float>(mutating: result.elements), // C
                 n                                             // ldc
             )
             

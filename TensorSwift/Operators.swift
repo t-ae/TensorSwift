@@ -1,1 +1,5 @@
-infix operator ** { associativity left precedence 170 }
+infix operator ** : PowerPrecedence
+precedencegroup PowerPrecedence {
+    associativity: right
+    higherThan: MultiplicationPrecedence
+}
