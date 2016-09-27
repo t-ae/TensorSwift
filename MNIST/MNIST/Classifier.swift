@@ -11,7 +11,7 @@ public struct Classifier {
     public let W_fc2: Tensor
     public let b_fc2: Tensor
     
-    public func classify(x_image: Tensor) -> Int {
+    public func classify(_ x_image: Tensor) -> Int {
         let h_conv1 = (x_image.conv2d(filter: W_conv1, strides: [1, 1, 1]) + b_conv1).relu
         let h_pool1 = h_conv1.maxPool(kernelSize: [2, 2, 1], strides: [2, 2, 1])
         
@@ -23,7 +23,7 @@ public struct Classifier {
         
         let y_conv = (h_fc1.matmul(W_fc2) + b_fc2).softmax
 
-        return y_conv.elements.enumerate().maxElement { $0.1 < $1.1 }!.0
+        return y_conv.elements.enumerated().max { $0.1 < $1.1 }!.0
     }
 }
 
@@ -40,7 +40,7 @@ extension Classifier {
     }
 }
 
-private func loadFloatArray(directory directory: String, file: String) -> [Float] {
-    let data = NSData(contentsOfFile: directory.stringByAppendingPathComponent(file))!
-    return Array(UnsafeBufferPointer(start: UnsafeMutablePointer<Float>(data.bytes), count: data.length / 4))
+private func loadFloatArray(directory: String, file: String) -> [Float] {
+    let data = try! Data(contentsOf: URL(fileURLWithPath: directory.stringByAppendingPathComponent(file)))
+    return Array(UnsafeBufferPointer(start: UnsafeMutablePointer<Float>(mutating: (data as NSData).bytes.bindMemory(to: Float.self, capacity: data.count)), count: data.count / 4))
 }
