@@ -29,18 +29,18 @@ public struct Classifier {
 
 extension Classifier {
     public init(path: String) {
-        W_conv1 = Tensor(shape: [5, 5, 1, 32], elements: loadFloatArray(directory: path, file: "W_conv1"))
-        b_conv1 = Tensor(shape: [32], elements: loadFloatArray(directory: path, file: "b_conv1"))
-        W_conv2 = Tensor(shape: [5, 5, 32, 64], elements: loadFloatArray(directory: path, file: "W_conv2"))
-        b_conv2 = Tensor(shape: [64], elements: loadFloatArray(directory: path, file: "b_conv2"))
-        W_fc1 = Tensor(shape: [7 * 7 * 64, 1024], elements: loadFloatArray(directory: path, file: "W_fc1"))
-        b_fc1 = Tensor(shape: [1024], elements: loadFloatArray(directory: path, file: "b_fc1"))
-        W_fc2 = Tensor(shape: [1024, 10], elements: loadFloatArray(directory: path, file: "W_fc2"))
-        b_fc2 = Tensor(shape: [10], elements: loadFloatArray(directory: path, file: "b_fc2"))
+        W_conv1 = Tensor(shape: [5, 5, 1, 32], elements: loadFloatArray(path, file: "W_conv1"))
+        b_conv1 = Tensor(shape: [32], elements: loadFloatArray(path, file: "b_conv1"))
+        W_conv2 = Tensor(shape: [5, 5, 32, 64], elements: loadFloatArray(path, file: "W_conv2"))
+        b_conv2 = Tensor(shape: [64], elements: loadFloatArray(path, file: "b_conv2"))
+        W_fc1 = Tensor(shape: [7 * 7 * 64, 1024], elements: loadFloatArray(path, file: "W_fc1"))
+        b_fc1 = Tensor(shape: [1024], elements: loadFloatArray(path, file: "b_fc1"))
+        W_fc2 = Tensor(shape: [1024, 10], elements: loadFloatArray(path, file: "W_fc2"))
+        b_fc2 = Tensor(shape: [10], elements: loadFloatArray(path, file: "b_fc2"))
     }
 }
 
-private func loadFloatArray(directory: String, file: String) -> [Float] {
+private func loadFloatArray(_ directory: String, file: String) -> [Float] {
     let data = try! Data(contentsOf: URL(fileURLWithPath: directory.stringByAppendingPathComponent(file)))
     return Array(UnsafeBufferPointer(start: UnsafeMutablePointer<Float>(mutating: (data as NSData).bytes.bindMemory(to: Float.self, capacity: data.count)), count: data.count / 4))
 }

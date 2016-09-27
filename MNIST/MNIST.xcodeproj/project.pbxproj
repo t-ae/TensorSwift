@@ -12,7 +12,6 @@
 		A7DF6EC91D9A1B4A0097CEB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7DF6EC71D9A1B4A0097CEB7 /* Main.storyboard */; };
 		A7DF6ECB1D9A1B4A0097CEB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7DF6ECA1D9A1B4A0097CEB7 /* Assets.xcassets */; };
 		A7DF6ECE1D9A1B4A0097CEB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7DF6ECC1D9A1B4A0097CEB7 /* LaunchScreen.storyboard */; };
-		A7DF6EE41D9A1B4A0097CEB7 /* MNISTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6EE31D9A1B4A0097CEB7 /* MNISTUITests.swift */; };
 		A7DF6EFA1D9A1B7D0097CEB7 /* TensorSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DF6EF71D9A1B5B0097CEB7 /* TensorSwift.framework */; };
 		A7DF6EFB1D9A1B7D0097CEB7 /* TensorSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A7DF6EF71D9A1B5B0097CEB7 /* TensorSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A7DF6F0D1D9A1BC90097CEB7 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6EFF1D9A1BC90097CEB7 /* Canvas.swift */; };
@@ -34,17 +33,12 @@
 		A7DF6F261D9A1BDA0097CEB7 /* DownloaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6F1E1D9A1BDA0097CEB7 /* DownloaderTest.swift */; };
 		A7DF6F271D9A1BDA0097CEB7 /* MNISTTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6F201D9A1BDA0097CEB7 /* MNISTTest.swift */; };
 		A7DF6F281D9A1BDA0097CEB7 /* SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6F221D9A1BDA0097CEB7 /* SHA1.swift */; };
+		A7DF6F2F1D9A24650097CEB7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DF6F2D1D9A1DA40097CEB7 /* libz.tbd */; };
+		A7DF6F351D9A26180097CEB7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DF6F2D1D9A1DA40097CEB7 /* libz.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		A7DF6ED51D9A1B4A0097CEB7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A7DF6EB81D9A1B4A0097CEB7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A7DF6EBF1D9A1B4A0097CEB7;
-			remoteInfo = MNIST;
-		};
-		A7DF6EE01D9A1B4A0097CEB7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A7DF6EB81D9A1B4A0097CEB7 /* Project object */;
 			proxyType = 1;
@@ -98,9 +92,6 @@
 		A7DF6ECF1D9A1B4A0097CEB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7DF6ED41D9A1B4A0097CEB7 /* MNISTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MNISTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DF6EDA1D9A1B4A0097CEB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A7DF6EDF1D9A1B4A0097CEB7 /* MNISTUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MNISTUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7DF6EE31D9A1B4A0097CEB7 /* MNISTUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNISTUITests.swift; sourceTree = "<group>"; };
-		A7DF6EE51D9A1B4A0097CEB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7DF6EF11D9A1B5B0097CEB7 /* TensorSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TensorSwift.xcodeproj; path = ../TensorSwift.xcodeproj; sourceTree = "<group>"; };
 		A7DF6EFF1D9A1BC90097CEB7 /* Canvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		A7DF6F001D9A1BC90097CEB7 /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
@@ -122,8 +113,8 @@
 		A7DF6F1E1D9A1BDA0097CEB7 /* DownloaderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloaderTest.swift; sourceTree = "<group>"; };
 		A7DF6F1F1D9A1BDA0097CEB7 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		A7DF6F201D9A1BDA0097CEB7 /* MNISTTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNISTTest.swift; sourceTree = "<group>"; };
-		A7DF6F211D9A1BDA0097CEB7 /* MNISTTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MNISTTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		A7DF6F221D9A1BDA0097CEB7 /* SHA1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA1.swift; sourceTree = "<group>"; };
+		A7DF6F2D1D9A1DA40097CEB7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7DF6F2F1D9A24650097CEB7 /* libz.tbd in Frameworks */,
 				A7DF6EFA1D9A1B7D0097CEB7 /* TensorSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,13 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7DF6EDC1D9A1B4A0097CEB7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				A7DF6F351D9A26180097CEB7 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,8 +144,8 @@
 				A7DF6EF11D9A1B5B0097CEB7 /* TensorSwift.xcodeproj */,
 				A7DF6EC21D9A1B4A0097CEB7 /* MNIST */,
 				A7DF6ED71D9A1B4A0097CEB7 /* MNISTTests */,
-				A7DF6EE21D9A1B4A0097CEB7 /* MNISTUITests */,
 				A7DF6EC11D9A1B4A0097CEB7 /* Products */,
+				A7DF6F2C1D9A1DA40097CEB7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,7 +154,6 @@
 			children = (
 				A7DF6EC01D9A1B4A0097CEB7 /* MNIST.app */,
 				A7DF6ED41D9A1B4A0097CEB7 /* MNISTTests.xctest */,
-				A7DF6EDF1D9A1B4A0097CEB7 /* MNISTUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -196,26 +181,16 @@
 			isa = PBXGroup;
 			children = (
 				A7DF6F1B1D9A1BDA0097CEB7 /* Array.swift */,
-				A7DF6F1C1D9A1BDA0097CEB7 /* ClassifierTest.swift */,
 				A7DF6F1D1D9A1BDA0097CEB7 /* Downloader.swift */,
 				A7DF6F1E1D9A1BDA0097CEB7 /* DownloaderTest.swift */,
+				A7DF6F1C1D9A1BDA0097CEB7 /* ClassifierTest.swift */,
 				A7DF6F1F1D9A1BDA0097CEB7 /* Header.h */,
 				A7DF6F201D9A1BDA0097CEB7 /* MNISTTest.swift */,
-				A7DF6F211D9A1BDA0097CEB7 /* MNISTTests-Bridging-Header.h */,
 				A7DF6F221D9A1BDA0097CEB7 /* SHA1.swift */,
 				A7DF6EDA1D9A1B4A0097CEB7 /* Info.plist */,
 				A7DF6F1A1D9A1BD90097CEB7 /* MNISTTests-Bridging-Header.h */,
 			);
 			path = MNISTTests;
-			sourceTree = "<group>";
-		};
-		A7DF6EE21D9A1B4A0097CEB7 /* MNISTUITests */ = {
-			isa = PBXGroup;
-			children = (
-				A7DF6EE31D9A1B4A0097CEB7 /* MNISTUITests.swift */,
-				A7DF6EE51D9A1B4A0097CEB7 /* Info.plist */,
-			);
-			path = MNISTUITests;
 			sourceTree = "<group>";
 		};
 		A7DF6EF21D9A1B5B0097CEB7 /* Products */ = {
@@ -240,6 +215,14 @@
 				A7DF6F0B1D9A1BC90097CEB7 /* W_fc2 */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A7DF6F2C1D9A1DA40097CEB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7DF6F2D1D9A1DA40097CEB7 /* libz.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,24 +265,6 @@
 			productReference = A7DF6ED41D9A1B4A0097CEB7 /* MNISTTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A7DF6EDE1D9A1B4A0097CEB7 /* MNISTUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A7DF6EEE1D9A1B4A0097CEB7 /* Build configuration list for PBXNativeTarget "MNISTUITests" */;
-			buildPhases = (
-				A7DF6EDB1D9A1B4A0097CEB7 /* Sources */,
-				A7DF6EDC1D9A1B4A0097CEB7 /* Frameworks */,
-				A7DF6EDD1D9A1B4A0097CEB7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A7DF6EE11D9A1B4A0097CEB7 /* PBXTargetDependency */,
-			);
-			name = MNISTUITests;
-			productName = MNISTUITests;
-			productReference = A7DF6EDF1D9A1B4A0097CEB7 /* MNISTUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -312,18 +277,12 @@
 				TargetAttributes = {
 					A7DF6EBF1D9A1B4A0097CEB7 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 3B8C483UAP;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					A7DF6ED31D9A1B4A0097CEB7 = {
 						CreatedOnToolsVersion = 8.0;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
-						TestTargetID = A7DF6EBF1D9A1B4A0097CEB7;
-					};
-					A7DF6EDE1D9A1B4A0097CEB7 = {
-						CreatedOnToolsVersion = 8.0;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A7DF6EBF1D9A1B4A0097CEB7;
 					};
@@ -350,7 +309,6 @@
 			targets = (
 				A7DF6EBF1D9A1B4A0097CEB7 /* MNIST */,
 				A7DF6ED31D9A1B4A0097CEB7 /* MNISTTests */,
-				A7DF6EDE1D9A1B4A0097CEB7 /* MNISTUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -398,13 +356,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A7DF6EDD1D9A1B4A0097CEB7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -435,14 +386,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A7DF6EDB1D9A1B4A0097CEB7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A7DF6EE41D9A1B4A0097CEB7 /* MNISTUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -450,11 +393,6 @@
 			isa = PBXTargetDependency;
 			target = A7DF6EBF1D9A1B4A0097CEB7 /* MNIST */;
 			targetProxy = A7DF6ED51D9A1B4A0097CEB7 /* PBXContainerItemProxy */;
-		};
-		A7DF6EE11D9A1B4A0097CEB7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A7DF6EBF1D9A1B4A0097CEB7 /* MNIST */;
-			targetProxy = A7DF6EE01D9A1B4A0097CEB7 /* PBXContainerItemProxy */;
 		};
 		A7DF6EFD1D9A1B7D0097CEB7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -523,7 +461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -567,7 +505,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -581,12 +519,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3B8C483UAP;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MNIST/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.MNIST;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -596,12 +536,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3B8C483UAP;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MNIST/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.MNIST;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -612,6 +554,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MNISTTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.MNISTTests;
@@ -629,6 +572,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MNISTTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.MNISTTests;
@@ -636,32 +580,6 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "MNISTTests/MNISTTests-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MNIST.app/MNIST";
-			};
-			name = Release;
-		};
-		A7DF6EEF1D9A1B4A0097CEB7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = MNISTUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.MNISTUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = MNIST;
-			};
-			name = Debug;
-		};
-		A7DF6EF01D9A1B4A0097CEB7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = MNISTUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.co.qoncept.MNISTUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = MNIST;
 			};
 			name = Release;
 		};
@@ -690,14 +608,6 @@
 			buildConfigurations = (
 				A7DF6EEC1D9A1B4A0097CEB7 /* Debug */,
 				A7DF6EED1D9A1B4A0097CEB7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		A7DF6EEE1D9A1B4A0097CEB7 /* Build configuration list for PBXNativeTarget "MNISTUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A7DF6EEF1D9A1B4A0097CEB7 /* Debug */,
-				A7DF6EF01D9A1B4A0097CEB7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
