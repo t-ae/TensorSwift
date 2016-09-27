@@ -44,14 +44,12 @@
 		__PBXFileRef_Sources/TensorNN.swift /* TensorNN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorNN.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Utils.swift /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		__PBXFileRef_TensorSwift.xcodeproj/Configs/Project.xcconfig /* TensorSwift.xcodeproj/Configs/Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TensorSwift.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
-		__PBXFileRef_TensorSwiftTests /* TensorSwiftTests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TensorSwiftTests; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/TensorSwiftTests/CalculationPerformanceTests.swift /* CalculationPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationPerformanceTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/TensorSwiftTests/DimensionTest.swift /* DimensionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionTest.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/TensorSwiftTests/PowerTest.swift /* PowerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerTest.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/TensorSwiftTests/TensorNNTest.swift /* TensorNNTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorNNTest.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/TensorSwiftTests/TensorSwiftSample.swift /* TensorSwiftSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorSwiftSample.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/TensorSwiftTests/TensorTest.swift /* TensorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorTest.swift; sourceTree = "<group>"; };
-		__PBXFileRef_zlib /* zlib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = zlib; sourceTree = "<group>"; };
 		"_____Product_TensorSwift" /* TensorSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TensorSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_TensorSwiftTests" /* TensorSwiftTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = TensorSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -90,8 +88,6 @@
 				"_____Configs_" /* Configs */,
 				"_____Sources_" /* Sources */,
 				__PBXFileRef_Resources /* Resources */,
-				__PBXFileRef_TensorSwiftTests /* TensorSwiftTests */,
-				__PBXFileRef_zlib /* zlib */,
 				"_______Tests_" /* Tests */,
 				"____Products_" /* Products */,
 			);

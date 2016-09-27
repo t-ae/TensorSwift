@@ -2,10 +2,10 @@ import UIKit
 import TensorSwift
 
 class ViewController: UIViewController {
-    @IBOutlet fileprivate var canvasView: CanvasView!
+    @IBOutlet private var canvasView: CanvasView!
     
-    fileprivate let inputSize = 28
-    fileprivate let classifier = Classifier(path: Bundle.main.resourcePath!)
+    private let inputSize = 28
+    private let classifier = Classifier(path: Bundle.main.resourcePath!)
 
     @IBAction func onPressClassifyButton(_ sender: UIButton) {
         let input: Tensor

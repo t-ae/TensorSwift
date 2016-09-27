@@ -1,7 +1,7 @@
 import UIKit
 
 class CanvasView: UIView {
-    fileprivate(set) var canvas: Canvas
+    private(set) var canvas: Canvas
     
     required init?(coder: NSCoder) {
         canvas = Canvas()
