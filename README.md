@@ -63,6 +63,12 @@ pod 'TensorSwift', '~> 0.1'
 github "qoncept/TensorSwift" ~> 0.1
 ```
 
+### Swift Package Manager
+```
+.Package(url: "git@github.com:qoncept/TensorSwift.git",
+         Version(0, 2, 0, prereleaseIdentifiers: ["beta"])),
+```
+
 ## License
 
 [The MIT License](LICENSE)
