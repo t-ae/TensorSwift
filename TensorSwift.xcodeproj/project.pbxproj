@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7DF6F881D9BB9240097CEB7 /* CalculationPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6F811D9BB9240097CEB7 /* CalculationPerformanceTests.swift */; };
+		A7DF6F891D9BB9240097CEB7 /* DimensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6F821D9BB9240097CEB7 /* DimensionTests.swift */; };
+		A7DF6F8A1D9BB9240097CEB7 /* PowerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6F841D9BB9240097CEB7 /* PowerTests.swift */; };
+		A7DF6F8B1D9BB9240097CEB7 /* TensorNNTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6F851D9BB9240097CEB7 /* TensorNNTests.swift */; };
+		A7DF6F8C1D9BB9240097CEB7 /* TensorSwiftSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6F861D9BB9240097CEB7 /* TensorSwiftSample.swift */; };
+		A7DF6F8D1D9BB9240097CEB7 /* TensorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6F871D9BB9240097CEB7 /* TensorTests.swift */; };
+		A7DF6F8F1D9BB9660097CEB7 /* TensorSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6F8E1D9BB9660097CEB7 /* TensorSwiftTests.swift */; };
 		_LinkFileRef_TensorSwift_via_TensorSwiftTests /* TensorSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_TensorSwift" /* TensorSwift.framework */; };
 		__src_cc_ref_Sources/Dimension.swift /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Dimension.swift /* Dimension.swift */; };
 		__src_cc_ref_Sources/Operators.swift /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Operators.swift /* Operators.swift */; };
@@ -15,12 +22,6 @@
 		__src_cc_ref_Sources/TensorMath.swift /* TensorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/TensorMath.swift /* TensorMath.swift */; };
 		__src_cc_ref_Sources/TensorNN.swift /* TensorNN.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/TensorNN.swift /* TensorNN.swift */; };
 		__src_cc_ref_Sources/Utils.swift /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Utils.swift /* Utils.swift */; };
-		__src_cc_ref_Tests/TensorSwiftTests/CalculationPerformanceTests.swift /* CalculationPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/TensorSwiftTests/CalculationPerformanceTests.swift /* CalculationPerformanceTests.swift */; };
-		__src_cc_ref_Tests/TensorSwiftTests/DimensionTest.swift /* DimensionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/TensorSwiftTests/DimensionTest.swift /* DimensionTest.swift */; };
-		__src_cc_ref_Tests/TensorSwiftTests/PowerTest.swift /* PowerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/TensorSwiftTests/PowerTest.swift /* PowerTest.swift */; };
-		__src_cc_ref_Tests/TensorSwiftTests/TensorNNTest.swift /* TensorNNTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/TensorSwiftTests/TensorNNTest.swift /* TensorNNTest.swift */; };
-		__src_cc_ref_Tests/TensorSwiftTests/TensorSwiftSample.swift /* TensorSwiftSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/TensorSwiftTests/TensorSwiftSample.swift /* TensorSwiftSample.swift */; };
-		__src_cc_ref_Tests/TensorSwiftTests/TensorTest.swift /* TensorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/TensorSwiftTests/TensorTest.swift /* TensorTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A7DF6F811D9BB9240097CEB7 /* CalculationPerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculationPerformanceTests.swift; sourceTree = "<group>"; };
+		A7DF6F821D9BB9240097CEB7 /* DimensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimensionTests.swift; sourceTree = "<group>"; };
+		A7DF6F841D9BB9240097CEB7 /* PowerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerTests.swift; sourceTree = "<group>"; };
+		A7DF6F851D9BB9240097CEB7 /* TensorNNTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorNNTests.swift; sourceTree = "<group>"; };
+		A7DF6F861D9BB9240097CEB7 /* TensorSwiftSample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorSwiftSample.swift; sourceTree = "<group>"; };
+		A7DF6F871D9BB9240097CEB7 /* TensorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorTests.swift; sourceTree = "<group>"; };
+		A7DF6F8E1D9BB9660097CEB7 /* TensorSwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorSwiftTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Resources /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Dimension.swift /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
@@ -44,14 +52,8 @@
 		__PBXFileRef_Sources/TensorNN.swift /* TensorNN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorNN.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Utils.swift /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		__PBXFileRef_TensorSwift.xcodeproj/Configs/Project.xcconfig /* TensorSwift.xcodeproj/Configs/Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TensorSwift.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
-		__PBXFileRef_Tests/TensorSwiftTests/CalculationPerformanceTests.swift /* CalculationPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationPerformanceTests.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Tests/TensorSwiftTests/DimensionTest.swift /* DimensionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionTest.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Tests/TensorSwiftTests/PowerTest.swift /* PowerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerTest.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Tests/TensorSwiftTests/TensorNNTest.swift /* TensorNNTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorNNTest.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Tests/TensorSwiftTests/TensorSwiftSample.swift /* TensorSwiftSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorSwiftSample.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Tests/TensorSwiftTests/TensorTest.swift /* TensorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorTest.swift; sourceTree = "<group>"; };
 		"_____Product_TensorSwift" /* TensorSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TensorSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_TensorSwiftTests" /* TensorSwiftTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = TensorSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_TensorSwiftTests" /* TensorSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = TensorSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,12 +138,13 @@
 		"_______Group_TensorSwiftTests" /* TensorSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				__PBXFileRef_Tests/TensorSwiftTests/CalculationPerformanceTests.swift /* CalculationPerformanceTests.swift */,
-				__PBXFileRef_Tests/TensorSwiftTests/DimensionTest.swift /* DimensionTest.swift */,
-				__PBXFileRef_Tests/TensorSwiftTests/PowerTest.swift /* PowerTest.swift */,
-				__PBXFileRef_Tests/TensorSwiftTests/TensorNNTest.swift /* TensorNNTest.swift */,
-				__PBXFileRef_Tests/TensorSwiftTests/TensorSwiftSample.swift /* TensorSwiftSample.swift */,
-				__PBXFileRef_Tests/TensorSwiftTests/TensorTest.swift /* TensorTest.swift */,
+				A7DF6F8E1D9BB9660097CEB7 /* TensorSwiftTests.swift */,
+				A7DF6F811D9BB9240097CEB7 /* CalculationPerformanceTests.swift */,
+				A7DF6F821D9BB9240097CEB7 /* DimensionTests.swift */,
+				A7DF6F841D9BB9240097CEB7 /* PowerTests.swift */,
+				A7DF6F851D9BB9240097CEB7 /* TensorNNTests.swift */,
+				A7DF6F861D9BB9240097CEB7 /* TensorSwiftSample.swift */,
+				A7DF6F871D9BB9240097CEB7 /* TensorTests.swift */,
 			);
 			name = TensorSwiftTests;
 			path = Tests/TensorSwiftTests;
@@ -198,6 +201,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 9999;
+				TargetAttributes = {
+					"______Target_TensorSwiftTests" = {
+						LastSwiftMigration = 0800;
+					};
+				};
 			};
 			buildConfigurationList = "___RootConfs_" /* Build configuration list for PBXProject "TensorSwift" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -222,11 +230,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				A7DF6F891D9BB9240097CEB7 /* DimensionTests.swift in Sources */,
+				A7DF6F8A1D9BB9240097CEB7 /* PowerTests.swift in Sources */,
+				A7DF6F881D9BB9240097CEB7 /* CalculationPerformanceTests.swift in Sources */,
 				__src_cc_ref_Sources/Dimension.swift /* Dimension.swift in Sources */,
+				A7DF6F8C1D9BB9240097CEB7 /* TensorSwiftSample.swift in Sources */,
 				__src_cc_ref_Sources/Operators.swift /* Operators.swift in Sources */,
+				A7DF6F8B1D9BB9240097CEB7 /* TensorNNTests.swift in Sources */,
 				__src_cc_ref_Sources/Shape.swift /* Shape.swift in Sources */,
 				__src_cc_ref_Sources/Tensor.swift /* Tensor.swift in Sources */,
 				__src_cc_ref_Sources/TensorMath.swift /* TensorMath.swift in Sources */,
+				A7DF6F8D1D9BB9240097CEB7 /* TensorTests.swift in Sources */,
 				__src_cc_ref_Sources/TensorNN.swift /* TensorNN.swift in Sources */,
 				__src_cc_ref_Sources/Utils.swift /* Utils.swift in Sources */,
 			);
@@ -236,12 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				__src_cc_ref_Tests/TensorSwiftTests/CalculationPerformanceTests.swift /* CalculationPerformanceTests.swift in Sources */,
-				__src_cc_ref_Tests/TensorSwiftTests/DimensionTest.swift /* DimensionTest.swift in Sources */,
-				__src_cc_ref_Tests/TensorSwiftTests/PowerTest.swift /* PowerTest.swift in Sources */,
-				__src_cc_ref_Tests/TensorSwiftTests/TensorNNTest.swift /* TensorNNTest.swift in Sources */,
-				__src_cc_ref_Tests/TensorSwiftTests/TensorSwiftSample.swift /* TensorSwiftSample.swift in Sources */,
-				__src_cc_ref_Tests/TensorSwiftTests/TensorTest.swift /* TensorTest.swift in Sources */,
+				A7DF6F8F1D9BB9660097CEB7 /* TensorSwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +285,7 @@
 		_ReleaseConf_TensorSwiftTests /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				INFOPLIST_FILE = TensorSwift.xcodeproj/TensorSwiftTests_Info.plist;
@@ -307,6 +317,7 @@
 		"___DebugConf_TensorSwiftTests" /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				INFOPLIST_FILE = TensorSwift.xcodeproj/TensorSwiftTests_Info.plist;
