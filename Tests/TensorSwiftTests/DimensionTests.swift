@@ -1,7 +1,7 @@
 import XCTest
 @testable import TensorSwift
 
-class DimensionTest: XCTestCase {
+class DimensionTests: XCTestCase {
     func testAdd() {
         do {
             let a = Dimension(2)
@@ -33,5 +33,14 @@ class DimensionTest: XCTestCase {
             let b = Dimension(2)
             XCTAssertEqual(a / b, 3)
         }
+    }
+    
+    static var allTests : [(String, (DimensionTests) -> () throws -> Void)] {
+        return [
+            ("testAdd", testAdd),
+            ("testSub", testSub),
+            ("testMul", testMul),
+            ("testDiv", testDiv),
+        ]
     }
 }

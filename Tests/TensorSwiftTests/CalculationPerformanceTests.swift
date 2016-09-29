@@ -11,7 +11,7 @@ private func getTensor1x1000() -> Tensor {
     return Tensor(shape: [1, 1000], elements: elements)
 }
 
-class CalculationPerformanceTest : XCTestCase {
+class CalculationPerformanceTests : XCTestCase {
     func testElementAccess(){
         let W = getTensor1000x1000()
         measure{
@@ -58,5 +58,14 @@ class CalculationPerformanceTest : XCTestCase {
             }
             let _ = Tensor(shape: [1,1000], elements: elements)
         }
+    }
+    
+    static var allTests : [(String, (CalculationPerformanceTests) -> () throws -> Void)] {
+        return [
+            ("testElementAccess", testElementAccess),
+            ("testElementAccessRaw", testElementAccessRaw),
+            ("testElementMultiplication", testMultiplication),
+            ("testElementMultiplicationRaw", testMultiplicationRaw),
+        ]
     }
 }

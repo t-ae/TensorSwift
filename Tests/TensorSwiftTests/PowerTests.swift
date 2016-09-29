@@ -1,7 +1,7 @@
 import XCTest
 @testable import TensorSwift
 
-class PowerTest: XCTestCase {
+class PowerTests: XCTestCase {
 
     func testScalar() {
         let tensor = Tensor(shape: [2, 2], elements: [1, 2, 3, 4])
@@ -23,4 +23,10 @@ class PowerTest: XCTestCase {
         XCTAssertEqual(tensor ** tensor2 ** tensor, Tensor(shape: [2, 2], elements: [1, 16, pow(3, 8), pow(4, 16)]))
     }
 
+    static var allTests : [(String, (PowerTests) -> () throws -> Void)] {
+        return [
+            ("testScalar", testScalar),
+            ("testMatrices", testMatrices),
+        ]
+    }
 }

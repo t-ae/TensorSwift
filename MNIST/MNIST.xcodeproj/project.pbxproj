@@ -323,7 +323,7 @@
 		};
 		A7DF6EF91D9A1B5B0097CEB7 /* TensorSwiftTests.xctest */ = {
 			isa = PBXReferenceProxy;
-			fileType = file;
+			fileType = wrapper.cfbundle;
 			path = TensorSwiftTests.xctest;
 			remoteRef = A7DF6EF81D9A1B5B0097CEB7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -602,6 +602,7 @@
 				A7DF6EEA1D9A1B4A0097CEB7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A7DF6EEB1D9A1B4A0097CEB7 /* Build configuration list for PBXNativeTarget "MNISTTests" */ = {
 			isa = XCConfigurationList;
@@ -610,6 +611,7 @@
 				A7DF6EED1D9A1B4A0097CEB7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

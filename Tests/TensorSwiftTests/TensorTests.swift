@@ -1,7 +1,7 @@
 import XCTest
 @testable import TensorSwift
 
-class TensorTest: XCTestCase {
+class TensorTests: XCTestCase {
     func testIndex() {
         do {
             let a = Tensor(shape: [])
@@ -151,5 +151,17 @@ class TensorTest: XCTestCase {
         measure{
             a.matmul(b)
         }
+    }
+    
+    static var allTests : [(String, (TensorTests) -> () throws -> Void)] {
+        return [
+            ("testIndex", testIndex),
+            ("testAdd", testAdd),
+            ("testSub", testSub),
+            ("testMul", testMul),
+            ("testDiv", testDiv),
+            ("testMatmul", testMatmul),
+            ("testMatmulPerformance", testMatmulPerformance),
+        ]
     }
 }

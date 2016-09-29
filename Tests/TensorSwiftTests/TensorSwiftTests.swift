@@ -20,4 +20,9 @@ class TensorSwiftTests: XCTestCase {
         super.tearDown()
     }
     
+    static var allTests : [(String, (TensorSwiftTests) -> () throws -> Void)] {
+        return [
+            
+        ]
+    }
 }
