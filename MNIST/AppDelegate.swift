@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  MNIST
-//
-//  Created by Araki Takehiro on 2016/10/01.
-//
-//
-
 import UIKit
 
 @UIApplicationMain
