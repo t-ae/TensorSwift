@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary      = "TensorSwift is a lightweight library to calculate tensors, which has similar APIs to TensorFlow's."
   s.homepage     = "https://github.com/qoncept/TensorSwift"
   s.license      = { :type => "MIT", :file => "LICENSE" }
-  s.authors      = { "Yuta Koshizawa" => "koshizawa@qoncept.co.jp", "Araki Takehiro" => "araki@qoncept.co.jp" }
+  s.authors      = { "Yuta Koshizawa" => "koshizawa@qoncept.co.jp", "Takehiro Araki" => "araki@qoncept.co.jp" }
 
   s.ios.deployment_target = "8.0"
   s.osx.deployment_target = "10.9"
