@@ -29,9 +29,9 @@
 		A7C387DE1D9F611D00091506 /* TensorSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_TensorSwift" /* TensorSwift.framework */; };
 		A7C387DF1D9F611D00091506 /* TensorSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_TensorSwift" /* TensorSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A7C387E91D9F614E00091506 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C387E31D9F614E00091506 /* Array.swift */; };
-		A7C387EA1D9F614E00091506 /* ClassifierTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C387E41D9F614E00091506 /* ClassifierTest.swift */; };
+		A7C387EA1D9F614E00091506 /* ClassifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C387E41D9F614E00091506 /* ClassifierTests.swift */; };
 		A7C387EB1D9F614E00091506 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C387E51D9F614E00091506 /* Downloader.swift */; };
-		A7C387EC1D9F614F00091506 /* DownloaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C387E61D9F614E00091506 /* DownloaderTest.swift */; };
+		A7C387EC1D9F614F00091506 /* DownloaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C387E61D9F614E00091506 /* DownloaderTests.swift */; };
 		A7C387ED1D9F614F00091506 /* SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C387E81D9F614E00091506 /* SHA1.swift */; };
 		A7C387F71D9F616600091506 /* b_conv1 in Resources */ = {isa = PBXBuildFile; fileRef = A7C387EF1D9F616600091506 /* b_conv1 */; };
 		A7C387F81D9F616600091506 /* b_conv2 in Resources */ = {isa = PBXBuildFile; fileRef = A7C387F01D9F616600091506 /* b_conv2 */; };
@@ -117,9 +117,9 @@
 		A7C387D71D9F60F100091506 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		A7C387D81D9F60F100091506 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		A7C387E31D9F614E00091506 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
-		A7C387E41D9F614E00091506 /* ClassifierTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassifierTest.swift; sourceTree = "<group>"; };
+		A7C387E41D9F614E00091506 /* ClassifierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassifierTests.swift; sourceTree = "<group>"; };
 		A7C387E51D9F614E00091506 /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
-		A7C387E61D9F614E00091506 /* DownloaderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloaderTest.swift; sourceTree = "<group>"; };
+		A7C387E61D9F614E00091506 /* DownloaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloaderTests.swift; sourceTree = "<group>"; };
 		A7C387E71D9F614E00091506 /* MNISTTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MNISTTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		A7C387E81D9F614E00091506 /* SHA1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA1.swift; sourceTree = "<group>"; };
 		A7C387EF1D9F616600091506 /* b_conv1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = b_conv1; sourceTree = "<group>"; };
@@ -218,10 +218,10 @@
 			children = (
 				A7C387BD1D9F604900091506 /* MNISTTests.swift */,
 				A7C387E51D9F614E00091506 /* Downloader.swift */,
-				A7C387E61D9F614E00091506 /* DownloaderTest.swift */,
+				A7C387E61D9F614E00091506 /* DownloaderTests.swift */,
 				A7C387E31D9F614E00091506 /* Array.swift */,
 				A7C387E81D9F614E00091506 /* SHA1.swift */,
-				A7C387E41D9F614E00091506 /* ClassifierTest.swift */,
+				A7C387E41D9F614E00091506 /* ClassifierTests.swift */,
 				A7C387E71D9F614E00091506 /* MNISTTests-Bridging-Header.h */,
 				A7C387BF1D9F604900091506 /* Info.plist */,
 			);
@@ -549,11 +549,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7C387BE1D9F604900091506 /* MNISTTests.swift in Sources */,
-				A7C387EC1D9F614F00091506 /* DownloaderTest.swift in Sources */,
+				A7C387EC1D9F614F00091506 /* DownloaderTests.swift in Sources */,
 				A7C387ED1D9F614F00091506 /* SHA1.swift in Sources */,
 				A7C387E91D9F614E00091506 /* Array.swift in Sources */,
 				A7C387EB1D9F614E00091506 /* Downloader.swift in Sources */,
-				A7C387EA1D9F614E00091506 /* ClassifierTest.swift in Sources */,
+				A7C387EA1D9F614E00091506 /* ClassifierTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

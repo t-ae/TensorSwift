@@ -1,6 +1,6 @@
 import XCTest
 
-class Downloader: XCTestCase {
+class DownloaderTests: XCTestCase {
     func testDownloadTestData() {
         let testData = downloadTestData()
         

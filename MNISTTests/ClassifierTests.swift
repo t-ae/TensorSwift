@@ -2,7 +2,7 @@ import XCTest
 import TensorSwift
 @testable import MNIST
 
-class ClassifierTest: XCTestCase {
+class ClassifierTests: XCTestCase {
     func testClassify() {
         
         let classifier = Classifier(path: Bundle(for: ViewController.self).resourcePath!)
