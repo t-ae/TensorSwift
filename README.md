@@ -51,22 +51,23 @@ public struct Classifier {
 
 ## Installation
 
+### Swift Package Manager
+
+```
+.Package(url: "git@github.com:qoncept/TensorSwift.git",
+         Version(0, 2, 0)),
+```
+
 ### CocoaPods
 
 ```
-pod 'TensorSwift', '~> 0.1'
+pod 'TensorSwift', '~> 0.2'
 ```
 
 ### Carthage
 
 ```
-github "qoncept/TensorSwift" ~> 0.1
-```
-
-### Swift Package Manager
-```
-.Package(url: "git@github.com:qoncept/TensorSwift.git",
-         Version(0, 2, 0, prereleaseIdentifiers: ["beta"])),
+github "qoncept/TensorSwift" ~> 0.2
 ```
 
 ## License
