@@ -10,8 +10,8 @@ public struct Tensor {
     public fileprivate(set) var elements: [Element]
     
     public init(shape: Shape, elements: [Element]) {
-        let volume = shape.volume
-        precondition(elements.count >= volume, "`elements.count` must be greater than or equal to `shape.volume`: elements.count = \(elements.count), shape.volume = \(shape.volume)")
+        let volume = shape.volume()
+        precondition(elements.count >= volume, "`elements.count` must be greater than or equal to `shape.volume`: elements.count = \(elements.count), shape.volume = \(shape.volume())")
         self.shape = shape
         self.elements = (elements.count == volume) ? elements : Array(elements[0..<volume])
     }
@@ -19,7 +19,7 @@ public struct Tensor {
 
 extension Tensor { // Additional Initializers
     public init(shape: Shape, element: Element = 0.0) {
-        self.init(shape: shape, elements: [Element](repeating: element, count: shape.volume))
+        self.init(shape: shape, elements: [Element](repeating: element, count: shape.volume()))
     }
 }
 
@@ -47,8 +47,8 @@ extension Tensor { // like CollentionType
         }
     }
     
-    public var volume: Int {
-        return shape.volume
+    public func volume() -> Int {
+        return shape.volume()
     }
 }
 

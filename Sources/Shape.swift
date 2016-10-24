@@ -1,7 +1,7 @@
 public struct Shape {
     public let dimensions: [Dimension]
     
-    public var volume: Int {
+    public func volume() -> Int {
         return dimensions.reduce(1) { $0 * $1.value }
     }
     
