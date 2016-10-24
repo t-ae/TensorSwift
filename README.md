@@ -48,6 +48,19 @@ public struct Classifier {
     }
 }
 ```
+## Integration with Numpy
+
+### Save numpy array
+
+```python
+numpy.save("array.npy", array)
+```
+
+### Load npy file
+
+```swift
+Tensor(contentsOf: fileUrl)
+```
 
 ## Installation
 
