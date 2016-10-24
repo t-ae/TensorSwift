@@ -57,8 +57,6 @@ extension Tensor {
             return nil
         }
         
-        print(header)
-        
         let elemCount = header.shape.volume()
         let elemData = rest.subdata(in: headerLen..<rest.count)
         let elements: [Float]
