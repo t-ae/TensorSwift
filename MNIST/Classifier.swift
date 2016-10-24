@@ -18,7 +18,7 @@ public struct Classifier {
         let h_conv2 = (h_pool1.conv2d(filter: W_conv2, strides: [1, 1, 1]) + b_conv2).relu()
         let h_pool2 = h_conv2.maxPool(kernelSize: [2, 2, 1], strides: [2, 2, 1])
         
-        let h_pool2_flat = h_pool2.reshape([1, 7 * 7 * 64])
+        let h_pool2_flat = h_pool2.reshaped([1, 7 * 7 * 64])
         let h_fc1 = (h_pool2_flat.matmul(W_fc1) + b_fc1).relu()
         
         let y_conv = (h_fc1.matmul(W_fc2) + b_fc2).softmax()
