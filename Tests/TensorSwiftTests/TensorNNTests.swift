@@ -1,7 +1,7 @@
 import XCTest
 @testable import TensorSwift
 
-class TensorNNTest: XCTestCase {
+class TensorNNTests: XCTestCase {
     func testMaxPool() {
         do {
             let a = Tensor(shape: [2,3,1], elements: [0,1,2,3,4,5])
@@ -65,16 +65,25 @@ class TensorNNTest: XCTestCase {
     
     func testMaxPoolPerformance(){
         let image = Tensor(shape: [28,28,3], element: 0.1)
-        measureBlock{
-            image.maxPool(kernelSize: [2,2,1], strides: [2,2,1])
+        measure{
+            _ = image.maxPool(kernelSize: [2,2,1], strides: [2,2,1])
         }
     }
     
     func testConv2dPerformance(){
         let image = Tensor(shape: [28,28,1], element: 0.1)
         let filter = Tensor(shape: [5,5,1,16], element: 0.1)
-        measureBlock{
-            image.conv2d(filter: filter, strides: [1,1,1])
+        measure{
+            _ = image.conv2d(filter: filter, strides: [1,1,1])
         }
+    }
+    
+    static var allTests : [(String, (TensorNNTests) -> () throws -> Void)] {
+        return [
+            ("testMaxPool", testMaxPool),
+            ("testConv2d", testConv2d),
+            ("testMaxPoolPerformance", testMaxPoolPerformance),
+            ("testConv2dPerformance", testConv2dPerformance),
+        ]
     }
 }

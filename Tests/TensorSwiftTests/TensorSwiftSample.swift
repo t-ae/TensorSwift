@@ -20,4 +20,10 @@ class TensorSwiftSample: XCTestCase {
         XCTAssertEqual(zeros, Tensor(shape: [2, 3, 4], elements: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))
         XCTAssertEqual(ones, Tensor(shape: [2, 3, 4], elements: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))
     }
+    
+    static var allTests : [(String, (TensorSwiftSample) -> () throws -> Void)] {
+        return [
+            ("testSample", testSample),
+        ]
+    }
 }

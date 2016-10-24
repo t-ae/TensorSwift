@@ -13,61 +13,61 @@ public func **(lhs: Tensor.Element, rhs: Tensor) -> Tensor {
 }
 
 extension Tensor {
-    public var sin: Tensor {
+    public func sin() -> Tensor {
         return Tensor(shape: shape, elements: elements.map(sinf))
     }
 
-    public var cos: Tensor {
+    public func cos() -> Tensor {
         return Tensor(shape: shape, elements: elements.map(cosf))
     }
 
-    public var tan: Tensor {
+    public func tan() -> Tensor {
         return Tensor(shape: shape, elements: elements.map(tanf))
     }
 
-    public var asin: Tensor {
+    public func asin() -> Tensor {
         return Tensor(shape: shape, elements: elements.map(asinf))
     }
     
-    public var acos: Tensor {
+    public func acos() -> Tensor {
         return Tensor(shape: shape, elements: elements.map(acosf))
     }
     
-    public var atan: Tensor {
+    public func atan() -> Tensor {
         return Tensor(shape: shape, elements: elements.map(atanf))
     }
     
-    public var sinh: Tensor {
+    public func sinh() -> Tensor {
         return Tensor(shape: shape, elements: elements.map(sinhf))
     }
     
-    public var cosh: Tensor {
+    public func cosh() -> Tensor {
         return Tensor(shape: shape, elements: elements.map(coshf))
     }
     
-    public var tanh: Tensor {
+    public func tanh() -> Tensor {
         return Tensor(shape: shape, elements: elements.map(tanhf))
     }
     
-    public var exp: Tensor {
+    public func exp() -> Tensor {
         return Tensor(shape: shape, elements: elements.map(expf))
     }
     
-    public var log: Tensor {
+    public func log() -> Tensor {
         return Tensor(shape: shape, elements: elements.map(logf))
     }
     
-    public var sqrt: Tensor {
+    public func sqrt() -> Tensor {
         return Tensor(shape: shape, elements: elements.map(sqrtf))
     }
     
-    public var cbrt: Tensor {
+    public func cbrt() -> Tensor {
         return Tensor(shape: shape, elements: elements.map(cbrtf))
     }
 }
 
 extension Tensor {
-    public var sigmoid: Tensor {
+    public func sigmoid() -> Tensor {
         return Tensor(shape: shape, elements: elements.map { 1.0 / expf(-$0) })
     }
 }

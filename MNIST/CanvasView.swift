@@ -12,33 +12,33 @@ class CanvasView: UIView {
     
     var image: UIImage {
         UIGraphicsBeginImageContext(bounds.size)
-        layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        layer.render(in: UIGraphicsGetCurrentContext()!)
         let result = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return result
+        return result!
     }
 
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         for line in canvas.lines {
-            CGContextSetLineWidth(context, 20.0)
-            CGContextSetStrokeColorWithColor(context, UIColor(colorLiteralRed: 0.0, green: 0.0, blue: 0.0, alpha: 1.0).CGColor)
-            CGContextSetLineCap(context, .Round)
-            CGContextSetLineJoin(context, .Round)
-            for (index, point) in line.points.enumerate() {
+            context?.setLineWidth(20.0)
+            context?.setStrokeColor(UIColor(colorLiteralRed: 0.0, green: 0.0, blue: 0.0, alpha: 1.0).cgColor)
+            context?.setLineCap(.round)
+            context?.setLineJoin(.round)
+            for (index, point) in line.points.enumerated() {
                 if index == 0 {
-                    CGContextMoveToPoint(context, point.x, point.y)
+                    context?.move(to: CGPoint(x: point.x, y: point.y))
                 } else {
-                    CGContextAddLineToPoint(context, point.x, point.y)
+                    context?.addLine(to: CGPoint(x: point.x, y: point.y))
                 }
             }
         }
-        CGContextStrokePath(context)
+        context?.strokePath()
     }
     
-    func onPanGesture(gestureRecognizer: UIPanGestureRecognizer) {
-        canvas.draw(gestureRecognizer.locationInView(self))
-        if gestureRecognizer.state == .Ended {
+    func onPanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
+        canvas.draw(gestureRecognizer.location(in: self))
+        if gestureRecognizer.state == .ended {
             canvas.newLine()
         }
         

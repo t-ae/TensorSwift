@@ -2,19 +2,19 @@ import XCTest
 @testable import TensorSwift
 
 private func getTensor1000x1000() -> Tensor {
-    let elements = [Float](count: 1000*1000 ,repeatedValue:0.1)
+    let elements = [Float](repeating: 0.1 ,count: 1000*1000)
     return Tensor(shape: [1000, 1000], elements: elements)
 }
 
 private func getTensor1x1000() -> Tensor {
-    let elements = [Float](count: 1000, repeatedValue: 0)
+    let elements = [Float](repeating: 0, count: 1000)
     return Tensor(shape: [1, 1000], elements: elements)
 }
 
-class CalculationPerformanceTest : XCTestCase {
+class CalculationPerformanceTests : XCTestCase {
     func testElementAccess(){
         let W = getTensor1000x1000()
-        measureBlock{
+        measure{
             for _ in 0..<100000{
                 let _ = W[500,500]
             }
@@ -23,7 +23,7 @@ class CalculationPerformanceTest : XCTestCase {
     
     func testElementAccessRaw(){
         let W = getTensor1000x1000()
-        measureBlock{
+        measure{
             for _ in 0..<100000{
                 let _ = W.elements[500*W.shape.dimensions[1].value + 500]
             }
@@ -34,7 +34,7 @@ class CalculationPerformanceTest : XCTestCase {
         let W = getTensor1000x1000()
         let x = getTensor1x1000()
         
-        measureBlock{
+        measure{
             let _ = x.matmul(W)
         }
     }
@@ -43,11 +43,11 @@ class CalculationPerformanceTest : XCTestCase {
         let W = getTensor1000x1000()
         let x = getTensor1x1000()
         
-        measureBlock{
+        measure{
             let xRow = x.shape.dimensions[0].value
             let WRow = W.shape.dimensions[0].value
             let WColumn = W.shape.dimensions[1].value
-            var elements = [Float](count: 1000, repeatedValue: 0)
+            var elements = [Float](repeating: 0, count: 1000)
             for r in 0..<xRow {
                 for i in 0..<WRow {
                     let tmp = x.elements[r * WRow + i]
@@ -58,5 +58,14 @@ class CalculationPerformanceTest : XCTestCase {
             }
             let _ = Tensor(shape: [1,1000], elements: elements)
         }
+    }
+    
+    static var allTests : [(String, (CalculationPerformanceTests) -> () throws -> Void)] {
+        return [
+            ("testElementAccess", testElementAccess),
+            ("testElementAccessRaw", testElementAccessRaw),
+            ("testElementMultiplication", testMultiplication),
+            ("testElementMultiplicationRaw", testMultiplicationRaw),
+        ]
     }
 }

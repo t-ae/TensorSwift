@@ -7,11 +7,11 @@ public struct Tensor {
     public typealias Element = Float
     
     public let shape: Shape
-    public private(set) var elements: [Element]
+    public fileprivate(set) var elements: [Element]
     
     public init(shape: Shape, elements: [Element]) {
-        let volume = shape.volume
-        precondition(elements.count >= volume, "`elements.count` must be greater than or equal to `shape.volume`: elements.count = \(elements.count), shape.volume = \(shape.volume)")
+        let volume = shape.volume()
+        precondition(elements.count >= volume, "`elements.count` must be greater than or equal to `shape.volume`: elements.count = \(elements.count), shape.volume = \(shape.volume())")
         self.shape = shape
         self.elements = (elements.count == volume) ? elements : Array(elements[0..<volume])
     }
@@ -19,18 +19,22 @@ public struct Tensor {
 
 extension Tensor { // Additional Initializers
     public init(shape: Shape, element: Element = 0.0) {
-        self.init(shape: shape, elements: [Element](count: shape.volume, repeatedValue: element))
+        self.init(shape: shape, elements: [Element](repeating: element, count: shape.volume()))
     }
 }
 
 extension Tensor {
-    public func reshape(shape: Shape) -> Tensor {
+    public mutating func reshape(_ shape: Shape) {
+        self = reshaped(shape)
+    }
+    
+    public func reshaped(_ shape: Shape) -> Tensor {
         return Tensor(shape: shape, elements: elements)
     }
 }
 
 extension Tensor { // like CollentionType
-    internal func index(indices: [Int]) -> Int {
+    internal func index(_ indices: [Int]) -> Int {
         assert(indices.count == shape.dimensions.count, "`indices.count` must be \(shape.dimensions.count): \(indices.count)")
         return zip(shape.dimensions, indices).reduce(0) {
             assert(0 <= $1.1 && $1.1 < $1.0.value, "Illegal index: indices = \(indices), shape = \(shape)")
@@ -47,14 +51,14 @@ extension Tensor { // like CollentionType
         }
     }
     
-    public var volume: Int {
-        return shape.volume
+    public func volume() -> Int {
+        return shape.volume()
     }
 }
 
-extension Tensor: SequenceType {
-    public func generate() -> IndexingGenerator<[Element]> {
-        return elements.generate()
+extension Tensor: Sequence {
+    public func makeIterator() -> IndexingIterator<[Element]> {
+        return elements.makeIterator()
     }
 }
 
@@ -63,7 +67,7 @@ public func ==(lhs: Tensor, rhs: Tensor) -> Bool {
     return lhs.shape == rhs.shape && lhs.elements == rhs.elements
 }
 
-internal func commutativeBinaryOperation(lhs: Tensor, _ rhs: Tensor, operation: (Float, Float) -> Float) -> Tensor {
+internal func commutativeBinaryOperation(_ lhs: Tensor, _ rhs: Tensor, operation: (Float, Float) -> Float) -> Tensor {
     let lSize = lhs.shape.dimensions.count
     let rSize = rhs.shape.dimensions.count
     
@@ -86,7 +90,7 @@ internal func commutativeBinaryOperation(lhs: Tensor, _ rhs: Tensor, operation: 
     return Tensor(shape: a.shape, elements: zipMapRepeat(a.elements, b.elements, operation: operation))
 }
 
-internal func noncommutativeBinaryOperation(lhs: Tensor, _ rhs: Tensor, operation: (Float, Float) -> Float) -> Tensor {
+internal func noncommutativeBinaryOperation(_ lhs: Tensor, _ rhs: Tensor, operation: (Float, Float) -> Float) -> Tensor {
     let lSize = lhs.shape.dimensions.count
     let rSize = rhs.shape.dimensions.count
     
@@ -135,7 +139,7 @@ public func /(lhs: Float, rhs: Tensor) -> Tensor {
 }
 
 extension Tensor { // Matrix
-    public func matmul(tensor: Tensor) -> Tensor {
+    public func matmul(_ tensor: Tensor) -> Tensor {
         precondition(shape.dimensions.count == 2, "This tensor is not a matrix: shape = \(shape)")
         precondition(tensor.shape.dimensions.count == 2, "The given tensor is not a matrix: shape = \(tensor.shape)")
         precondition(tensor.shape.dimensions[0] == shape.dimensions[1], "Incompatible shapes of matrices: self.shape = \(shape), tensor.shape = \(tensor.shape)")
@@ -158,7 +162,7 @@ extension Tensor { // Matrix
                 tensor.elements,                              // B
                 n,                                            // ldb
                 1.0,                                          // beta
-                UnsafeMutablePointer<Float>(result.elements), // C
+                UnsafeMutablePointer<Float>(mutating: result.elements), // C
                 n                                             // ldc
             )
             

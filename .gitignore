@@ -17,6 +17,13 @@ DerivedData
 *.ipa
 *.xcuserstate
 
+# SwiftPackageManager
+#
+.build
+/*.xcodeproj/xcshareddata/
+/*.xcodeproj/project.xcworkspace/xcuserdata/
+/*.xcodeproj/xcuserdata/
+
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However

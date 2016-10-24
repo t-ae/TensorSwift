@@ -1,5 +1,5 @@
 extension Array {
-    func grouped(count: Int) -> [[Element]] {
+    func grouped(_ count: Int) -> [[Element]] {
         var result: [[Element]] = []
         var group: [Element] = []
         for element in self {

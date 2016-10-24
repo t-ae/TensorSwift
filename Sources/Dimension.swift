@@ -7,7 +7,7 @@ public struct Dimension {
     }
 }
 
-extension Dimension: IntegerLiteralConvertible {
+extension Dimension: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: Int) {
         self.init(value)
     }
