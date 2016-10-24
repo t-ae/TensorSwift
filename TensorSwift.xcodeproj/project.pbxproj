@@ -9,11 +9,6 @@
 /* Begin PBXBuildFile section */
 		A795F9181DBDFDBC00537AF6 /* Numpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F9171DBDFDBC00537AF6 /* Numpy.swift */; };
 		A795F91A1DBE0EF300537AF6 /* NumpyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F9191DBE0EF300537AF6 /* NumpyTests.swift */; };
-		A795F92C1DBE1AE000537AF6 /* a.npy in Resources */ = {isa = PBXBuildFile; fileRef = A795F9271DBE1AE000537AF6 /* a.npy */; };
-		A795F92D1DBE1AE000537AF6 /* b.npy in Resources */ = {isa = PBXBuildFile; fileRef = A795F9281DBE1AE000537AF6 /* b.npy */; };
-		A795F92E1DBE1AE000537AF6 /* c.npy in Resources */ = {isa = PBXBuildFile; fileRef = A795F9291DBE1AE000537AF6 /* c.npy */; };
-		A795F92F1DBE1AE000537AF6 /* d.npy in Resources */ = {isa = PBXBuildFile; fileRef = A795F92A1DBE1AE000537AF6 /* d.npy */; };
-		A795F9301DBE1AE000537AF6 /* e.npy in Resources */ = {isa = PBXBuildFile; fileRef = A795F92B1DBE1AE000537AF6 /* e.npy */; };
 		A7C046091D9F514600FAF16F /* TensorSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6F8E1D9BB9660097CEB7 /* TensorSwiftTests.swift */; };
 		A7C0460A1D9F514600FAF16F /* CalculationPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6F811D9BB9240097CEB7 /* CalculationPerformanceTests.swift */; };
 		A7C0460B1D9F514600FAF16F /* DimensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6F821D9BB9240097CEB7 /* DimensionTests.swift */; };
@@ -108,11 +103,6 @@
 /* Begin PBXFileReference section */
 		A795F9171DBDFDBC00537AF6 /* Numpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Numpy.swift; sourceTree = "<group>"; };
 		A795F9191DBE0EF300537AF6 /* NumpyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumpyTests.swift; sourceTree = "<group>"; };
-		A795F9271DBE1AE000537AF6 /* a.npy */ = {isa = PBXFileReference; lastKnownFileType = file; path = a.npy; sourceTree = "<group>"; };
-		A795F9281DBE1AE000537AF6 /* b.npy */ = {isa = PBXFileReference; lastKnownFileType = file; path = b.npy; sourceTree = "<group>"; };
-		A795F9291DBE1AE000537AF6 /* c.npy */ = {isa = PBXFileReference; lastKnownFileType = file; path = c.npy; sourceTree = "<group>"; };
-		A795F92A1DBE1AE000537AF6 /* d.npy */ = {isa = PBXFileReference; lastKnownFileType = file; path = d.npy; sourceTree = "<group>"; };
-		A795F92B1DBE1AE000537AF6 /* e.npy */ = {isa = PBXFileReference; lastKnownFileType = file; path = e.npy; sourceTree = "<group>"; };
 		A7C387A61D9F604900091506 /* MNIST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNIST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7C387A81D9F604900091506 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7C387AA1D9F604900091506 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -210,18 +200,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A795F9261DBE1AE000537AF6 /* npy */ = {
-			isa = PBXGroup;
-			children = (
-				A795F9271DBE1AE000537AF6 /* a.npy */,
-				A795F9281DBE1AE000537AF6 /* b.npy */,
-				A795F9291DBE1AE000537AF6 /* c.npy */,
-				A795F92A1DBE1AE000537AF6 /* d.npy */,
-				A795F92B1DBE1AE000537AF6 /* e.npy */,
-			);
-			path = npy;
-			sourceTree = "<group>";
-		};
 		A7C387A71D9F604900091506 /* MNIST */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,7 +345,6 @@
 				A7DF6F851D9BB9240097CEB7 /* TensorNNTests.swift */,
 				A7DF6F861D9BB9240097CEB7 /* TensorSwiftSample.swift */,
 				A7DF6F871D9BB9240097CEB7 /* TensorTests.swift */,
-				A795F9261DBE1AE000537AF6 /* npy */,
 				A795F9191DBE0EF300537AF6 /* NumpyTests.swift */,
 			);
 			name = TensorSwiftTests;
@@ -532,11 +509,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A795F92E1DBE1AE000537AF6 /* c.npy in Resources */,
-				A795F92D1DBE1AE000537AF6 /* b.npy in Resources */,
-				A795F9301DBE1AE000537AF6 /* e.npy in Resources */,
-				A795F92F1DBE1AE000537AF6 /* d.npy in Resources */,
-				A795F92C1DBE1AE000537AF6 /* a.npy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
