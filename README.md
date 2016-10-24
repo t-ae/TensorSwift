@@ -33,18 +33,18 @@ public struct Classifier {
     public let b_fc2: Tensor
 
     public func classify(x_image: Tensor) -> Int {
-        let h_conv1 = (x_image.conv2d(filter: W_conv1, strides: [1, 1, 1]) + b_conv1).relu
+        let h_conv1 = (x_image.conv2d(filter: W_conv1, strides: [1, 1, 1]) + b_conv1).relu()
         let h_pool1 = h_conv1.maxPool(kernelSize: [2, 2, 1], strides: [2, 2, 1])
-
-        let h_conv2 = (h_pool1.conv2d(filter: W_conv2, strides: [1, 1, 1]) + b_conv2).relu
+        
+        let h_conv2 = (h_pool1.conv2d(filter: W_conv2, strides: [1, 1, 1]) + b_conv2).relu()
         let h_pool2 = h_conv2.maxPool(kernelSize: [2, 2, 1], strides: [2, 2, 1])
+        
+        let h_pool2_flat = h_pool2.reshaped([1, 7 * 7 * 64])
+        let h_fc1 = (h_pool2_flat.matmul(W_fc1) + b_fc1).relu()
+        
+        let y_conv = (h_fc1.matmul(W_fc2) + b_fc2).softmax()
 
-        let h_pool2_flat = h_pool2.reshape([1, 7 * 7 * 64])
-        let h_fc1 = (h_pool2_flat.matmul(W_fc1) + b_fc1).relu
-
-        let y_conv = (h_fc1.matmul(W_fc2) + b_fc2).softmax
-
-        return y_conv.elements.enumerate().maxElement { $0.1 < $1.1 }!.0
+        return y_conv.elements.enumerated().max { $0.1 < $1.1 }!.0
     }
 }
 ```
