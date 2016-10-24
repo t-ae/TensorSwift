@@ -42,6 +42,7 @@
 		A7C387FD1D9F616600091506 /* W_fc1 in Resources */ = {isa = PBXBuildFile; fileRef = A7C387F51D9F616600091506 /* W_fc1 */; };
 		A7C387FE1D9F616600091506 /* W_fc2 in Resources */ = {isa = PBXBuildFile; fileRef = A7C387F61D9F616600091506 /* W_fc2 */; };
 		A7C388031D9F629A00091506 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A7C388001D9F619000091506 /* libz.tbd */; };
+		D646CEF61DBE1A25003E8A59 /* TensorMathTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D646CEF51DBE1A25003E8A59 /* TensorMathTest.swift */; };
 		_LinkFileRef_TensorSwift_via_TensorSwiftTests /* TensorSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_TensorSwift" /* TensorSwift.framework */; };
 		__src_cc_ref_Sources/Dimension.swift /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Dimension.swift /* Dimension.swift */; };
 		__src_cc_ref_Sources/Operators.swift /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Operators.swift /* Operators.swift */; };
@@ -138,6 +139,7 @@
 		A7DF6F861D9BB9240097CEB7 /* TensorSwiftSample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorSwiftSample.swift; sourceTree = "<group>"; };
 		A7DF6F871D9BB9240097CEB7 /* TensorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorTests.swift; sourceTree = "<group>"; };
 		A7DF6F8E1D9BB9660097CEB7 /* TensorSwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorSwiftTests.swift; sourceTree = "<group>"; };
+		D646CEF51DBE1A25003E8A59 /* TensorMathTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorMathTest.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Resources /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Dimension.swift /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				A7DF6F811D9BB9240097CEB7 /* CalculationPerformanceTests.swift */,
 				A7DF6F821D9BB9240097CEB7 /* DimensionTests.swift */,
 				A7DF6F841D9BB9240097CEB7 /* PowerTests.swift */,
+				D646CEF51DBE1A25003E8A59 /* TensorMathTest.swift */,
 				A7DF6F851D9BB9240097CEB7 /* TensorNNTests.swift */,
 				A7DF6F861D9BB9240097CEB7 /* TensorSwiftSample.swift */,
 				A7DF6F871D9BB9240097CEB7 /* TensorTests.swift */,
@@ -587,6 +590,7 @@
 				A7C0460A1D9F514600FAF16F /* CalculationPerformanceTests.swift in Sources */,
 				A7C0460B1D9F514600FAF16F /* DimensionTests.swift in Sources */,
 				A7C0460C1D9F514600FAF16F /* PowerTests.swift in Sources */,
+				D646CEF61DBE1A25003E8A59 /* TensorMathTest.swift in Sources */,
 				A7C0460D1D9F514600FAF16F /* TensorNNTests.swift in Sources */,
 				A7C0460E1D9F514600FAF16F /* TensorSwiftSample.swift in Sources */,
 				A7C0460F1D9F514600FAF16F /* TensorTests.swift in Sources */,
