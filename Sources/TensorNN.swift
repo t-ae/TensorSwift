@@ -5,7 +5,7 @@ import Accelerate
 
 extension Tensor {
     public var softmax: Tensor {
-        let exps = exp
+        let exps = exp()
         let sum = exps.elements.reduce(0.0, +)
         return exps / sum
     }
