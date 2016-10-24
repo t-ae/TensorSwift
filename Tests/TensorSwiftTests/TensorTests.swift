@@ -74,8 +74,8 @@ class TensorTests: XCTestCase {
         do {
             let a = Tensor(shape: [2, 3], elements: [1, 2, 3, 4, 5, 6])
             let b = Tensor(shape: [2, 3], elements: [7, 8, 9, 10, 11, 12])
-            let r = a * b
-            XCTAssertEqual(r, Tensor(shape: [2, 3], elements: [7, 16, 27, 40, 55, 72]))
+            XCTAssertEqual(a * b, Tensor(shape: [2, 3], elements: [7, 16, 27, 40, 55, 72]))
+            XCTAssertEqual(b * a, Tensor(shape: [2, 3], elements: [7, 16, 27, 40, 55, 72]))
         }
         
         do {
@@ -93,7 +93,7 @@ class TensorTests: XCTestCase {
         }
         
         do {
-            let a = Tensor(shape:[2, 3], elements: [ 1, 2, 3, 4, 5, 6])
+            let a = Tensor(shape: [2, 3], elements: [1, 2, 3, 4, 5, 6])
             let b: Float = 2.0
             XCTAssertEqual(a * b, Tensor(shape: [2, 3], elements: [2, 4, 6, 8, 10, 12]))
             XCTAssertEqual(b * a, Tensor(shape: [2, 3], elements: [2, 4, 6, 8, 10, 12]))
@@ -102,10 +102,10 @@ class TensorTests: XCTestCase {
     
     func testDiv() {
         do {
-            let a = Tensor(shape: [2, 3], elements: [1, 2, 3, 4, 5, 6])
+            let a = Tensor(shape: [2, 3], elements: [2048, 512, 128, 32, 8, 2])
             let b = Tensor(shape: [2, 3], elements: [2, 4, 8, 16, 32, 64])
-            let r = a / b
-            XCTAssertEqual(r, Tensor(shape: [2, 3], elements: [0.5, 0.5, 0.375, 0.25, 0.15625, 0.09375]))
+            XCTAssertEqual(a / b, Tensor(shape: [2, 3], elements: [1024, 128, 16, 2, 0.25, 0.03125]))
+            XCTAssertEqual(b / a, Tensor(shape: [2, 3], elements: [0.0009765625, 0.0078125, 0.0625, 0.5, 4, 32]))
         }
         
         do {
