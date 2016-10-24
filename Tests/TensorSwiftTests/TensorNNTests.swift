@@ -66,7 +66,7 @@ class TensorNNTests: XCTestCase {
     func testMaxPoolPerformance(){
         let image = Tensor(shape: [28,28,3], element: 0.1)
         measure{
-            image.maxPool(kernelSize: [2,2,1], strides: [2,2,1])
+            _ = image.maxPool(kernelSize: [2,2,1], strides: [2,2,1])
         }
     }
     
@@ -74,7 +74,7 @@ class TensorNNTests: XCTestCase {
         let image = Tensor(shape: [28,28,1], element: 0.1)
         let filter = Tensor(shape: [5,5,1,16], element: 0.1)
         measure{
-            image.conv2d(filter: filter, strides: [1,1,1])
+            _ = image.conv2d(filter: filter, strides: [1,1,1])
         }
     }
     
