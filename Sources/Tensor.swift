@@ -24,7 +24,7 @@ extension Tensor { // Additional Initializers
 }
 
 extension Tensor {
-    public func reshape(_ shape: Shape) -> Tensor {
+    public func reshaped(_ shape: Shape) -> Tensor {
         return Tensor(shape: shape, elements: elements)
     }
 }
