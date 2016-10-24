@@ -4,13 +4,13 @@ import Accelerate
 #endif
 
 extension Tensor {
-    public var softmax: Tensor {
+    public func softmax() -> Tensor {
         let exps = exp()
         let sum = exps.elements.reduce(0.0, +)
         return exps / sum
     }
     
-    public var relu: Tensor {
+    public func relu() -> Tensor {
         return Tensor(shape: shape, elements: elements.map { fmax($0, 0.0) })
     }
 }
