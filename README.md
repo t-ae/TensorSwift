@@ -53,7 +53,9 @@ public struct Classifier {
 ### Save numpy array
 
 ```python
-numpy.save("array.npy", array)
+W, b = sess.run(W, b, feed_dict={...})
+numpy.save("W.npy", W)
+numpy.save("b.npy", b)
 ```
 
 ### Load npy file
