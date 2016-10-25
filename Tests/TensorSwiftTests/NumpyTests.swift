@@ -7,7 +7,7 @@ class NumpyTests: XCTestCase {
 
     func testLoadNpyA() {
         
-        guard let x = Tensor(npyData: NpyA) else {
+        guard let x = try? Tensor(npyData: NpyA) else {
             XCTFail()
             return
         }
@@ -18,7 +18,7 @@ class NumpyTests: XCTestCase {
     
     func testLoadNpyB() {
         
-        guard let x = Tensor(npyData: NpyB) else {
+        guard let x = try? Tensor(npyData: NpyB) else {
             XCTFail()
             return
         }
@@ -29,7 +29,7 @@ class NumpyTests: XCTestCase {
     
     func testLoadNpyC() {
         
-        guard let x = Tensor(npyData: NpyC) else {
+        guard let x = try? Tensor(npyData: NpyC) else {
             XCTFail()
             return
         }
@@ -40,7 +40,7 @@ class NumpyTests: XCTestCase {
     
     func testLoadNpyD() {
         
-        guard let x = Tensor(npyData: NpyD) else {
+        guard let x = try? Tensor(npyData: NpyD) else {
             XCTFail()
             return
         }
@@ -51,21 +51,13 @@ class NumpyTests: XCTestCase {
     
     func testLoadNpyE() {
     
-        guard let x = Tensor(npyData: NpyE) else {
+        guard let x = try? Tensor(npyData: NpyE) else {
             XCTFail()
             return
         }
         
         XCTAssertEqual(x.shape, [2, 3])
         XCTAssertEqual(x.elements, [1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
-    }
-    
-    func testLoadNpyF() {
-        
-        // big-endian
-        let x = Tensor(npyData: NpyF)
-        XCTAssertNil(x)
-        
     }
     
     static var allTests : [(String, (NumpyTests) -> () throws -> Void)] {
@@ -75,7 +67,6 @@ class NumpyTests: XCTestCase {
             ("testLoadNpyC", testLoadNpyC),
             ("testLoadNpyD", testLoadNpyD),
             ("testLoadNpyE", testLoadNpyE),
-            ("testLoadNpyE", testLoadNpyF),
         ]
     }
 
@@ -140,16 +131,5 @@ fileprivate let NpyE = Data(bytes:
               0x33, 0x29, 0x2c, 0x20, 0x7d, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0a,
               0x00, 0x00, 0x80, 0x3f, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x80, 0x40,
               0x00, 0x00, 0xa0, 0x40, 0x00, 0x00, 0xc0, 0x40
-    )
-)
-
-fileprivate let NpyF = Data(bytes:
-    [UInt8](arrayLiteral:
-        0x93, 0x4e, 0x55, 0x4d, 0x50, 0x59, 0x01, 0x00, 0x46, 0x00, 0x7b, 0x27, 0x64, 0x65, 0x73, 0x63,
-        0x72, 0x27, 0x3a, 0x20, 0x27, 0x3e, 0x66, 0x34, 0x27, 0x2c, 0x20, 0x27, 0x66, 0x6f, 0x72, 0x74,
-        0x72, 0x61, 0x6e, 0x5f, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x27, 0x3a, 0x20, 0x46, 0x61, 0x6c, 0x73,
-        0x65, 0x2c, 0x20, 0x27, 0x73, 0x68, 0x61, 0x70, 0x65, 0x27, 0x3a, 0x20, 0x28, 0x33, 0x2c, 0x29,
-        0x2c, 0x20, 0x7d, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0a,
-        0x3f, 0x80, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00
     )
 )

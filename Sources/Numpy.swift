@@ -6,28 +6,26 @@ import Foundation
 
 extension Tensor {
     
-    public init?(contentsOf url: URL) {
-        guard let data = try? Data(contentsOf: url) else {
-            return nil
-        }
-        self.init(npyData: data)
+    public init(contentsOf url: URL) throws {
+        let data = try Data(contentsOf: url)
+        try self.init(npyData: data)
     }
     
-    public init?(npyData: Data) {
+    public init(npyData: Data) throws {
         
         let magic = String(data: npyData.subdata(in: 0..<6), encoding: .ascii)
         guard magic == MAGIC_PREFIX else {
-            return nil
+            throw NumpyError.InvalidFormat(message: "Invalid prefix: \(magic)")
         }
         
         let major = npyData[6]
         guard major == 1 || major == 2 else {
-            return nil
+            throw NumpyError.InvalidFormat(message: "Invalid major version: \(major)")
         }
         
         let minor = npyData[7]
         guard minor == 0 else {
-            return nil
+            throw NumpyError.InvalidFormat(message: "Invalid minor version: \(minor)")
         }
         
         let headerLen: Int
@@ -54,16 +52,14 @@ extension Tensor {
         }
         
         let headerData = rest.subdata(in: 0..<headerLen)
-        guard let header = parseHeader(headerData) else {
-            return nil
-        }
+        let header = try parseHeader(headerData)
         
         guard header.isLittleEndian else {
-            return nil
+            fatalError("Only supports little endian: descr: \(header.descr)")
         }
         
         guard !header.isFortranOrder else {
-            return nil
+            fatalError("\"fortran_order\" must be False.")
         }
         
         let elemCount = header.shape.volume()
@@ -89,6 +85,11 @@ extension Tensor {
     }
 }
 
+public enum NumpyError: Error {
+    case InvalidFormat(message: String)
+    case ParseFailed(message: String)
+}
+
 private let MAGIC_PREFIX = "\u{93}NUMPY"
 
 private struct NumpyHeader {
@@ -96,14 +97,16 @@ private struct NumpyHeader {
     let dataType: DataType
     let isLittleEndian: Bool
     let isFortranOrder: Bool
+    let descr: String
 }
 
-private func parseHeader(_ data: Data) -> NumpyHeader? {
+private func parseHeader(_ data: Data) throws -> NumpyHeader {
     
     guard let str = String(data: data, encoding: .ascii) else {
-        return nil
+        throw NumpyError.ParseFailed(message: "Failed to load header")
     }
     
+    let descr: String
     let isLittleEndian: Bool
     let dataType: DataType
     let isFortranOrder: Bool
@@ -111,19 +114,19 @@ private func parseHeader(_ data: Data) -> NumpyHeader? {
         let separate = str.components(separatedBy: CharacterSet(charactersIn: ", ")).filter { !$0.isEmpty }
         
         guard let descrIndex = separate.index(where: { $0.contains("descr") }) else {
-            return nil
+            throw NumpyError.ParseFailed(message: "Header does not contain the key 'descr'")
         }
-        let descr = separate[descrIndex + 1]
+        descr = separate[descrIndex + 1]
         
         isLittleEndian = descr.contains("<") || descr.contains("|")
         
         guard let dt = DataType.all.filter({ descr.contains($0.rawValue) }).first else {
-            return nil
+            fatalError("Unsupported dtype: \(descr)")
         }
         dataType = dt
         
         guard let fortranIndex = separate.index(where: { $0.contains("fortran_order") }) else {
-            return nil
+            throw NumpyError.ParseFailed(message: "Header does not contain the key 'fortran_order'")
         }
         
         isFortranOrder = separate[fortranIndex+1].contains("True")
@@ -133,7 +136,7 @@ private func parseHeader(_ data: Data) -> NumpyHeader? {
     do {
         guard let left = str.range(of: "("),
             let right = str.range(of: ")") else {
-                return nil
+                throw NumpyError.ParseFailed(message: "Shape not found in header.")
         }
         
         let substr = str.substring(with: left.upperBound..<right.lowerBound)
@@ -144,7 +147,7 @@ private func parseHeader(_ data: Data) -> NumpyHeader? {
             .filter { !$0.isEmpty }
         for s in strs {
             guard let i = Int(s) else {
-                return nil
+                throw NumpyError.ParseFailed(message: "Shape contains invalid integer: \(s)")
             }
             dimens.append(Dimension(i))
         }
@@ -154,7 +157,8 @@ private func parseHeader(_ data: Data) -> NumpyHeader? {
     return NumpyHeader(shape: shape,
                        dataType: dataType,
                        isLittleEndian: isLittleEndian,
-                       isFortranOrder: isFortranOrder)
+                       isFortranOrder: isFortranOrder,
+                       descr: descr)
 }
 
 private enum DataType: String {
