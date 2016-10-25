@@ -64,6 +64,12 @@ numpy.save("b.npy", _b)
 Tensor(contentsOf: fileUrl)
 ```
 
+Supported npy file:
+
+- Little endian
+- np.float32 or np.float64 array
+- "fortran_order" is False
+
 ## Installation
 
 ### Swift Package Manager

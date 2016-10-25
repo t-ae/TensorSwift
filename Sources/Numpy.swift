@@ -6,16 +6,17 @@ import Foundation
 
 extension Tensor {
     
-    init?(contentsOf url: URL) {
+    public init?(contentsOf url: URL) {
         guard let data = try? Data(contentsOf: url) else {
             return nil
         }
         self.init(npyData: data)
     }
     
-    init?(npyData: Data) {
+    public init?(npyData: Data) {
         
-        guard String(data: Data(npyData[0...5]), encoding: .ascii) == MAGIC_PREFIX else {
+        let magic = String(data: npyData.subdata(in: 0..<6), encoding: .ascii)
+        guard magic == MAGIC_PREFIX else {
             return nil
         }
         
@@ -34,16 +35,16 @@ extension Tensor {
         switch major {
         case 1:
             let tmp = Data(npyData[8...9]).withUnsafeBytes { (ptr: UnsafePointer<UInt8>) in
-                ptr.withMemoryRebound(to: Int16.self, capacity: 1) {
-                    Int16(littleEndian: $0.pointee)
+                ptr.withMemoryRebound(to: UInt16.self, capacity: 1) {
+                    UInt16(littleEndian: $0.pointee)
                 }
             }
             headerLen = Int(tmp)
             rest = npyData.subdata(in: 10..<npyData.count)
         case 2:
             let tmp = Data(npyData[8...11]).withUnsafeBytes { (ptr: UnsafePointer<UInt8>) in
-                ptr.withMemoryRebound(to: Int32.self, capacity: 1) {
-                    Int32(littleEndian: $0.pointee)
+                ptr.withMemoryRebound(to: UInt32.self, capacity: 1) {
+                    UInt32(littleEndian: $0.pointee)
                 }
             }
             headerLen = Int(tmp)
@@ -54,6 +55,14 @@ extension Tensor {
         
         let headerData = rest.subdata(in: 0..<headerLen)
         guard let header = parseHeader(headerData) else {
+            return nil
+        }
+        
+        guard header.isLittleEndian else {
+            return nil
+        }
+        
+        guard !header.isFortranOrder else {
             return nil
         }
         
@@ -80,16 +89,16 @@ extension Tensor {
     }
 }
 
-fileprivate let MAGIC_PREFIX = "\u{93}NUMPY"
+private let MAGIC_PREFIX = "\u{93}NUMPY"
 
-fileprivate struct NumpyHeader {
+private struct NumpyHeader {
     let shape: Shape
     let dataType: DataType
     let isLittleEndian: Bool
     let isFortranOrder: Bool
 }
 
-fileprivate func parseHeader(_ data: Data) -> NumpyHeader? {
+private func parseHeader(_ data: Data) -> NumpyHeader? {
     
     guard let str = String(data: data, encoding: .ascii) else {
         return nil
@@ -148,7 +157,7 @@ fileprivate func parseHeader(_ data: Data) -> NumpyHeader? {
                        isFortranOrder: isFortranOrder)
 }
 
-fileprivate enum DataType: String {
+private enum DataType: String {
     case Float32 = "f4"
     case Float64 = "f8"
     
