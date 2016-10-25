@@ -15,17 +15,17 @@ extension Tensor {
         
         let magic = String(data: npyData.subdata(in: 0..<6), encoding: .ascii)
         guard magic == MAGIC_PREFIX else {
-            throw NumpyError.InvalidFormat(message: "Invalid prefix: \(magic)")
+            throw NumpyError.ParseFailed(message: "Invalid prefix: \(magic)")
         }
         
         let major = npyData[6]
         guard major == 1 || major == 2 else {
-            throw NumpyError.InvalidFormat(message: "Invalid major version: \(major)")
+            throw NumpyError.ParseFailed(message: "Invalid major version: \(major)")
         }
         
         let minor = npyData[7]
         guard minor == 0 else {
-            throw NumpyError.InvalidFormat(message: "Invalid minor version: \(minor)")
+            throw NumpyError.ParseFailed(message: "Invalid minor version: \(minor)")
         }
         
         let headerLen: Int
@@ -86,7 +86,6 @@ extension Tensor {
 }
 
 public enum NumpyError: Error {
-    case InvalidFormat(message: String)
     case ParseFailed(message: String)
 }
 
