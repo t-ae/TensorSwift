@@ -54,10 +54,6 @@ extension Tensor {
         let headerData = rest.subdata(in: 0..<headerLen)
         let header = try parseHeader(headerData)
         
-        guard header.isLittleEndian else {
-            fatalError("Only supports little endian: descr: \(header.descr)")
-        }
-        
         guard !header.isFortranOrder else {
             fatalError("\"fortran_order\" must be False.")
         }
@@ -66,19 +62,33 @@ extension Tensor {
         let elemData = rest.subdata(in: headerLen..<rest.count)
         let elements: [Float]
         
-        switch header.dataType {
-        case .Float32:
+        switch (header.dataType, header.isLittleEndian) {
+        case (.Float32, true):
             elements = elemData.withUnsafeBytes { (ptr: UnsafePointer<UInt8>) in
                 ptr.withMemoryRebound(to: Float32.self, capacity: elemCount) { ptr2 -> [Float] in
-                    (0..<elemCount).map { Float32(ptr2.advanced(by: $0).pointee) }
+                    (0..<elemCount).map { Float(ptr2.advanced(by: $0).pointee) }
                 }
             }
-        case .Float64:
+        case (.Float64, true):
             elements = elemData.withUnsafeBytes { (ptr: UnsafePointer<UInt8>) in
                 ptr.withMemoryRebound(to: Float64.self, capacity: elemCount) { ptr2 in
                     (0..<elemCount).map { Float(ptr2.advanced(by: $0).pointee) }
                 }
             }
+        case (.Float32, false):
+            let uints = elemData.withUnsafeBytes { (ptr: UnsafePointer<UInt8>) in
+                ptr.withMemoryRebound(to: UInt32.self, capacity: elemCount) { ptr2 in
+                    (0..<elemCount).map { UInt32(bigEndian: ptr2.advanced(by: $0).pointee) }
+                }
+            }
+            elements = uints.map { Float(Float32(bitPattern: $0)) }
+        case (.Float64, false):
+            let uints = elemData.withUnsafeBytes { (ptr: UnsafePointer<UInt8>) in
+                ptr.withMemoryRebound(to: UInt64.self, capacity: elemCount) { ptr2 in
+                    (0..<elemCount).map { UInt64(bigEndian: ptr2.advanced(by: $0).pointee) }
+                }
+            }
+            elements = uints.map { Float(Float64(bitPattern: $0)) }
         }
         
         self.init(shape: header.shape, elements: elements)
