@@ -54,10 +54,6 @@ extension Tensor {
         let headerData = rest.subdata(in: 0..<headerLen)
         let header = try parseHeader(headerData)
         
-        guard !header.isFortranOrder else {
-            fatalError("\"fortran_order\" must be False.")
-        }
-        
         let elemCount = header.shape.volume()
         let elemData = rest.subdata(in: headerLen..<rest.count)
         let elements: [Float]
@@ -65,7 +61,7 @@ extension Tensor {
         switch (header.dataType, header.isLittleEndian) {
         case (.float32, true):
             elements = elemData.withUnsafeBytes { (ptr: UnsafePointer<UInt8>) in
-                ptr.withMemoryRebound(to: Float32.self, capacity: elemCount) { ptr2 -> [Float] in
+                ptr.withMemoryRebound(to: Float32.self, capacity: elemCount) { ptr2 in
                     (0..<elemCount).map { Float(ptr2.advanced(by: $0).pointee) }
                 }
             }
@@ -139,6 +135,10 @@ private func parseHeader(_ data: Data) throws -> NumpyHeader {
         }
         
         isFortranOrder = separate[fortranIndex+1].contains("True")
+        
+        guard !isFortranOrder else {
+            fatalError("\"fortran_order\" must be False.")
+        }
     }
     
     let shape: Shape
