@@ -63,26 +63,26 @@ extension Tensor {
         let elements: [Float]
         
         switch (header.dataType, header.isLittleEndian) {
-        case (.Float32, true):
+        case (.float32, true):
             elements = elemData.withUnsafeBytes { (ptr: UnsafePointer<UInt8>) in
                 ptr.withMemoryRebound(to: Float32.self, capacity: elemCount) { ptr2 -> [Float] in
                     (0..<elemCount).map { Float(ptr2.advanced(by: $0).pointee) }
                 }
             }
-        case (.Float64, true):
+        case (.float64, true):
             elements = elemData.withUnsafeBytes { (ptr: UnsafePointer<UInt8>) in
                 ptr.withMemoryRebound(to: Float64.self, capacity: elemCount) { ptr2 in
                     (0..<elemCount).map { Float(ptr2.advanced(by: $0).pointee) }
                 }
             }
-        case (.Float32, false):
+        case (.float32, false):
             let uints = elemData.withUnsafeBytes { (ptr: UnsafePointer<UInt8>) in
                 ptr.withMemoryRebound(to: UInt32.self, capacity: elemCount) { ptr2 in
                     (0..<elemCount).map { UInt32(bigEndian: ptr2.advanced(by: $0).pointee) }
                 }
             }
             elements = uints.map { Float(Float32(bitPattern: $0)) }
-        case (.Float64, false):
+        case (.float64, false):
             let uints = elemData.withUnsafeBytes { (ptr: UnsafePointer<UInt8>) in
                 ptr.withMemoryRebound(to: UInt64.self, capacity: elemCount) { ptr2 in
                     (0..<elemCount).map { UInt64(bigEndian: ptr2.advanced(by: $0).pointee) }
@@ -171,10 +171,10 @@ private func parseHeader(_ data: Data) throws -> NumpyHeader {
 }
 
 private enum DataType: String {
-    case Float32 = "f4"
-    case Float64 = "f8"
+    case float32 = "f4"
+    case float64 = "f8"
     
     static var all: [DataType] {
-        return [.Float32, .Float64]
+        return [.float32, .float64]
     }
 }
