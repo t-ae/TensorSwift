@@ -53,9 +53,8 @@ public struct Classifier {
 
 ### Swift Package Manager
 
-```
-.Package(url: "git@github.com:qoncept/TensorSwift.git",
-         Version(0, 2, 0)),
+```swift
+.Package(url: "git@github.com:qoncept/TensorSwift.git", majorVersion: 0, minor: 2),
 ```
 
 ### CocoaPods
