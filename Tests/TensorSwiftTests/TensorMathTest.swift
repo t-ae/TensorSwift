@@ -31,4 +31,11 @@ class TensorMathTest: XCTestCase {
             XCTAssertEqual(b ** a, Tensor(shape: [2, 3], elements: [2, 4, 8, 16, 32, 64]))
         }
     }
+    
+    func testSigmoid() {
+        do {
+            let a = Tensor(shape: [2, 3], elements: [-10, -1, 0, 1, 10, 100])
+            XCTAssertEqual(a.sigmoid(), Tensor(shape: [2, 3], elements: [4.53978719e-05, 2.68941432e-01, 5.00000000e-01, 7.31058598e-01, 9.99954581e-01, 1.00000000e+00]))
+        }
+    }
 }

@@ -68,6 +68,6 @@ extension Tensor {
 
 extension Tensor {
     public func sigmoid() -> Tensor {
-        return Tensor(shape: shape, elements: elements.map { 1.0 / expf(-$0) })
+        return Tensor(shape: shape, elements: elements.map { 1.0 / (1.0 + expf(-$0)) })
     }
 }
