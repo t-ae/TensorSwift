@@ -50,7 +50,7 @@ extension Tensor { // like CollentionType
     
     public subscript(indices: Int...) -> Element {
         get {
-            return elements[index(indices)]
+            return _subscript(indices)
         }
         set {
             elements[index(indices)] = newValue
@@ -68,7 +68,7 @@ extension Tensor { // like CollentionType
 
 extension Tensor {
     
-    public func _subscript(ranges: [CountableRange<Int>]) -> TensorSlice {
+    internal func _subscript(ranges: [CountableRange<Int>]) -> TensorSlice {
         precondition(ranges.count == self.shape.dimensions.count)
         return TensorSlice(tensor: self, ranges: ranges)
     }
