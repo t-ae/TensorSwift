@@ -2,19 +2,18 @@
 
 public struct TensorSlice : TensorProtocol {
 
-    
     public typealias Element = Float
     
     internal let tensor: Tensor
-    internal let ranges: [CountableRange<Int>]
+    internal let _ranges: [CountableRange<Int>]
     
     public init(tensor: Tensor, ranges: [CountableRange<Int>]) {
         self.tensor = tensor
-        self.ranges = ranges
+        self._ranges = ranges
     }
     
     public var shape: Shape {
-        return Shape(ranges.map { Dimension($0.count) } )
+        return Shape(_ranges.map { Dimension($0.count) } )
     }
 }
 
@@ -82,7 +81,7 @@ extension TensorSlice {
 extension TensorSlice : Sequence {
     public func makeIterator() -> ElementGenerator {
         
-        let validRanges = zip(ranges, self.tensor.shape.dimensions).map { range, max in
+        let validRanges = zip(_ranges, self.tensor.shape.dimensions).map { range, max in
             validRange(range, maxValue: max.value)
         }
         
