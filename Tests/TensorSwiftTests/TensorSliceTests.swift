@@ -41,6 +41,14 @@ class TensorSliceTests: XCTestCase {
         XCTAssertEqual(sliceOfSlice.map{ $0 }, [6.0, 7.0, 11.0, 12.0, 26.0, 27.0, 31.0, 32.0])
     }
     
+    func testTensor() {
+        let tensor = Tensor(shape: [5,5,2], elements: (0..<5*5*2).map(Float.init))
+        let slice = tensor[1..<3, 2..<4, 1..<2]
+        
+        let r = Tensor(slice: slice)
+        XCTAssertEqual(r, Tensor(shape: [2,2,1], elements: [15, 17, 25, 27]))
+    }
+    
     func testMatmul() {
         do {
             let a = Tensor(shape: [3, 3], elements: (0..<3*3).map(Float.init))
@@ -102,12 +110,32 @@ class TensorSliceTests: XCTestCase {
         }
     }
     
+    func testConv2d() {
+        do {
+            let elems1 = (0..<5).flatMap { [Float](repeating: Float($0), count: 3) }
+            let a = Tensor(shape: [1, 5, 3], elements: elems1)
+            let elems2 = (0..<5).flatMap { [Float](repeating: Float($0), count: 2*3) }
+            let filter = Tensor(shape: [1, 5, 2, 3], elements: elems2)
+            
+            let aSlice = a[0..<1, 1..<4, 1..<2]
+            let filterSlice = filter[0..<1, 1..<4, 1..<2, 1..<3]
+            
+            let r = aSlice.conv2d(filter: filterSlice, strides: [1, 1, 1])
+            print(Tensor(slice: aSlice))
+            print(Tensor(slice: filterSlice))
+            print(r)
+            XCTAssertEqual(r, Tensor(shape: [1,3,2], elements: [8, 8, 14, 14, 8, 8]))
+        }
+    }
+    
     static var allTests : [(String, (TensorSliceTests) -> () throws -> Void)] {
         return [
             ("testSlice", testSlice),
             ("testSliceMap", testSliceMap),
             ("testSliceOfSlice", testSliceOfSlice),
             ("testMatmul_no_blas", testMatmul_no_blas),
+            ("testMaxPool", testMaxPool),
+            ("testConv2d", testConv2d),
         ]
     }
 }

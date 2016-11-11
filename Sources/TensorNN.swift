@@ -69,7 +69,6 @@ extension TensorProtocol {
                         var inPointer = UnsafeMutablePointer<Element>(mutating: self.wholeElements) + (inY * wholeCols + inX) * wholeChannels + offsetChannel
                         var outPointer = UnsafeMutablePointer<Element>(mutating: elements) + outPixelIndex * numChannels
                         for _ in 0..<numChannels {
-                            print(inPointer.pointee)
                             outPointer.pointee = Swift.max(outPointer.pointee, inPointer.pointee)
                             outPointer += 1
                             inPointer += 1
@@ -84,7 +83,19 @@ extension TensorProtocol {
     }
     
     
-    public func conv2d(filter: Tensor, strides: [Int]) -> Tensor { // padding = Same
+    public func conv2d<T: TensorProtocol>(filter _filter: T, strides: [Int]) -> Tensor { // padding = Same
+        
+        guard let tensor = self as? Tensor else {
+            let slice = self as! TensorSlice
+            return Tensor(slice: slice).conv2d(filter: _filter, strides: strides)
+        }
+        
+        guard let filter = _filter as? Tensor else {
+            let slice = _filter as! TensorSlice
+            return self.conv2d(filter: Tensor(slice: slice), strides: strides)
+        }
+        
+        
         let inChannels = filter.shape.dimensions[2].value
         
         precondition(shape.dimensions.count == 3, "`shape.dimensions.count` must be 3: \(shape.dimensions.count)")
@@ -112,8 +123,7 @@ extension TensorProtocol {
         let outChannels = filter.shape.dimensions[3].value
         
         #if os(iOS) || os(OSX)
-            // TODO
-            let elementsPointer = UnsafePointer<Float>(wholeElements)
+            let elementsPointer = UnsafePointer<Float>(tensor.elements)
             
             // a.shape == [outRows * outCols, rowSize]
             let rowSize = filterHeight * filterWidth * inChannels
