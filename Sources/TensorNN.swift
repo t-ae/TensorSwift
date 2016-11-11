@@ -3,7 +3,7 @@ import Darwin
 import Accelerate
 #endif
 
-extension Tensor {
+extension TensorProtocol {
     public func softmax() -> Tensor {
         let exps = exp()
         let sum = exps.elements.reduce(0.0, +)
@@ -11,7 +11,7 @@ extension Tensor {
     }
     
     public func relu() -> Tensor {
-        return Tensor(shape: shape, elements: elements.map { fmax($0, 0.0) })
+        return Tensor(shape: shape, elements: self.map { fmax($0, 0.0) })
     }
 }
 

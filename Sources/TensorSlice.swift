@@ -1,6 +1,7 @@
 
 
-public struct TensorSlice {
+public struct TensorSlice : TensorProtocol {
+
     
     public typealias Element = Float
     
@@ -14,10 +15,6 @@ public struct TensorSlice {
     
     public var shape: Shape {
         return Shape(ranges.map { Dimension($0.count) } )
-    }
-    
-    public var elements: [Element] {
-        return map { $0 }
     }
 }
 
@@ -130,5 +127,18 @@ public struct ElementGenerator : IteratorProtocol {
         defer { index[index.count-1] += 1 }
         return tensor._subscript(index)
     }
-    
 }
+
+extension TensorSlice: Equatable {}
+public func ==(lhs: TensorSlice, rhs: TensorSlice) -> Bool {
+    guard lhs.shape == rhs.shape else {
+        return false
+    }
+    for (l, r) in zip(lhs, rhs) {
+        guard l==r else {
+            return false
+        }
+    }
+    return true
+}
+
