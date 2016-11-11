@@ -10,6 +10,8 @@
 		A7432A6D1DD42B4500EEEA7D /* TensorSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7432A6C1DD42B4500EEEA7D /* TensorSlice.swift */; };
 		A7432A6F1DD4323200EEEA7D /* TensorSliceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7432A6E1DD4323200EEEA7D /* TensorSliceTests.swift */; };
 		A75C0D181DD54E8C00C20A76 /* TensorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75C0D171DD54E8C00C20A76 /* TensorProtocol.swift */; };
+		A795F9181DBDFDBC00537AF6 /* Numpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F9171DBDFDBC00537AF6 /* Numpy.swift */; };
+		A795F91A1DBE0EF300537AF6 /* NumpyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F9191DBE0EF300537AF6 /* NumpyTests.swift */; };
 		A7C046091D9F514600FAF16F /* TensorSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6F8E1D9BB9660097CEB7 /* TensorSwiftTests.swift */; };
 		A7C0460A1D9F514600FAF16F /* CalculationPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6F811D9BB9240097CEB7 /* CalculationPerformanceTests.swift */; };
 		A7C0460B1D9F514600FAF16F /* DimensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF6F821D9BB9240097CEB7 /* DimensionTests.swift */; };
@@ -105,6 +107,8 @@
 		A7432A6C1DD42B4500EEEA7D /* TensorSlice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorSlice.swift; sourceTree = "<group>"; };
 		A7432A6E1DD4323200EEEA7D /* TensorSliceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorSliceTests.swift; sourceTree = "<group>"; };
 		A75C0D171DD54E8C00C20A76 /* TensorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TensorProtocol.swift; sourceTree = "<group>"; };
+		A795F9171DBDFDBC00537AF6 /* Numpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Numpy.swift; sourceTree = "<group>"; };
+		A795F9191DBE0EF300537AF6 /* NumpyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumpyTests.swift; sourceTree = "<group>"; };
 		A7C387A61D9F604900091506 /* MNIST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNIST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7C387A81D9F604900091506 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7C387AA1D9F604900091506 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -332,6 +336,7 @@
 				__PBXFileRef_Sources/TensorMath.swift /* TensorMath.swift */,
 				__PBXFileRef_Sources/TensorNN.swift /* TensorNN.swift */,
 				__PBXFileRef_Sources/Utils.swift /* Utils.swift */,
+				A795F9171DBDFDBC00537AF6 /* Numpy.swift */,
 			);
 			name = TensorSwift;
 			path = Sources;
@@ -349,6 +354,7 @@
 				A7DF6F861D9BB9240097CEB7 /* TensorSwiftSample.swift */,
 				A7DF6F871D9BB9240097CEB7 /* TensorTests.swift */,
 				A7432A6E1DD4323200EEEA7D /* TensorSliceTests.swift */,
+				A795F9191DBE0EF300537AF6 /* NumpyTests.swift */,
 			);
 			name = TensorSwiftTests;
 			path = Tests/TensorSwiftTests;
@@ -442,6 +448,7 @@
 			buildPhases = (
 				CompilePhase_TensorSwiftTests /* Sources */,
 				"___LinkPhase_TensorSwiftTests" /* Frameworks */,
+				A795F91C1DBE0F8200537AF6 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -507,6 +514,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A795F91C1DBE0F8200537AF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A7C387A41D9F604900091506 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -587,6 +601,7 @@
 				__src_cc_ref_Sources/Shape.swift /* Shape.swift in Sources */,
 				__src_cc_ref_Sources/Tensor.swift /* Tensor.swift in Sources */,
 				__src_cc_ref_Sources/TensorMath.swift /* TensorMath.swift in Sources */,
+				A795F9181DBDFDBC00537AF6 /* Numpy.swift in Sources */,
 				__src_cc_ref_Sources/TensorNN.swift /* TensorNN.swift in Sources */,
 				__src_cc_ref_Sources/Utils.swift /* Utils.swift in Sources */,
 				A7432A6D1DD42B4500EEEA7D /* TensorSlice.swift in Sources */,
@@ -606,6 +621,7 @@
 				A7C0460D1D9F514600FAF16F /* TensorNNTests.swift in Sources */,
 				A7C0460E1D9F514600FAF16F /* TensorSwiftSample.swift in Sources */,
 				A7C0460F1D9F514600FAF16F /* TensorTests.swift in Sources */,
+				A795F91A1DBE0EF300537AF6 /* NumpyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

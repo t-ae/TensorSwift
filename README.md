@@ -48,6 +48,26 @@ public struct Classifier {
     }
 }
 ```
+## Integration with Numpy
+
+### Save numpy array
+
+```python
+_W, _b = sess.run([W, b])
+numpy.save("W.npy", _W)
+numpy.save("b.npy", _b)
+```
+
+### Load npy file
+
+```swift
+Tensor(contentsOf: fileUrl)
+```
+
+Supported npy file:
+
+- np.float32 or np.float64 array
+- "fortran_order" is False
 
 ## Installation
 
