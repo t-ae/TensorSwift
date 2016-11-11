@@ -121,7 +121,7 @@ extension Tensor {
                     var dest = UnsafeMutablePointer<Float>(mutating: a) + ((y * outCols + x) * filterHeight - Swift.min(inY0 + inMinDy, 0)) * filterWidth * inChannels
                     var src = elementsPointer + (inMinY * inCols + inMinX) * inChannels
                     for _ in inMinY...inMaxY {
-                        memcpy(dest - Swift.min(inMinX + inMinDx, 0) * inChannels, src, (inMinX...inMaxX).count * inChannels * MemoryLayout<Float>.size)
+                        memcpy(dest - Swift.min(inX0 + inMinDx, 0) * inChannels, src, (inMinX...inMaxX).count * inChannels * MemoryLayout<Float>.size)
                         dest += filterWidth * inChannels
                         src += inCols * inChannels
                     }
