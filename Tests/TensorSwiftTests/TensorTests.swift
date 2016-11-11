@@ -145,6 +145,21 @@ class TensorTests: XCTestCase {
         }
     }
     
+    func testMatmul_no_blas() {
+        do {
+            let a = Tensor(shape: [2, 3], elements: [1, 2, 3, 4, 5, 6])
+            let b = Tensor(shape: [3, 4], elements: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18])
+            let r = a.matmul_no_blas(b)
+            XCTAssertEqual(r, Tensor(shape: [2, 4], elements: [74, 80, 86, 92, 173, 188, 203, 218]))
+        }
+        do {
+            let a = Tensor(shape: [3, 3], elements: [1, 1, 1, 2, 2, 2, 3, 3, 3])
+            let b = Tensor(shape: [3, 3], elements: [1, 1, 1, 2, 2, 2, 3, 3, 3])
+            let r = a.matmul_no_blas(b)
+            XCTAssertEqual(r, Tensor(shape: [3, 3], elements: [6, 6, 6, 12, 12, 12, 18, 18, 18]))
+        }
+    }
+    
     func testMatmulPerformance(){
         let a = Tensor(shape: [1000, 1000], element: 0.1)
         let b = Tensor(shape: [1000, 1000], element: 0.1)
@@ -161,6 +176,7 @@ class TensorTests: XCTestCase {
             ("testMul", testMul),
             ("testDiv", testDiv),
             ("testMatmul", testMatmul),
+            ("testMatmul_no_blas", testMatmul_no_blas),
             ("testMatmulPerformance", testMatmulPerformance),
         ]
     }

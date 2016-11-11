@@ -25,3 +25,39 @@ internal func zipMapRepeat(_ a: [Float], _ infiniteB: [Float], operation: (Float
     return result
 }
 
+struct RepeatedSequence<S: Sequence>: Sequence {
+    let sequence: S
+    
+    init(_ sequence: S) {
+        self.sequence = sequence
+    }
+    
+    func makeIterator() -> RepeatedSequenceIterator<S> {
+        return RepeatedSequenceIterator(sequence: sequence)
+    }
+}
+
+struct RepeatedSequenceIterator<S: Sequence>: IteratorProtocol {
+    typealias Element = S.Iterator.Element
+
+    let sequence: S
+    var iterator: S.Iterator
+    
+    init(sequence: S){
+        self.sequence = sequence
+        self.iterator = sequence.makeIterator()
+    }
+    
+    mutating func next() -> Element? {
+        if let next = iterator.next() {
+            return next
+        }
+        
+        iterator = sequence.makeIterator()
+        if let next = iterator.next() {
+            return next
+        }
+        
+        return nil
+    }
+}

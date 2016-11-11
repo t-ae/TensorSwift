@@ -20,7 +20,7 @@ class PowerTests: XCTestCase {
         XCTAssertEqual(tensor ** tensor2, Tensor(shape: [2, 2], elements: [1, 4, 9, 16]))
         XCTAssertEqual(tensor ** tensor, Tensor(shape: [2, 2], elements: [1, 4, 27, 256]))
         
-        XCTAssertEqual(tensor ** tensor2 ** tensor, Tensor(shape: [2, 2], elements: [1, 16, powf(3, 8), powf(4, 16)]))
+        XCTAssertEqual(tensor ** tensor2 ** tensor, Tensor(shape: [2, 2], elements: [1, 16, Foundation.pow(3, 8), Foundation.pow(4, 16)]))
     }
 
     static var allTests : [(String, (PowerTests) -> () throws -> Void)] {

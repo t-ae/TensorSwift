@@ -1,68 +1,70 @@
 import Darwin
 
-public func **(lhs: Tensor, rhs: Tensor) -> Tensor {
-    return noncommutativeBinaryOperation(lhs, rhs, operation: powf)
+public func **<A: TensorProtocol, B: TensorProtocol>(lhs: A, rhs: B) -> Tensor
+    where A.Iterator.Element==Float, B.Iterator.Element==Float {
+        return noncommutativeBinaryOperation(lhs, rhs, operation: powf)
 }
 
-public func **(lhs: Tensor, rhs: Tensor.Element) -> Tensor {
-    return Tensor(shape: lhs.shape, elements: lhs.elements.map { powf($0, rhs) })
+public func **<T: TensorProtocol>(lhs: T, rhs: Float) -> Tensor {
+    return Tensor(shape: lhs.shape, elements: lhs.map { powf($0, rhs) })
 }
 
-public func **(lhs: Tensor.Element, rhs: Tensor) -> Tensor {
-    return Tensor(shape: rhs.shape, elements: rhs.elements.map { powf(lhs, $0) })
+public func **<T: TensorProtocol>(lhs: Float, rhs: T) -> Tensor {
+    return Tensor(shape: rhs.shape, elements: rhs.map { powf(lhs, $0) })
 }
 
-extension Tensor {
+extension TensorProtocol {
+
     public func sin() -> Tensor {
-        return Tensor(shape: shape, elements: elements.map(sinf))
+        return Tensor(shape: shape, elements: self.map(sinf))
     }
 
     public func cos() -> Tensor {
-        return Tensor(shape: shape, elements: elements.map(cosf))
+        return Tensor(shape: shape, elements: self.map(cosf))
     }
 
     public func tan() -> Tensor {
-        return Tensor(shape: shape, elements: elements.map(tanf))
+        return Tensor(shape: shape, elements: self.map(tanf))
     }
 
     public func asin() -> Tensor {
-        return Tensor(shape: shape, elements: elements.map(asinf))
+        return Tensor(shape: shape, elements: self.map(asinf))
     }
     
     public func acos() -> Tensor {
-        return Tensor(shape: shape, elements: elements.map(acosf))
+        return Tensor(shape: shape, elements: self.map(acosf))
     }
     
     public func atan() -> Tensor {
-        return Tensor(shape: shape, elements: elements.map(atanf))
+        return Tensor(shape: shape, elements: self.map(atanf))
     }
     
     public func sinh() -> Tensor {
-        return Tensor(shape: shape, elements: elements.map(sinhf))
+        return Tensor(shape: shape, elements: self.map(sinhf))
     }
     
     public func cosh() -> Tensor {
-        return Tensor(shape: shape, elements: elements.map(coshf))
+        return Tensor(shape: shape, elements: self.map(coshf))
     }
     
     public func tanh() -> Tensor {
-        return Tensor(shape: shape, elements: elements.map(tanhf))
+        return Tensor(shape: shape, elements: self.map(tanhf))
     }
     
     public func exp() -> Tensor {
-        return Tensor(shape: shape, elements: elements.map(expf))
+        return Tensor(shape: shape, elements: self.map(expf))
     }
     
     public func log() -> Tensor {
-        return Tensor(shape: shape, elements: elements.map(logf))
+        return Tensor(shape: shape, elements: self.map(logf))
     }
     
     public func sqrt() -> Tensor {
-        return Tensor(shape: shape, elements: elements.map(sqrtf))
+        return Tensor(shape: shape, elements: self.map(sqrtf))
     }
     
     public func cbrt() -> Tensor {
-        return Tensor(shape: shape, elements: elements.map(cbrtf))
+        return Tensor(shape: shape, elements: self.map(cbrtf))
     }
 }
 
