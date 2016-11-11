@@ -1,15 +1,16 @@
 import Darwin
 
-public func **(lhs: Tensor, rhs: Tensor) -> Tensor {
-    return noncommutativeBinaryOperation(lhs, rhs, operation: powf)
+public func **<A: TensorProtocol, B: TensorProtocol>(lhs: A, rhs: B) -> Tensor
+    where A.Iterator.Element==Float, B.Iterator.Element==Float {
+        return noncommutativeBinaryOperation(lhs, rhs, operation: powf)
 }
 
-public func **(lhs: Tensor, rhs: Tensor.Element) -> Tensor {
-    return Tensor(shape: lhs.shape, elements: lhs.elements.map { powf($0, rhs) })
+public func **<T: TensorProtocol>(lhs: T, rhs: Float) -> Tensor {
+    return Tensor(shape: lhs.shape, elements: lhs.map { powf($0, rhs) })
 }
 
-public func **(lhs: Tensor.Element, rhs: Tensor) -> Tensor {
-    return Tensor(shape: rhs.shape, elements: rhs.elements.map { powf(lhs, $0) })
+public func **<T: TensorProtocol>(lhs: Float, rhs: T) -> Tensor {
+    return Tensor(shape: rhs.shape, elements: rhs.map { powf(lhs, $0) })
 }
 
 extension TensorProtocol {
