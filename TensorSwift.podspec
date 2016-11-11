@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "TensorSwift"
-  s.version      = "0.2.0"
+  s.version      = "0.2.2"
   s.summary      = "TensorSwift is a lightweight library to calculate tensors, which has similar APIs to TensorFlow's."
   s.homepage     = "https://github.com/qoncept/TensorSwift"
   s.license      = { :type => "MIT", :file => "LICENSE" }
