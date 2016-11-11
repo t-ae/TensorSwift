@@ -61,6 +61,13 @@ class TensorNNTests: XCTestCase {
             let result = a.conv2d(filter: filter, strides: [3,3,1])
             XCTAssertEqual(result, Tensor(shape: [2,2,1], elements: [18,33,95,113]))
         }
+        
+        do {
+            let a = Tensor(shape: [1,3,1], elements: [1,2,3])
+            let filter = Tensor(shape: [1,3,1,2], elements: [1,1,2,2,3,3])
+            let result = a.conv2d(filter: filter, strides: [1,1,1])
+            XCTAssertEqual(result, Tensor(shape: [1,3,2], elements: [8, 8, 14, 14, 8, 8]))
+        }
     }
     
     func testMaxPoolPerformance(){
