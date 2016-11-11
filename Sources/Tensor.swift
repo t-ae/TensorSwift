@@ -24,6 +24,12 @@ extension Tensor { // Additional Initializers
 }
 
 extension Tensor {
+    public init(slice: TensorSlice) {
+        self.init(shape: slice.shape, elements: slice.elements)
+    }
+}
+
+extension Tensor {
     public mutating func reshape(_ shape: Shape) {
         self = reshaped(shape)
     }
@@ -51,8 +57,64 @@ extension Tensor { // like CollentionType
         }
     }
     
+    internal func _subscript(_ indices: [Int]) -> Element {
+        return elements[index(indices)]
+    }
+    
     public func volume() -> Int {
         return shape.volume()
+    }
+}
+
+extension Tensor {
+    
+    public func _subscript(ranges: [CountableRange<Int>]) -> TensorSlice {
+        precondition(ranges.count == self.shape.dimensions.count)
+        return TensorSlice(tensor: self, ranges: ranges)
+    }
+    
+    public subscript(ranges: Range<Int>...) -> TensorSlice {
+        return _subscript(ranges: ranges.map { CountableRange($0) })
+    }
+    
+    public subscript(ranges: ClosedRange<Int>...) -> TensorSlice {
+        return _subscript(ranges: ranges.map { CountableRange($0) })
+    }
+    
+    public subscript(ranges: CountableRange<Int>...) -> TensorSlice {
+        return _subscript(ranges: ranges)
+    }
+    
+    public subscript(ranges: CountableClosedRange<Int>...) -> TensorSlice {
+        return _subscript(ranges: ranges.map { CountableRange($0) })
+    }
+    
+    public subscript(ranges: Range<Int>?...) -> TensorSlice {
+        let validRanges = ranges.enumerated().map { i, range in
+            range.map(CountableRange.init) ?? 0..<self.shape.dimensions[i].value
+        }
+        return _subscript(ranges: validRanges)
+    }
+    
+    public subscript(ranges: ClosedRange<Int>?...) -> TensorSlice {
+        let validRanges = ranges.enumerated().map { i, range in
+            range.map(CountableRange.init) ?? 0..<self.shape.dimensions[i].value
+        }
+        return _subscript(ranges: validRanges)
+    }
+    
+    public subscript(ranges: CountableRange<Int>?...) -> TensorSlice {
+        let validRanges = ranges.enumerated().map { i, range in
+            range ?? 0..<self.shape.dimensions[i].value
+        }
+        return _subscript(ranges: validRanges)
+    }
+    
+    public subscript(ranges: CountableClosedRange<Int>?...) -> TensorSlice {
+        let validRanges = ranges.enumerated().map { i, range in
+            range.map(CountableRange.init) ?? 0..<self.shape.dimensions[i].value
+        }
+        return _subscript(ranges: validRanges)
     }
 }
 
